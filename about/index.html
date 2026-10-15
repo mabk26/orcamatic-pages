@@ -7,7 +7,7 @@
     <meta name="description" content="Learn about Orcamatic and the privacy-first browser automation behind ORCA.">
     <link rel="canonical" href="https://orcamatic.com/about/">
     <link rel="icon" href="/assets/orca-icon.png" type="image/png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://lh3.googleusercontent.com; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/site.css">
@@ -20,7 +20,7 @@
     <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="ORCA side panel helping complete a CRM workflow in a browser">
+    <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="About Orcamatic — Privacy-first browser tools">
     <meta name="twitter:description" content="Learn about Orcamatic and the privacy-first browser automation behind ORCA.">
@@ -43,45 +43,48 @@
     <main id="main-content">
       <section class="page-hero compact" aria-labelledby="about-title">
         <div class="container" data-reveal>
-          <p class="eyebrow">About Orcamatic</p>
           <h1 id="about-title">Tools for the work that happens in a <em>browser.</em></h1>
-          <p>Orcamatic makes privacy-first browser tools for people who want less repetitive work and more control over how it gets done. ORCA is the first product: a browser agent built around the way you already work online.</p>
-          <div class="meta-line"><span>Built for real web work</span><span>Human control stays central</span><span>Privacy first</span></div>
+          <p>Orcamatic makes privacy-first browser tools for people who want less repetitive work and more control over how it gets done. ORCA is the first product: an automation extension that lives in the browser you already work in. We are independent and small, which means the person answering support is the person who built the thing.</p>
+          <ul class="facts"><li>Built for real web work</li><li>Human control stays central</li><li>Privacy first</li></ul>
         </div>
       </section>
 
       <section class="section" aria-labelledby="approach-title">
         <div class="container product-overview">
           <div data-reveal>
-            <p class="eyebrow">Our approach</p>
             <h2 id="approach-title">Useful automation should feel understandable, not distant.</h2>
-            <p>Browser work is full of small, necessary actions: opening the right page, finding a record, copying the useful detail, updating a field, sending the follow-up. ORCA is made for that reality. You teach it a task directly on the page, and it helps you turn it into a reusable workflow.</p>
+            <p>Browser work is full of small, necessary actions: opening the right page, finding a row, copying the useful detail, filling a field, pressing submit. ORCA is made for that reality. You pick the targets and rules directly on the page, and the same sequence becomes a workflow you can run again — now, or on a schedule.</p>
             <p>We believe the best automation gives you leverage without taking away your judgment. You decide what to automate, what gets saved, and when a workflow should run.</p>
           </div>
-          <div class="product-panel" data-reveal aria-label="A visual summary of the ORCA product">
-            <div class="product-panel-head"><strong>ORCA</strong><span>Browser agent</span></div>
-            <div class="product-panel-body">
-              <div class="panel-nav" aria-hidden="true"><span class="active">Workflows</span><span>Profiles</span><span>Scheduler</span><span>Run history</span></div>
-              <div class="panel-run"><small>Saved workflow</small><h3>Keep client records ready for follow-up</h3><div class="status">Task is ready to run</div><span class="run-button">Run workflow&nbsp; →</span></div>
+          <figure class="shot" data-shot data-reveal>
+            <div class="shot-frame">
+              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">
+                <img src="https://lh3.googleusercontent.com/tOTdxj5iL85ZCLS3MjcsxG1DnsnChvFctq0yNT6WHPjYjQqRoQ7ZgSQDrBqpOPLaEl5vEc77TpJkYFMhPlAEaZ9Y8w=s1280-w1280-h800" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="Screenshot of ORCA from its Chrome Web Store listing">
+              </a>
             </div>
-          </div>
+            <p class="shot-fallback">The Chrome Web Store preview could not be loaded here. <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Open the ORCA listing to see its screenshots.</a></p>
+            <figcaption class="shot-meta">
+              <span>Screenshot from the Chrome Web Store listing</span>
+              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">View the listing ↗</a>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
       <section class="section plan-section" aria-labelledby="principles-title">
         <div class="container">
-          <div class="section-heading" data-reveal><p class="eyebrow">What guides us</p><h2 id="principles-title">Simple principles for browser automation.</h2></div>
+          <div class="section-heading" data-reveal><h2 id="principles-title">Simple principles for browser automation.</h2></div>
           <div class="pillar-grid mt-lg">
-            <article class="pillar" data-reveal><span class="number">01</span><h3>Privacy-first</h3><p>Saved workflow profiles and normal browser-session data stay on your machine, close to the browser where you use them.</p></article>
-            <article class="pillar" data-reveal><span class="number">02</span><h3>Show it once</h3><p>Start from work you already know. Point to the relevant buttons and fields instead of translating every action into a new tool.</p></article>
-            <article class="pillar" data-reveal><span class="number">03</span><h3>Run with context</h3><p>Use a workflow when it is useful, or schedule repeatable work for later. See the task status as it progresses.</p></article>
-            <article class="pillar" data-reveal><span class="number">04</span><h3>Human in control</h3><p>ORCA does not bypass security gates, CAPTCHAs, or confirmation steps that need a person. You stay present for the important decisions.</p></article>
+            <article class="pillar" data-reveal><span class="number" aria-hidden="true">1</span><h3>Privacy-first</h3><p>Saved workflow profiles and normal browser-session data stay on your machine, close to the browser where you use them.</p></article>
+            <article class="pillar" data-reveal><span class="number" aria-hidden="true">2</span><h3>Show it once</h3><p>Start from work you already know. Point to the relevant buttons and fields instead of translating every action into a new tool.</p></article>
+            <article class="pillar" data-reveal><span class="number" aria-hidden="true">3</span><h3>Run with context</h3><p>Use a workflow when it is useful, or schedule repeatable work for later. See the task status as it progresses.</p></article>
+            <article class="pillar" data-reveal><span class="number" aria-hidden="true">4</span><h3>Human in control</h3><p>ORCA does not bypass security gates, CAPTCHAs, or confirmation steps that need a person. You stay present for the important decisions.</p></article>
           </div>
         </div>
       </section>
 
       <section class="section-tight" aria-labelledby="about-cta-title">
-        <div class="container"><div class="cta-panel" data-reveal><p class="eyebrow">Try it on your own task</p><h2 id="about-cta-title">Start with one workflow you never want to repeat by hand.</h2><p>No code, no API key setup, and no need to move your work into a separate dashboard.</p><div class="btn-row"><a class="btn btn-light" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a><a class="btn btn-dark" href="/products/">Explore the product</a></div></div></div>
+        <div class="container"><div class="cta-panel" data-reveal><h2 id="about-cta-title">Start with one workflow you never want to repeat by hand.</h2><p>No code, no API key setup, and no need to move your work into a separate dashboard.</p><div class="btn-row"><a class="btn btn-light" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a><a class="btn btn-dark" href="/products/">Explore the product</a></div></div></div>
       </section>
     </main>
 

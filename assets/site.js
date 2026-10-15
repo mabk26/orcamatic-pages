@@ -46,6 +46,18 @@
     element.textContent = new Date().getFullYear();
   });
 
+  // Store screenshots are hot-linked from the Chrome Web Store CDN. If one ever
+  // fails to load, hide that tile (or swap the hero frame for a link) instead of
+  // leaving a broken image on the page.
+  document.querySelectorAll('[data-shot] img').forEach((img) => {
+    const markFailed = () => {
+      const shot = img.closest('[data-shot]');
+      if (shot) shot.setAttribute('data-shot-failed', '');
+    };
+    if (img.complete && img.naturalWidth === 0) markFailed();
+    img.addEventListener('error', markFailed);
+  });
+
   const revealItems = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && revealItems.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver((entries) => {
