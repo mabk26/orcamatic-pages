@@ -31,8 +31,8 @@ security/        Permissions, data flow and store disclosures
 | Path | Purpose |
 | --- | --- |
 | `index.html` | Homepage |
-| `assets/site.css` | Shared responsive styling, including the scroll-driven section reveal |
-| `assets/site.js` | Dependency-free mobile menu, year stamp, screenshot retry and fallback |
+| `assets/site.css` | Shared responsive styling, the illustration styles and the scroll-driven section reveal |
+| `assets/site.js` | Dependency-free mobile menu, year stamp, and consent-gated analytics (off until configured) |
 | `templates/` | Workflow templates: steps written out for jobs the extension does today |
 | `security/` | Every permission with its reason, plus where each kind of data lives |
 | `guides/first-workflow/` | Quickstart: five steps and the five failure modes worth knowing |
@@ -43,31 +43,30 @@ security/        Permissions, data flow and store disclosures
 
 ## Imagery rules
 
-Product imagery on this site is **real**: the hero and the gallery show the screenshots from the
-ORCA listing on the Chrome Web Store. Do not replace them with generated or mock-up art — a
-rendered "screenshot" with invented UI text is instantly recognisable and it misrepresents the
-extension.
+The site explains ORCA with **drawn illustrations**, not Chrome Web Store screenshots. The
+store images are marketing tiles made for the store: on a web page their interface text shrinks
+to a few pixels, their baked-in headlines compete with the page, and hot-linking them made every
+page depend on Google's CDN. A drawing can show the idea itself (point at the page, set the
+rules, let it run) and stays sharp at any width.
 
-Four conventions keep that honest, and the checker enforces the last three:
+Conventions (the ones marked *checked* fail CI if broken):
 
-- The pages hot-link the store images from `https://lh3.googleusercontent.com`, and every page's
-  `Content-Security-Policy` allows exactly that host under `img-src`. If you add imagery, add it
-  to the CSP of every page (the meta tag is repeated per document).
-- Ask the CDN for **one width** (`=w1024`), never a box (`=s1280-w1280-h800`). A box makes Google
-  crop the source to that ratio, which cuts captions and button labels off a tile that is any
-  other shape. Pick the width from where the image is displayed: the hero slot is ~505px and the
-  gallery ~570px, so `=w1024` and `=w1152` at 2x. A 1280px raster squeezed into a 279px column is
-  unreadable *and* slower than the same tile requested at 640px.
-- Every frame reserves its own `aspect-ratio: 8 / 5` (the store tile ratio) and the image covers
-  it, so a tile never has to stretch to fit its slot and the layout cannot jump while loading.
-- Each image sits inside `[data-shot]`. `assets/site.js` retries a failed load once, then falls
-  back to a note inside the same reserved frame; a gallery tile that cannot be shown is dropped
-  by CSS. A CDN problem therefore costs a sentence, not the column.
-
-For production it is better to serve the images yourself. Save the five screenshots from the
-listing into `assets/screenshots/` (`orca-1.png` … `orca-5.png`), then replace the remote URLs in
-`index.html`, `products/index.html` and `about/index.html` with the local paths and drop
-`https://lh3.googleusercontent.com` from the CSP.
+- Illustrations are inline `<svg class="art">` written into the page: the labels use the site
+  fonts, they scale crisply and they cost no request. Colours are presentation attributes
+  (`fill="#6255e7"`) because the CSP forbids `style=""`; fonts and motion come from
+  `assets/site.css` (`.art`, `.art-serif`, `.art-ripple`, `.art-spin`, `.art-blink`).
+- Keep them schematic: grey bars stand in for page text, and a drawing only shows things ORCA
+  does today (as described on the store listing). Caption each one as an illustration, so
+  nobody mistakes it for a screenshot.
+- Draw ticks and arrows as paths. The self-hosted fonts are a Latin subset without `✓`, `→`
+  or `↗`, so typed symbols fall back to whatever font the visitor's system has.
+- *checked* — every inline `<svg>` is either decoration (`aria-hidden="true"` on it or on a
+  parent) or a picture (`role="img"` plus `aria-label`, `aria-labelledby` or a `<title>`).
+- *checked* — no remote images. `<img>` and SVG `<image>` load from `/assets/`, and every page's
+  `Content-Security-Policy` has `img-src 'self'`. If a third-party script ever needs an image
+  host (analytics, say), add it to the CSP of every page and to `ALLOWED_IMG_HOSTS` in
+  `tools/check-site.py` in the same commit.
+- Motion is decorative and slow, and the global `prefers-reduced-motion` rule stops it.
 
 ### Regenerating the social card
 

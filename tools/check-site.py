@@ -8,15 +8,15 @@
 Why this exists: the site is plain HTML copied straight to GitHub Pages, so nothing
 stands between a typo and a broken page in production. These are the checks that
 matter for this repo specifically - the CSP in each page's <meta> blocks inline
-styles and inline scripts, product imagery is hot-linked from the store CDN,
-every page carries its own duplicated head tags that have to stay in sync, and
-/assets/site.css is cached independently of the HTML, so it has to be versioned.
+styles and inline scripts, every page carries its own duplicated head tags that
+have to stay in sync, and /assets/site.css is cached independently of the HTML,
+so it has to be versioned.
 
-The image checks exist because two specific mistakes were made here and are easy to
-make again: asking the store CDN for a fixed -w1280-h800 box (it crops, so a tile
-whose real ratio differs loses its caption or its button labels) and displaying a
-1280px-wide tile in a slot a fraction of that size (the type inside the screenshot
-ends up a few pixels tall). Both read as "the images are squashed".
+The image checks hold the site to its imagery rule: pictures are drawn for the
+site (inline SVG) or served from /assets/, never hot-linked. The site used to
+hot-link Chrome Web Store screenshots; they cropped, shrank to unreadable type,
+failed to load and widened the CSP, so remote images are now an error and every
+inline drawing has to be either hidden decoration or carry a text alternative.
 """
 
 from __future__ import annotations
@@ -29,6 +29,10 @@ import sys
 from html.parser import HTMLParser
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+# Hosts allowed in the CSP img-src besides 'self'. Empty on purpose: the site serves
+# every image itself. If a third-party script ever needs one (analytics pixels, for
+# example), add its host here and in the CSP of every page together.
+ALLOWED_IMG_HOSTS: set[str] = set()
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input",
         "link", "meta", "param", "source", "track", "wbr"}
 REQUIRED_HEAD = {
@@ -123,6 +127,9 @@ class Checker(HTMLParser):
         self.remote_imgs: list[str] = []
         self.imgs: list[dict] = []
         self.preload_imgs: list[str] = []
+        self.svg_depth = 0
+        self.svgs: list[dict] = []
+        self.hidden_at: list[int] = []  # stack indexes of open aria-hidden="true" elements
         self.in_ldjson = False
         self.ldjson: list[str] = []
         self.inline_scripts: list[str] = []
@@ -132,6 +139,8 @@ class Checker(HTMLParser):
         a = dict(attrs)
         if tag not in VOID:
             self.stack.append(tag)
+            if a.get("aria-hidden") == "true":
+                self.hidden_at.append(len(self.stack) - 1)
         if tag == "h1":
             self.h1 += 1
         if tag == "script":
@@ -160,19 +169,35 @@ class Checker(HTMLParser):
             src = src or ""
             self.imgs.append({"src": src, "width": a.get("width") or "", "height": a.get("height") or "",
                              "alt": a.get("alt")})
-            if src.startswith("https://lh3.googleusercontent.com"):
+            if src.startswith(("http://", "https://", "//")):
                 self.remote_imgs.append(src)
+        if tag == "image" and (a.get("href") or "").startswith(("http://", "https://", "//")):
+            self.remote_imgs.append(a["href"])
+        if tag == "svg":
+            if self.svg_depth == 0:
+                in_hidden = any(i < len(self.stack) - 1 for i in self.hidden_at)
+                self.svgs.append({"line": self.getpos()[0], "hidden": a.get("aria-hidden") == "true" or in_hidden,
+                                  "role": a.get("role"), "title": False,
+                                  "label": bool((a.get("aria-label") or "").strip() or a.get("aria-labelledby"))})
+            self.svg_depth += 1
+        elif tag == "title" and self.svg_depth and self.svgs:
+            self.svgs[-1]["title"] = True
         if tag == "link" and a.get("rel") == "preload" and a.get("as") == "image" and a.get("href"):
             self.preload_imgs.append(a["href"])
 
     def handle_startendtag(self, tag, attrs):
         self.handle_starttag(tag, attrs)
+        if tag == "svg":
+            self.svg_depth -= 1
         if tag not in VOID and self.stack and self.stack[-1] == tag:
             self.stack.pop()
+            self.hidden_at = [i for i in self.hidden_at if i < len(self.stack)]
 
     def handle_endtag(self, tag):
         if tag in VOID:
             return
+        if tag == "svg" and self.svg_depth:
+            self.svg_depth -= 1
         if self.stack and self.stack[-1] == tag:
             self.stack.pop()
             if tag == "script":
@@ -186,6 +211,7 @@ class Checker(HTMLParser):
                 self.in_ldjson = False
         else:
             self.errors.append("stray </%s>" % tag)
+        self.hidden_at = [i for i in self.hidden_at if i < len(self.stack)]
 
     def handle_data(self, data):
         if self.in_ldjson and self.ldjson:
@@ -263,8 +289,6 @@ def check_page(rel: str, html: str, parsed: Checker, defined_classes: set[str]) 
         if not (ROOT / src.lstrip("/").split("?")[0]).exists():
             errors.append("local asset missing: %s" % src)
 
-    # Store images are hot-linked, so a missing request is a visible hole in the
-    # page; and a URL that asks for a fixed box makes the CDN crop the tile.
     for img in parsed.imgs:
         if not img["src"]:
             errors.append("<img> with no src")
@@ -274,27 +298,31 @@ def check_page(rel: str, html: str, parsed: Checker, defined_classes: set[str]) 
                           "layout while it loads: %s" % img["src"][-46:])
         if img["alt"] is None:
             errors.append("<img> with no alt attribute at all: %s" % img["src"][-46:])
+    # Pictures are drawn for the site or served from /assets/, never hot-linked: a
+    # remote image is a request to someone else's CDN on every visit, a hole in the
+    # page when that file moves, and a reason to widen the CSP.
     for src in parsed.remote_imgs:
-        suffix = src.split("=")[-1] if "=" in src.split("/")[-1] else ""
-        if re.search(r"-w\d+-h\d+", suffix):
-            errors.append("store image asks the CDN for a fixed box (=…-w1280-h800), which crops "
-                          "the tile to that ratio: %s" % src[-40:])
-        elif not re.search(r"^w\d{3,4}$", suffix):
-            errors.append("store image should ask for one width (=w<N>, the width it displays at x2): "
-                          "%s" % src[-40:])
+        errors.append("remote image (draw it as inline SVG or add the file to /assets/): %s" % src[:72])
+    csp = re.search(r'<meta http-equiv="Content-Security-Policy" content="([^"]*)"', html)
+    img_src = re.search(r"img-src ([^;]*)", csp.group(1)) if csp else None
+    if img_src:
+        extra = [s for s in img_src.group(1).split() if s != "'self'" and s not in ALLOWED_IMG_HOSTS]
+        if extra:
+            errors.append("CSP img-src allows %s; images are served from this site only "
+                          "(see ALLOWED_IMG_HOSTS)" % " ".join(extra))
     for href in parsed.preload_imgs:
         if href not in {img["src"] for img in parsed.imgs}:
             errors.append("preloaded image is not used by an <img> on this page, so it is "
                           "downloaded twice or wasted: %s" % href[-40:])
 
-    # A single-figure picture (class="shot": the hero, the product page) has to carry
-    # its own fallback note; a dead hot-link would otherwise leave a broken icon where
-    # the visual should be. Gallery tiles (.shots figure) are dropped by CSS instead.
-    for match in re.finditer(r'<figure[^>]*class="shot"[^>]*>([\s\S]*?)</figure>', html):
-        if "shot-fallback" not in match.group(1):
-            errors.append("figure.shot has no <p class=\"shot-fallback\"> to fall back on")
-        if "shot-frame" not in match.group(1):
-            errors.append("figure.shot has no .shot-frame, so nothing reserves its box")
+    # Inline drawings get the same treatment as <img>: either decoration that screen
+    # readers skip, or a picture with a text alternative.
+    for svg in parsed.svgs:
+        if svg["hidden"]:
+            continue
+        if svg["role"] != "img" or not (svg["label"] or svg["title"]):
+            errors.append('inline <svg> at line %d needs aria-hidden="true" (decoration) or role="img" '
+                          'plus aria-label, aria-labelledby or a <title> (a picture)' % svg["line"])
 
     import json
     for blob in parsed.ldjson:
