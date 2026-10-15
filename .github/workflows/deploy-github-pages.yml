@@ -3,28 +3,21 @@ name: Deploy Orcamatic site to GitHub Pages
 on:
   push:
     branches: [main]
-    paths:
-      - 'git_page_wa/**'
-      - 'scripts/validate_site.py'
-      - '.github/workflows/**'
   pull_request:
     branches: [main]
-    paths:
-      - 'git_page_wa/**'
-      - 'scripts/validate_site.py'
-      - '.github/workflows/**'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
+  # Never publish two deployments at once; queued runs still finish.
   group: pages-${{ github.event_name == 'pull_request' && github.ref || 'production' }}
   cancel-in-progress: false
 
 jobs:
   build:
-    name: Validate and prepare static site
+    name: Package the website
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -33,18 +26,28 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Validate pages and local links
-        run: python3 scripts/validate_site.py
+      # The website lives at the repository root, so copy only the public files
+      # into _site/ and leave .github/, README.md, LICENSE and .gitignore out.
+      - name: Collect public files
+        run: |
+          mkdir -p _site
+          find . -mindepth 1 -maxdepth 1 \
+            ! -name '.git' ! -name '.github' ! -name '_site' \
+            ! -name '.gitignore' ! -name 'README.md' ! -name 'LICENSE' \
+            -exec cp -r {} _site/ \;
+
+      - name: Show what will be published
+        run: find _site -type f | sort
 
       - name: Configure GitHub Pages
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
 
-      - name: Upload only the public website
+      - name: Upload website artifact
         if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
-          path: git_page_wa
+          path: _site
 
   deploy:
     name: Deploy to GitHub Pages

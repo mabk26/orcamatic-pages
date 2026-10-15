@@ -1,6 +1,6 @@
-# Local development files
+# Local and editor files
 .DS_Store
 Thumbs.db
-__pycache__/
-*.py[cod]
-.venv/
+
+# Build output used only during deployment
+_site/
