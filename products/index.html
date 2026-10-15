@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10162a">
-    <meta name="description" content="ORCA is Orcamatic's browser agent for repeatable browser work: saved workflows, element picking, scheduling, and optional AI help.">
+    <meta name="description" content="ORCA is a Chrome extension for repeatable browser work: visual element picker, smart rule engine, form auto-submission, task scheduler and live run logs.">
     <link rel="canonical" href="https://orcamatic.com/products/">
     <link rel="icon" href="/assets/orca-icon.png" type="image/png">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://lh3.googleusercontent.com; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/site.css">
@@ -15,15 +15,15 @@
       <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="website">
     <meta property="og:title" content="ORCA browser agent | Orcamatic">
-    <meta property="og:description" content="ORCA is Orcamatic&#x27;s browser agent for repeatable browser work: saved workflows, element picking, scheduling, and optional AI help.">
+    <meta property="og:description" content="ORCA is a Chrome extension for repeatable browser work: visual element picker, smart rule engine, form auto-submission, task scheduler and live run logs.">
     <meta property="og:url" content="https://orcamatic.com/products/">
     <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="ORCA side panel helping complete a CRM workflow in a browser">
+    <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ORCA browser agent | Orcamatic">
-    <meta name="twitter:description" content="ORCA is Orcamatic&#x27;s browser agent for repeatable browser work: saved workflows, element picking, scheduling, and optional AI help.">
+    <meta name="twitter:description" content="ORCA is a Chrome extension for repeatable browser work: visual element picker, smart rule engine, form auto-submission, task scheduler and live run logs.">
     <meta name="twitter:image" content="https://orcamatic.com/assets/og-image.jpg">
     <link rel="apple-touch-icon" href="/assets/icon-192.png">
     <script type="application/ld+json">{
@@ -31,9 +31,18 @@
   "@type": "SoftwareApplication",
   "name": "ORCA",
   "applicationCategory": "BrowserApplication",
-  "description": "ORCA is Orcamatic's browser agent for repeatable browser work: saved workflows, element picking, scheduling, and optional AI help.",
+  "operatingSystem": "Chrome 88 or later",
+  "softwareVersion": "2.0.2",
+  "description": "Universal and intelligent auto-clicker with a visual element picker and a smart rule engine. ORCA turns repeatable browser actions into saved, schedulable workflows that run in your browser.",
   "url": "https://orcamatic.com/products/",
   "installUrl": "https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki",
+  "offers": {
+    "@type": "AggregateOffer",
+    "lowPrice": "12",
+    "highPrice": "49",
+    "priceCurrency": "USD",
+    "offerCount": "3"
+  },
   "publisher": {
     "@type": "Organization",
     "name": "Orcamatic",
@@ -46,57 +55,122 @@
     <header class="site-header">
       <div class="container nav-shell">
         <a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a>
-        <nav class="site-nav" aria-label="Primary navigation"><a href="/#how-it-works">How it works</a><a href="/#workflows">Workflows</a><a href="/products/" aria-current="page">Product</a><a href="/pricing/">Pricing</a><a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome <span aria-hidden="true">↗</span></a></nav>
+        <nav class="site-nav" aria-label="Primary navigation"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/">Templates</a><a href="/products/" aria-current="page">Product</a><a href="/pricing/">Pricing</a><a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome <span aria-hidden="true">↗</span></a></nav>
         <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-navigation" aria-label="Open navigation"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true"><path d="M1 1h18M1 8h18M1 15h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
       </div>
-      <nav id="mobile-navigation" class="mobile-nav" data-mobile-nav aria-label="Mobile navigation"><div class="container mobile-nav-inner"><a href="/#how-it-works">How it works</a><a href="/#workflows">Workflows</a><a href="/products/" aria-current="page">Product</a><a href="/pricing/">Pricing</a><a href="/privacy-policy/">Privacy</a><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a></div></nav>
+      <nav id="mobile-navigation" class="mobile-nav" data-mobile-nav aria-label="Mobile navigation"><div class="container mobile-nav-inner"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/">Templates</a><a href="/products/" aria-current="page">Product</a><a href="/pricing/">Pricing</a><a href="/privacy-policy/">Privacy</a><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a></div></nav>
     </header>
 
     <main id="main-content">
       <section class="page-hero compact" aria-labelledby="product-title">
         <div class="container" data-reveal>
-          <p class="eyebrow">The ORCA browser agent</p>
           <h1 id="product-title">Your browser task, made <em>repeatable.</em></h1>
-          <p>ORCA is a Chrome extension that helps you turn everyday browser actions into saved workflows. Show it the targets that matter, add the right instructions, then run the workflow whenever you need it.</p>
+          <p>ORCA is a Chrome extension that turns the clicking, typing and copying you already know how to do into saved workflows. Pick the targets on the live page, write the rules around them, then run the workflow yourself or put it on a timer.</p>
           <div class="btn-row mt-md"><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="/pricing/">View plans</a></div>
+          <ul class="facts" aria-label="ORCA requirements">
+            <li>Zero coding</li>
+            <li>No API key to paste in</li>
+            <li>2.86 MiB, free to install</li>
+          </ul>
         </div>
       </section>
 
       <section class="section" aria-labelledby="orca-features-title">
         <div class="container product-overview">
-          <div class="product-panel" data-reveal aria-label="Illustration of ORCA workflow controls">
-            <div class="product-panel-head"><strong>ORCA</strong><span>Side panel</span></div>
-            <div class="product-panel-body"><div class="panel-nav" aria-hidden="true"><span class="active">Workflow</span><span>Marks</span><span>Planner</span><span>Settings</span></div><div class="panel-run"><small>Browser task</small><h2>Save the work you already know how to do.</h2><div class="status">Workflow saved locally</div><span class="run-button">Run on command&nbsp; →</span></div></div>
+          <div class="product-panel" data-reveal aria-label="Schematic drawing of the ORCA side panel">
+            <div class="product-panel-head"><strong>ORCA</strong><span>Side panel · schematic</span></div>
+            <div class="panel-schematic">
+              <div class="panel-side">
+                <p class="panel-side-name"><img src="/assets/orca-icon.png" width="20" height="20" alt="">ORCA<span>v2.0.2</span></p>
+                <div class="panel-tabs"><span class="active">Rules</span><span>Planner</span><span>Scheduler</span><span>Run log</span></div>
+              </div>
+              <div class="panel-main">
+                <h3>Weekly claim intake</h3>
+                <p>Five steps, saved on this browser</p>
+                <ul class="panel-steps">
+                  <li><i aria-hidden="true">1</i>Click “New claim”<b>retry ×3</b></li>
+                  <li><i aria-hidden="true">2</i>Fill claimant email &amp; reason<b>from sheet</b></li>
+                  <li><i aria-hidden="true">3</i>Select priority “Standard”<b>wait 1.5s</b></li>
+                  <li><i aria-hidden="true">4</i>Extract reference number<b>→ sheet</b></li>
+                  <li><i aria-hidden="true">5</i>Submit form<b>on success</b></li>
+                </ul>
+                <div class="panel-foot"><span class="run-button">Run workflow&nbsp; →</span><code>Next scheduled run · Mon 08:00</code></div>
+              </div>
+            </div>
           </div>
           <div data-reveal>
-            <p class="eyebrow">One panel, real control</p>
             <h2 id="orca-features-title">Automation without the unfamiliar setup.</h2>
-            <p>Most browser automation starts by asking you to learn a new programming language or map a complicated flowchart. ORCA starts on the page you are already using.</p>
-            <ul class="check-list"><li>Pick the exact buttons, form fields, links, and data you want ORCA to remember</li><li>Build reusable, multi-step workflows across websites and browser tabs</li><li>Review the run status as ORCA works through a task</li><li>Keep saved profiles and normal workflow context in your browser</li></ul>
+            <p>Most browser automation starts by asking you to learn a scripting language or map a flowchart. ORCA starts on the page you are already using, and only asks for what the task needs.</p>
+            <ul class="check-list">
+              <li>Point at the buttons, fields, links and data ORCA should remember</li>
+              <li>Give each step logic: retries, dynamic delays and condition checks</li>
+              <li>Chain steps across tabs, pop-ups and web apps in one workflow</li>
+              <li>Read the run log afterwards to see what happened, step by step</li>
+            </ul>
           </div>
         </div>
       </section>
 
       <section class="section plan-section" aria-labelledby="capabilities-title">
         <div class="container">
-          <div class="section-heading" data-reveal><p class="eyebrow">What ORCA can help with</p><h2 id="capabilities-title">A practical toolkit for browser work.</h2><p>Use the parts that fit your process. Start with a repeatable action, then build up only when you need more capability.</p></div>
+          <div class="section-heading" data-reveal><h2 id="capabilities-title">A practical toolkit for browser work.</h2><p>Use the parts that fit your process. Start with one repeatable action, then add capability only when a real task asks for it.</p></div>
           <div class="pillar-grid mt-lg">
-            <article class="pillar" data-reveal><span class="number">01 / PICK</span><h3>Element picking</h3><p>Choose targets directly on a page, including buttons, fields, links, and structured data you want to collect.</p></article>
-            <article class="pillar" data-reveal><span class="number">02 / SAVE</span><h3>Workflow profiles</h3><p>Save a browser task as a profile that can be reused later instead of rebuilt from scratch each time.</p></article>
-            <article class="pillar" data-reveal><span class="number">03 / SCHEDULE</span><h3>Recurring runs</h3><p>Set routine workflows to run on a recurring timer so your browser work is ready when you are.</p></article>
-            <article class="pillar" data-reveal><span class="number">04 / ADAPT</span><h3>Smarter targeting</h3><p>Use ORCA’s page-aware targeting to better recover when a familiar website moves a field or redesigns a layout.</p></article>
+            <article class="pillar" data-reveal><span class="number" aria-hidden="true">1</span><h3>Element picking</h3><p>Choose targets directly on a live page: buttons, inputs, links, and the blocks of data you want collected.</p></article>
+            <article class="pillar" data-reveal><span class="number" aria-hidden="true">2</span><h3>Rule engine</h3><p>Click and retry, dynamic delays, and execution that waits for a condition instead of guessing a fixed timing.</p></article>
+            <article class="pillar" data-reveal><span class="number" aria-hidden="true">3</span><h3>Task scheduler</h3><p>Put recurring workflows on a reliable timer, so the routine part of the week is already handled.</p></article>
+            <article class="pillar" data-reveal><span class="number" aria-hidden="true">4</span><h3>Run tracking</h3><p>Live logs and status indicators show each step as it happens, and where a run stopped and why.</p></article>
           </div>
         </div>
       </section>
 
-      <section class="section privacy-band" aria-labelledby="safe-title">
-        <div class="container privacy-grid"><div data-reveal><p class="eyebrow">Designed for responsible use</p><h2 id="safe-title">Automate the task. Keep the <em>judgment.</em></h2><p class="privacy-copy">ORCA is built for work you are allowed to do and decide to automate. It pauses for verification challenges and does not bypass CAPTCHAs, authentication, or confirmation steps that require a real person.</p></div><div class="local-card" role="note" data-reveal><div class="mini-label">A practical boundary</div><h3>Useful automation respects the places it works.</h3><div class="local-stats"><div class="local-stat"><span>CAPTCHA or 2FA gate</span><b>You complete it</b></div><div class="local-stat"><span>Saved workflow state</span><b>Browser storage</b></div><div class="local-stat"><span>Optional cloud reasoning</span><b>Task-specific</b></div></div></div></div>
+      <section class="section" aria-labelledby="planner-title">
+        <div class="container product-overview">
+          <div data-reveal>
+            <h2 id="planner-title">Optional AI for the steps a rule can’t read.</h2>
+            <p>Some screens are not predictable: a list where the useful row is different every time, or a form whose fields change with the account. The AI visual planner can look at the page state and draft the playbook of steps. You review it, then it runs like any other workflow.</p>
+            <ul class="check-list">
+              <li>Rule-based workflows stay local and do not use any AI balance</li>
+              <li>AI-assisted steps are billed at the provider’s own rate, from your monthly balance</li>
+              <li>No third-party API key to create, paste in, or keep topped up</li>
+            </ul>
+            <a class="btn btn-secondary" href="/blog/no-api-keys/">Why there is no API key <span aria-hidden="true">→</span></a>
+          </div>
+          <figure class="shot" data-shot data-reveal>
+            <div class="shot-frame">
+              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">
+                <img src="https://lh3.googleusercontent.com/hkmfXfY6EFRogY5UlTzml7w5mEfnAFiHr00SKZfvGk-Ca_PwxP-yFR7BZa7SKQa9xQRXmkaUlx0nuorUSrl3eioBL18=s1280-w1280-h800" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="Screenshot of ORCA from its Chrome Web Store listing">
+              </a>
+            </div>
+            <p class="shot-fallback">The Chrome Web Store preview could not be loaded here. <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Open the ORCA listing to see its screenshots.</a></p>
+            <figcaption class="shot-meta">
+              <span>Screenshot from the Chrome Web Store listing</span>
+              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">View the listing ↗</a>
+            </figcaption>
+          </figure>
+        </div>
       </section>
 
-      <section class="section-tight" aria-labelledby="product-cta-title"><div class="container"><div class="cta-panel" data-reveal><p class="eyebrow">Get started</p><h2 id="product-cta-title">The next time you repeat it, let ORCA take the clicks.</h2><p>Install the extension, try it on one real task, and turn that browser routine into something reusable.</p><div class="btn-row"><a class="btn btn-light" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a><a class="btn btn-dark" href="/pricing/">Compare plans</a></div></div></div></section>
+      <section class="section privacy-band" aria-labelledby="safe-title">
+        <div class="container privacy-grid">
+          <div data-reveal>
+            <h2 id="safe-title">Automate the task. Keep the <em>judgment.</em></h2>
+            <p class="privacy-copy">ORCA is built for work you are allowed to do and have decided to automate. It pauses for verification challenges and does not bypass CAPTCHAs, authentication, or confirmation steps that require a real person.</p>
+          </div>
+          <div class="local-card" role="note" data-reveal>
+            <h3>Useful automation respects the places it works.</h3>
+            <div class="local-stats">
+              <div class="local-stat"><span>CAPTCHA or 2FA gate</span><b>You complete it</b></div>
+              <div class="local-stat"><span>Saved workflow state</span><b>Browser storage</b></div>
+              <div class="local-stat"><span>Optional cloud reasoning</span><b>Step by step</b></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight" aria-labelledby="product-cta-title"><div class="container"><div class="cta-panel" data-reveal><h2 id="product-cta-title">The next time you repeat it, let ORCA take the clicks.</h2><p>Install the extension, try it on one real task, and turn that browser routine into something reusable.</p><div class="btn-row"><a class="btn btn-light" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a><a class="btn btn-dark" href="/pricing/">Compare plans</a><a class="btn btn-secondary" href="/guides/first-workflow/">Follow the quickstart</a></div><p class="cta-note">Rule-based and scheduled runs execute locally and do not draw on your AI balance. New plans carry a 7-day money-back guarantee.</p></div></div></section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:support@orcamatic.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/privacy-policy/">Privacy &amp; security</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>© <span data-year>2026</span> Orcamatic</span><span>Chrome · Edge · Brave</span></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Chrome Web Store</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:support@orcamatic.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>© <span data-year>2026</span> Orcamatic</span><span>Chrome · Edge · Brave</span></div></footer>
     <script src="/assets/site.js" defer></script>
   </body>
 </html>
