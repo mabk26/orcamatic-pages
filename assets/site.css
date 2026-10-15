@@ -119,6 +119,10 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
 .btn-light:hover { background: var(--mint); }
 .btn-text { min-height: auto; padding: 0; color: var(--violet-deep); }
 .btn-text:hover { transform: none; color: var(--ink); }
+.cta-note { margin: 1.15rem 0 0; color: var(--muted); font-size: 0.86rem; }
+.cta-note a { color: var(--violet-deep); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+.cta-panel .cta-note { color: #d9daff; }
+.cta-panel .cta-note a { color: #fff; }
 
 .site-header {
   position: sticky;

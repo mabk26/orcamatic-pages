@@ -6,8 +6,9 @@ and JavaScript. No build step, no dependencies, no backend, no API keys.
 ## Layout
 
 The website **is** the repository root. Every file here is published except
-`README.md`, `LICENSE`, `.gitignore` and `.github/`, which the deployment
-workflow filters out.
+`README.md`, `LICENSE`, `.gitignore`, `docs/`, `tools/` and `.github/`, which the
+deployment workflow filters out — so notes and asset builders can live in the repo
+without being served.
 
 ```
 index.html            Homepage
@@ -19,6 +20,7 @@ sitemap.xml           Page list for search engines
 site.webmanifest      Installable app metadata
 assets/               site.css, site.js, icons, fonts, og-image.jpg
 tools/                build-og-image.py (optional, regenerates the social card)
+docs/                 internal notes: website-audit.md (improvement backlog)
 about/  pricing/  products/  blog/  legal pages (privacy, terms, refund)
 ```
 
@@ -147,3 +149,10 @@ Section labels stay structural: an `<h1>`/`<h2>` carries the meaning on its own,
 uppercase "eyebrow" line above a heading and no bullet dot in front of a label. Use `.facts`
 (hairline-separated) for short lists of claims and the serif numerals in `.step-number` /
 `.pillar .number` for ordered cards.
+
+## Improvement backlog
+
+`docs/website-audit.md` is the current audit of the site and the Chrome Web Store
+listing: what to change, in what order, with the copy proposals and the numbers
+behind each recommendation. Update it when an item ships, and record the baseline
+metrics before changing anything so the next pass can tell improvement from noise.
