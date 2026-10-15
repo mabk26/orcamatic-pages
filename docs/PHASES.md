@@ -18,7 +18,7 @@ afterwards. Anything illustrative on the site is labelled as illustrative on the
 - Rewrote headline copy so it sells the product instead of arguing about asset provenance.
 - Rebuilt the Open Graph image (`tools/build-og-image.py`).
 
-## Phase 1 — conversion architecture and proof · owner: agent · **done**
+## Phase 1 — conversion architecture and proof · owner: agent · **done, merged as #5 and deployed 2026-10-15**
 
 | # | Shipped | Where |
 |---|---|---|
