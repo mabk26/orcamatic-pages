@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10162a">
+    <meta name="description" content="A saved workflow on a timer: open the page, read what changed, write it out, leave a run log to read with coffee. Four minutes to set up once.">
+    <link rel="canonical" href="https://orcamatic.com/templates/daily-scheduled-check/">
+    <link rel="icon" href="/assets/orca-icon.png" type="image/png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://lh3.googleusercontent.com; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <title>The Monday 08:00 sweep, scheduled | Orcamatic</title>
+    <meta property="og:site_name" content="Orcamatic">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Monday 08:00 sweep, scheduled | Orcamatic">
+    <meta property="og:description" content="A saved workflow on a timer: open the page, read what changed, write it out, leave a run log to read with coffee. Four minutes to set up once.">
+    <meta property="og:url" content="https://orcamatic.com/templates/daily-scheduled-check/">
+    <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
+    <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Monday 08:00 sweep, scheduled | Orcamatic">
+    <meta name="twitter:description" content="A saved workflow on a timer: open the page, read what changed, write it out, leave a run log to read with coffee. Four minutes to set up once.">
+    <meta name="twitter:image" content="https://orcamatic.com/assets/og-image.jpg">
+    <link rel="apple-touch-icon" href="/assets/icon-192.png">
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "The Monday 08:00 sweep, scheduled",
+      "description": "A saved workflow on a timer: open the page, read what changed, write it out, leave a run log to read with coffee. Four minutes to set up once.",
+      "totalTime": "PT4M",
+      "tool": {
+        "@type": "HowToTool",
+        "name": "ORCA browser extension"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Orcamatic",
+        "url": "https://orcamatic.com/"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Build the check as a normal workflow",
+          "text": "Navigate, wait for the table, extract the three values you actually look at. If it is useful on demand, it is useful on a timer."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Make it write something down",
+          "text": "A run nobody reads is a rumour. Write the values to a local file, or append them under the previous day so a change is visible at a glance."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Put it on the schedule",
+          "text": "Set the recurring time in the panel. The scheduler runs your saved profile at that time, in your browser profile, on your machine."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Decide the failure behaviour now",
+          "text": "If the page is unreachable: retry every five minutes, or one line in the log? Choose before you are away and someone asks why the file is empty."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Stay in the loop for gates",
+          "text": "A login, CAPTCHA or confirmation still stops the run and waits for you. A schedule does not buy its way past anything."
+        }
+      ]
+    }</script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a>
+        <nav class="site-nav" aria-label="Primary navigation"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/" aria-current="page">Templates</a><a href="/products/">Product</a><a href="/pricing/">Pricing</a><a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome <span aria-hidden="true">&#8599;</span></a></nav>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-navigation" aria-label="Open navigation"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true"><path d="M1 1h18M1 8h18M1 15h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <nav id="mobile-navigation" class="mobile-nav" data-mobile-nav aria-label="Mobile navigation"><div class="container mobile-nav-inner"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/" aria-current="page">Templates</a><a href="/products/">Product</a><a href="/pricing/">Pricing</a><a href="/privacy-policy/">Privacy</a><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">&#8599;</span></a></div></nav>
+    </header>
+
+    <main id="main-content">
+      <section class="page-hero compact" aria-labelledby="tpl-title">
+        <div class="container" data-reveal>
+          <p class="tpl-kind">ORCA template &middot; 3 picked targets &middot; rule-based, spends no AI balance</p>
+          <h1 id="tpl-title">The Monday 08:00 sweep, scheduled</h1>
+          <p>For the check you do at the start of the day whether or not there is anything in it: queue counts, an approval list, a filing status page, a stock or price column. Same steps as any workflow &mdash; the difference is that the scheduler starts it.</p>
+          <ul class="facts" aria-label="Template facts">
+            <li>Setup about 4 min</li>
+            <li>5 mornings a week</li>
+            <li>Runs in your browser</li>
+          </ul>
+          <div class="btn-row mt-md"><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">&#8599;</span></a><a class="btn btn-secondary" href="/templates/">All templates</a></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="steps-title">
+        <div class="container article">
+          <h2 id="steps-title">The steps, written out</h2>
+          <p>Build them in the ORCA panel. This is a recipe rather than a file to load &mdash; one sitting, then it is saved as your own profile.</p>
+          <ol class="doc-steps">
+              <li><h3>Build the check as a normal workflow</h3><p>Navigate, wait for the table, extract the three values you actually look at. If it is useful on demand, it is useful on a timer.</p></li>
+              <li><h3>Make it write something down</h3><p>A run nobody reads is a rumour. Write the values to a local file, or append them under the previous day so a change is visible at a glance.</p></li>
+              <li><h3>Put it on the schedule</h3><p>Set the recurring time in the panel. The scheduler runs your saved profile at that time, in your browser profile, on your machine.</p></li>
+              <li><h3>Decide the failure behaviour now</h3><p>If the page is unreachable: retry every five minutes, or one line in the log? Choose before you are away and someone asks why the file is empty.</p></li>
+              <li><h3>Stay in the loop for gates</h3><p>A login, CAPTCHA or confirmation still stops the run and waits for you. A schedule does not buy its way past anything.</p></li>
+          </ol>
+          <div class="callout"><b>What it collects.</b> Only what you script. Scheduled rule-based runs execute locally, so a morning check like this does not use your AI balance.</div>
+          <div class="callout"><b>Limits worth respecting.</b> Keep the frequency polite to the other side. A check every few minutes against a small vendor portal is how you get your own session rate-limited; once or twice a day is almost always enough.</div>
+          <p class="cta-note">The arithmetic, not a promise: multiply the minutes one batch costs you by hand against the 5 mornings a week you actually do. That product is what this replaces, for one sitting of about 4 min.</p>
+        </div>
+      </section>
+
+      <section class="section-tight" aria-labelledby="rel-title">
+        <div class="container">
+          <div class="section-heading" data-reveal><h2 id="rel-title">Two other starting points</h2></div>
+          <div class="tpl-grid" data-reveal>
+              <a class="tpl-card" href="/templates/extract-list-to-sheet/"><span class="tpl-kind">Template</span><h2>Extract a list into a spreadsheet</h2><p>Collect the rows of any list page into the fields you choose: the picker, extraction rules, retries and a local file. About 12 minutes to set up.</p><span class="tpl-meta"><span>~12 min to set up</span></span></a>
+              <a class="tpl-card" href="/templates/fill-portal-form-from-sheet/"><span class="tpl-kind">Template</span><h2>Fill a form from rows you already keep</h2><p>Drive a web form from the sheet you already maintain, one submission at a time, with condition checks before every submit. No API needed.</p><span class="tpl-meta"><span>~9 min to set up</span></span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight" aria-labelledby="tpl-cta">
+        <div class="container">
+          <div class="band-cta" data-reveal>
+            <div>
+              <h2 id="tpl-cta">Your task is not one of these?</h2>
+              <p>Send the steps you repeat and we will tell you honestly whether ORCA can hold them &mdash; and if it can, we will add it as a template.</p>
+            </div>
+            <a class="btn btn-primary" href="mailto:support@orcamatic.com?subject=Template%20request">Request a template <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:support@orcamatic.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>&copy; <span data-year>2026</span> Orcamatic</span><span>Chrome &middot; Edge &middot; Brave</span></div></footer>
+    <script src="/assets/site.js" defer></script>
+  </body>
+</html>

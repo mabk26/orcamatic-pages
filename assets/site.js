@@ -60,17 +60,49 @@
 
   const revealItems = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && revealItems.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    // Items entering together fade in with a small stagger, so a section reads
+    // top-to-bottom instead of popping as one block. The delay lives in CSS
+    // (data-reveal-index) because the site's CSP disallows inline styles.
     const observer = new IntersectionObserver((entries) => {
+      let step = 0;
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        if (step < 4) entry.target.setAttribute('data-reveal-index', String(step));
+        entry.target.classList.add('is-visible');
+        step += 1;
+        observer.unobserve(entry.target);
       });
     }, { threshold: 0.12 });
     revealItems.forEach((item) => observer.observe(item));
   } else {
     revealItems.forEach((item) => item.classList.add('is-visible'));
+  }
+
+  // The arithmetic block on the homepage: it only multiplies what the visitor
+  // types and subtracts the checking time, so no invented savings claim is
+  // attached to it. Without these values present, nothing here runs.
+  const roi = document.querySelector('[data-roi]');
+  if (roi) {
+    const fields = ['roi-minutes', 'roi-runs', 'roi-check'].map((id) => document.getElementById(id));
+    const hoursOut = roi.querySelector('[data-roi-hours]');
+    const detailOut = roi.querySelector('[data-roi-detail]');
+    if (fields.every(Boolean) && hoursOut && detailOut) {
+      const recalc = () => {
+        const value = (el) => {
+          const raw = parseFloat(el.value);
+          return Number.isFinite(raw) && raw > 0 ? raw : 0;
+        };
+        const perRun = Math.max(0, value(fields[0]) - value(fields[2]));
+        const runs = value(fields[1]);
+        const monthly = runs * 4.33;
+        const hours = (perRun * monthly) / 60;
+        hoursOut.textContent = hours >= 10 ? hours.toFixed(0) : hours.toFixed(1);
+        detailOut.textContent = '\u00b7 ' + Math.round(monthly) + ' runs a month; ' +
+          Math.round(perRun) + ' minutes of each one is off your hands';
+      };
+      fields.forEach((el) => el.addEventListener('input', recalc));
+      recalc();
+    }
   }
 
   // Consent-gated analytics (GA4). Disabled while GA_MEASUREMENT_ID is empty:

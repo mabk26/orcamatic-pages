@@ -12,4 +12,10 @@
   <url><loc>https://orcamatic.com/privacy-policy/</loc><lastmod>2026-06-12</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://orcamatic.com/terms-of-service/</loc><lastmod>2026-06-12</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://orcamatic.com/refund-policy/</loc><lastmod>2026-06-12</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://orcamatic.com/templates/</loc><lastmod>2026-10-15</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://orcamatic.com/templates/extract-list-to-sheet/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://orcamatic.com/templates/fill-portal-form-from-sheet/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://orcamatic.com/templates/daily-scheduled-check/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://orcamatic.com/guides/first-workflow/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://orcamatic.com/security/</loc><lastmod>2026-10-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

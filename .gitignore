@@ -1,6 +1,13 @@
 # Local and editor files
+__pycache__/
+*.pyc
 .DS_Store
 Thumbs.db
 
 # Build output used only during deployment
 _site/
+
+# Screenshot tool output and its local venv/profile (never publish these)
+store-shots/
+.shots-profile/
+.venv-shots/

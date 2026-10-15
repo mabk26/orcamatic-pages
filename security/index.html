@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10162a">
+    <meta name="description" content="Every permission ORCA requests with the reason it exists, where your workflow data lives, what is sent during an AI step, and what never is.">
+    <link rel="canonical" href="https://orcamatic.com/security/">
+    <link rel="icon" href="/assets/orca-icon.png" type="image/png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://lh3.googleusercontent.com; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <title>Security &amp; permissions | Orcamatic</title>
+    <meta property="og:site_name" content="Orcamatic">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Security &amp; permissions | Orcamatic">
+    <meta property="og:description" content="Every permission ORCA requests with the reason it exists, where your workflow data lives, what is sent during an AI step, and what never is.">
+    <meta property="og:url" content="https://orcamatic.com/security/">
+    <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
+    <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Security &amp; permissions | Orcamatic">
+    <meta name="twitter:description" content="Every permission ORCA requests with the reason it exists, where your workflow data lives, what is sent during an AI step, and what never is.">
+    <meta name="twitter:image" content="https://orcamatic.com/assets/og-image.jpg">
+    <link rel="apple-touch-icon" href="/assets/icon-192.png">
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does ORCA need access to all websites?",
+          "@acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because browser automation cannot be granted one site at a time and stay usable: you point ORCA at whatever page the work happens on. The permission is what makes one install work across a portal, a CRM and an internal tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ORCA see my passwords or other applications?",
+          "@acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. ORCA acts inside the pages you automate, has no access to the browser's saved passwords, and has no global keyboard hook outside Chrome."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is sent to the cloud?",
+          "@acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only when you deliberately start an AI-assisted step: a viewport snapshot, a structural summary of the interactive elements and your instruction. Rule-based and scheduled runs stay local."
+          }
+        }
+      ]
+    }</script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a>
+        <nav class="site-nav" aria-label="Primary navigation"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/">Templates</a><a href="/products/">Product</a><a href="/pricing/">Pricing</a><a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome <span aria-hidden="true">↗</span></a></nav>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-navigation" aria-label="Open navigation"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true"><path d="M1 1h18M1 8h18M1 15h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <nav id="mobile-navigation" class="mobile-nav" data-mobile-nav aria-label="Mobile navigation"><div class="container mobile-nav-inner"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/">Templates</a><a href="/products/">Product</a><a href="/pricing/">Pricing</a><a href="/privacy-policy/">Privacy</a><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a></div></nav>
+    </header>
+
+      <section class="page-hero compact" aria-labelledby="sec-title">
+        <div class="container" data-reveal>
+          <h1 id="sec-title">What ORCA asks for, and what it does with it.</h1>
+          <p>An automation extension gets a broad view of your browser by design, so it should be explicit about how it uses that. This page is the plain version: every permission, the reason it exists, where your data sits, and what never leaves the machine.</p>
+          <ul class="facts" aria-label="Security facts">
+            <li>Workflows stored locally</li>
+            <li>No card data on our side</li>
+            <li>Disclosures published in the store</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="perm-title">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <h2 id="perm-title">The permissions, one by one.</h2>
+            <p>These are the permissions ORCA requests, each with what it enables and what it does not. Nothing here is hidden behind &ldquo;to improve your experience&rdquo;.</p>
+          </div>
+          <div class="table-wrap" data-reveal>
+            <table class="compare">
+              <caption>Manifest permissions as declared in the extension and in the Chrome Web Store listing.</caption>
+              <thead><tr><th scope="col">Permission</th><th scope="col">What it lets ORCA do</th><th scope="col">Why it is needed, and where it stops</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>activeTab</code></th><td>Act on the tab you are looking at, when you start a run or open the panel.</td><td>Without it the extension cannot see the page you want to automate.</td></tr>
+                <tr><th scope="row">Host permission for the sites you automate</th><td>Read and act inside the pages you open, so one install works on a portal, a CRM and an internal tool alike.</td><td>Chrome cannot grant a browser automation tool one site at a time and keep it usable. <a href="/blog/all-urls-permission-explained/">Why the broad host permission exists</a>.</td></tr>
+                <tr><th scope="row"><code>scripting</code></th><td>Inject the picker and the runner into a page so it can highlight a target, type a value or read a table.</td><td>It runs while a workflow is building or executing, not continuously in the background.</td></tr>
+                <tr><th scope="row"><code>storage</code></th><td>Keep your workflow profiles, rules, extracted values and run logs on your own machine.</td><td>This is the local repository; it is not a sync service and nothing here is mirrored to us.</td></tr>
+                <tr><th scope="row"><code>alarms</code></th><td>Wake the scheduler at the time you set for a recurring run.</td><td>An alarm starts a saved workflow; it does not collect anything by itself.</td></tr>
+                <tr><th scope="row"><code>offscreen</code></th><td>Keep long runs and scheduled work alive while the service worker goes idle, as Manifest V3 requires.</td><td>No extra page access: the document is a lifecycle mechanism, not a data collector.</td></tr>
+                <tr><th scope="row"><code>webNavigation</code></th><td>Follow the tab as a workflow moves between pages, so a step can wait for the next page to be ready.</td><td>Used to time steps and to notice a redirect; not to build a browsing history.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section plan-section" aria-labelledby="flow-title">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <h2 id="flow-title">Where the data sits.</h2>
+            <p>Two columns, and the split is the whole design: automation state on your machine, cloud calls only when you choose an AI step.</p>
+          </div>
+          <div class="flow-grid" data-reveal>
+            <div class="flow-col flow-col-local">
+              <h3>On your machine</h3>
+              <ul>
+                <li>Workflow profiles and saved rules, including CSS selectors, XPath locators and element labels</li>
+                <li>Schedule definitions and run parameters</li>
+                <li>Extracted values while a run is going: table grids, structured data blocks, your own variables</li>
+                <li>Run and diagnostics logs: timestamps, attempt counts, step status</li>
+                <li>Your pacing preferences, rate-limit intervals and verification-pause settings</li>
+              </ul>
+              <p>It leaves your device only if you export a profile or share a workflow yourself.</p>
+            </div>
+            <div class="flow-col flow-col-cloud">
+              <h3>Sent to ORCA Cloud &mdash; only during an AI step</h3>
+              <ul>
+                <li>One viewport snapshot, when you deliberately start an AI planning step</li>
+                <li>A structural summary of the interactive elements on that page</li>
+                <li>The instruction you typed for that step</li>
+              </ul>
+              <p>Processed in memory to decide the next action and returned. Not sold, rented or traded to brokers or advertisers, and not used to build a profile of you.</p>
+            </div>
+          </div>
+          <p class="cta-note">Rule-based and scheduled runs do not send page content anywhere, so they also do not draw on your monthly AI balance.</p>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="disclose-title">
+        <div class="container product-overview">
+          <div data-reveal>
+            <h2 id="disclose-title">Declared to Google, stated here too.</h2>
+            <p>The store requires publishers to declare the data an extension handles. ORCA&rsquo;s declaration says it handles personally identifiable information, user activity and website content &mdash; because that is what filling a form and reading a page involves. We would rather you read that from us first.</p>
+            <p>It also carries the three limited-use promises: not sold to third parties outside approved use, not used for anything unrelated to the core function, and never used for creditworthiness or lending decisions.</p>
+            <ul class="check-list">
+              <li>Card numbers and banking credentials are handled by Lemon Squeezy, never stored by us</li>
+              <li>Password managers fill their own fields &mdash; never script a password field into a workflow</li>
+              <li>No global keyboard hook: ORCA acts inside the pages you automate, not in other applications</li>
+            </ul>
+          </div>
+          <div class="local-card" role="note" data-reveal>
+            <h3>The rails that stay in the product.</h3>
+            <div class="local-stats">
+              <div class="local-stat"><span>CAPTCHA, 2FA or a confirmation gate</span><b>Run pauses for you</b></div>
+              <div class="local-stat"><span>Action pacing</span><b>Human-ish intervals</b></div>
+              <div class="local-stat"><span>Bypassing a site&rsquo;s rules</span><b>Not supported</b></div>
+            </div>
+            <p class="cta-note">Automation is only acceptable where you are allowed to act. Read the target site&rsquo;s terms; a schedule is no excuse for hammering someone&rsquo;s server.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight" aria-labelledby="report-title">
+        <div class="container">
+          <div class="band-cta" data-reveal>
+            <div>
+              <h2 id="report-title">Found a problem? Tell us.</h2>
+              <p>Privacy and security questions go to <a href="mailto:privacy@orcamatic.com">privacy@orcamatic.com</a>; anything that breaks your workflow goes to <a href="mailto:support@orcamatic.com">support@orcamatic.com</a>. Both reach the people who build the extension.</p>
+            </div>
+            <a class="btn btn-primary" href="/privacy-policy/">Read the full policy <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </section>
+
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:support@orcamatic.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>&copy; <span data-year>2026</span> Orcamatic</span><span>Chrome &middot; Edge &middot; Brave</span></div></footer>
+    <script src="/assets/site.js" defer></script>
+  </body>
+</html>

@@ -5,6 +5,10 @@ listing for `bohdghgjgkellecnjkmahfiocaefgbki`, and current (2026) conversion/de
 Method: read every page and the store listing, then graded the site against what AI/automation
 products that convert actually do. Nothing below asks you to invent a claim.
 
+**Status after Phase 1 (2026-10-15):** everything below marked ✅ shipped is live in this repo;
+the execution order and the owner split are in [`PHASES.md`](PHASES.md). P0.1, P0.2 and P0.5 stay
+open because they need a screen recording and access to the store dashboard.
+
 ---
 
 ## 0. Diagnosis in one line
@@ -71,7 +75,7 @@ Keep the frame, swap `<img>` → `<video poster>`. One visual, two jobs: it name
 proves the product. No captions about where the assets came from — provenance belongs in a small
 grey line, never in a headline (that was the mistake in the last pass).
 
-### P0.3 Process proof, because you honestly have no social proof yet
+### P0.3 ✅ Process proof, because you honestly have no social proof yet
 11 users and 0 ratings is the real number, so do **not** manufacture logos, counts or quotes.
 What 2026 early-stage pages use instead: "show process proof (audit logs, templates, sample
 outputs) instead of fake enterprise theater" ([ref](https://www.lovart.ai/blog/01-industry-saas-landing-page)).
@@ -91,7 +95,7 @@ Placement rule: proof within the first two scrolls **and** next to each CTA (tha
 are reported: 37% median for social proof, +18% from a single proof line under the button —
 [ref](https://dev.to/alpo190010/landing-page-best-practices-2026-what-actually-converts-from-someone-who-got-it-wrong-first-2f9e)).
 
-### P0.4 Risk reversal on every ask
+### P0.4 ✅ Risk reversal on every ask
 You already grant a 7-day money-back guarantee (≤10% AI consumption) — it was **only** on
 `/refund-policy/`. Refund guarantees lift conversion 12–18% ([ref](https://influenceflow.io/resources/saas-pricing-page-best-practices-complete-guide-for-2026/)).
 Now surfaced on `/`, `/products/`, `/pricing/` (this pass). Next: put it inside the store
@@ -130,7 +134,7 @@ hero, then earn the "agent" language in the AI-planner section once the planner 
 
 ## 3. P1 — structure and persuasion (next two weeks)
 
-### P1.1 Re-order the homepage to the converter template
+### P1.1 ✅ Re-order the homepage to the converter template
 Hero → proof bar → **problem** → solution → how it works → features with benefits → process proof →
 pricing → FAQ → final CTA with risk reversal
 ([section order](https://github.com/borghei/Claude-Skills/blob/main/marketing/landing-page-generator/SKILL.md)).
@@ -138,39 +142,44 @@ You are missing a **problem** section entirely. Two paragraphs is enough, and th
 "Insurer portals, ticket queues and admin consoles have no API and no budget for RPA. So the same
 12 clicks stay yours, 40 times a week."
 
-### P1.2 "Built for" — name the jobs, not the features
+### P1.2 ✅ "Built for" — name the jobs, not the features
 Four cards: back-office & ops, sales/CS (CRM hygiene), recruiting & research, solo founders. Each
 card = one sentence + one link to a template. This is how Bardeen won its category: narrow, named
 jobs (lead scraping → sheet → CRM) rather than a feature list
 ([ref](https://phantombuster.com/blog/tools/bardeen-chrome-extension/)).
 
-### P1.3 A template library — the compounding asset
+### P1.3 ✅ A template library — the compounding asset
 10–12 templates as real pages under `/templates/`, each with: what it does, the steps rendered
 visually, run time, an "import into ORCA" one-liner, and the exact rule list. Bardeen ships 100+
 and it is the reason people adopt it ([ref](https://automationatlas.io/tools/bardeen/)).
 Why it matters three times over: onboarding (first value in minutes), long-tail SEO
 ("auto fill a form every monday chrome"), and proof (each template *is* a demonstration).
 
-### P1.4 If video slips: build the demo in CSS instead
+### P1.4 ✅ If video slips: build the demo in CSS instead
 Animate the existing panel schematic — steps tick green one by one, a progress bar advances, the
 log types out. Loop 6s, honour `prefers-reduced-motion`, keep the honest "schematic" label. Cost:
 one afternoon, no assets, no fake UI text. This is the cheapest way to get "product in motion"
 on the page, which is the thing reviewers keep crediting with the lift.
 
-### P1.5 Comparison block (you have four credible neighbours)
+### P1.5 ✅ Comparison block (you have four credible neighbours)
 A table, not prose: **ORCA / macro recorder (AutoClicker) / API connectors (Zapier, Make) / desktop
 RPA**. Rows: works on sites with no API · survives layout change · runs in your logged-in session ·
 no code · runs locally · retries and waits · scheduling · price · Windows/Mac/Linux. Only tick what
 you can defend in a support ticket. Comparison tables are reported at +18% on pricing pages.
 
-### P1.6 Honest ROI and a cost estimator
+### P1.6 ✅ Honest ROI and a cost estimator
+
+> Shipped as the "Do the arithmetic on your own week" block on the homepage: three inputs (minutes
+> per run, runs per week, minutes still spent reading the log) and one output, computed in
+> `assets/site.js` from what the visitor typed. No per-step dollar estimate, because the cost of an
+> AI step is not documented anywhere I can verify.
 Specific and testable beats adjectives ("Save an average of X" is the Ramp pattern —
 [ref](https://www.metabrand.digital/learn/best-startup-website-examples-2026)). Publish the maths,
 not a claim: "10 steps × 2 min saved × 40 runs/week ≈ 80 min/week." Then a slider: runs/week ×
 minutes-saved → hours/month, plus "AI steps this week ≈ $0.40 of your $12 balance". Only if the
 per-step cost is genuinely predictable — otherwise publish the worked example you already have.
 
-### P1.7 `/pricing/` — two missing blocks
+### P1.7 ✅ `/pricing/` — two missing blocks
 1. **Feature comparison table**, grouped (Automation · AI · Scheduling · Support), ✓ and — explicitly,
    sticky header on desktop, stacked on mobile. 90% of good pricing sections treat it as table
    stakes ([ref](https://www.webanatomy.ai/best-landing-pages/sections/pricing)).
@@ -180,17 +189,23 @@ per-step cost is genuinely predictable — otherwise publish the worked example 
 Also add: "what happens when the balance runs out" (does a run fail, queue, or fall back to rules?),
 plan FAQ (upgrade/downgrade/proration), and keep three tiers — 4+ tiers convert ~31% worse.
 
-### P1.8 `/security/` page — for an extension, this is a sales page
+### P1.8 ✅ `/security/` page — for an extension, this is a sales page
 A permission table (which permission, why, what it can and cannot do), a data-flow diagram
 ("nothing leaves the browser except the page context you approve for an AI step"), retention and
 deletion, subprocessors, and the "we do not sell or proxy your credentials" line you already have.
 Link it under the install CTA, not only from the footer. Your blog post on
 `all-urls` permission is 70% of this page — promote it into a real doc.
 
-### P1.9 Docs / quickstart (retention is ranking)
+### P1.9 ✅ Docs / quickstart (retention is ranking)
 `/guides/first-workflow/` with the 3-minute GIF, `/guides/when-a-step-fails/` (element not found,
 retry counts, dynamic delays, conditions), shortcut list, and a "run report" explainer. Uninstalls
 right after install hurt store ranking; onboarding fixes that more cheaply than any ad.
+
+> Shipped: `/guides/first-workflow/` carries the five-step recipe and, in the same page, "When the
+> first run misbehaves" (element not found, half-typed value, verification gate, missed alarm,
+> empty extraction). A separate `/guides/when-a-step-fails/` was deliberately not published: it
+> would duplicate that content, and thin near-duplicate pages cost more than they earn. Split it
+> out when there is more to say than a paragraph each.
 
 ### P1.10 Headline work (A/B the hero)
 The hero passes the "outcome in ≤8 words" rule but not the "stranger can name the category in

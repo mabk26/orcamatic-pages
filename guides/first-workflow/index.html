@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10162a">
+    <meta name="description" content="A five-step guide to building your first workflow in ORCA: element picking, retries and conditions, reading the run log, and scheduling it.">
+    <link rel="canonical" href="https://orcamatic.com/guides/first-workflow/">
+    <link rel="icon" href="/assets/orca-icon.png" type="image/png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://lh3.googleusercontent.com; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <title>Your first ORCA workflow | Orcamatic</title>
+    <meta property="og:site_name" content="Orcamatic">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Your first ORCA workflow | Orcamatic">
+    <meta property="og:description" content="A five-step guide to building your first workflow in ORCA: element picking, retries and conditions, reading the run log, and scheduling it.">
+    <meta property="og:url" content="https://orcamatic.com/guides/first-workflow/">
+    <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
+    <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your first ORCA workflow | Orcamatic">
+    <meta name="twitter:description" content="A five-step guide to building your first workflow in ORCA: element picking, retries and conditions, reading the run log, and scheduling it.">
+    <meta name="twitter:image" content="https://orcamatic.com/assets/og-image.jpg">
+    <link rel="apple-touch-icon" href="/assets/icon-192.png">
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Your first ORCA workflow",
+      "description": "Build a first browser automation workflow in ORCA: pick a target, add retries and conditions, run once, repair, then save or schedule.",
+      "totalTime": "PT15M",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Orcamatic",
+        "url": "https://orcamatic.com/"
+      },
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Pick the target while the page is in a normal state",
+          "text": "Open the page you would work on by hand and start the visual element picker. Click one control &mdash; a button, an input, a link. ORCA stores that element as a target with a label, not as a coordinate on screen."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Add the action, then the logic around it",
+          "text": "Type a value, choose a dropdown option, extract a field, submit. Then make it robust: a retry when the click is refused, a wait for an element to appear, a condition on something being enabled. Two rules here usually matter more than ten actions."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Run one case and read the log",
+          "text": "Run it once. Read the log line by line: what was found, what was typed, what had to be retried. A run you have read is a run you can trust."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Fix the two things that broke",
+          "text": "A target that moved: re-pick it and give the step a wait. A value that came back empty: pick the container instead of the row. Most first workflows need exactly these two repairs."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Save the profile, reuse or schedule",
+          "text": "Save it as a workflow profile. From then on it is one click in the panel, or a recurring run on the built-in scheduler if the work arrives on a timetable."
+        }
+      ]
+    }</script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a>
+        <nav class="site-nav" aria-label="Primary navigation"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/">Templates</a><a href="/products/">Product</a><a href="/pricing/">Pricing</a><a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome <span aria-hidden="true">↗</span></a></nav>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-navigation" aria-label="Open navigation"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true"><path d="M1 1h18M1 8h18M1 15h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <nav id="mobile-navigation" class="mobile-nav" data-mobile-nav aria-label="Mobile navigation"><div class="container mobile-nav-inner"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/">Templates</a><a href="/products/">Product</a><a href="/pricing/">Pricing</a><a href="/privacy-policy/">Privacy</a><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a></div></nav>
+    </header>
+
+      <section class="page-hero compact" aria-labelledby="guide-title">
+        <div class="container" data-reveal>
+          <p class="tpl-kind">ORCA guide &middot; about 15 minutes, one page you already use</p>
+          <h1 id="guide-title">Your first workflow, start to finish.</h1>
+          <p>The first workflow teaches you more than the manual does. Do it on a task you would otherwise do by hand today, follow the five steps, and read the log at the end &mdash; that log is what makes the second workflow fast.</p>
+          <ul class="facts" aria-label="What you need">
+            <li>ORCA installed</li>
+            <li>A page you can edit or read</li>
+            <li>No code, no API key</li>
+          </ul>
+          <div class="btn-row mt-md"><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">&#8599;</span></a><a class="btn btn-secondary" href="/templates/">Or copy a template</a></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="steps-title">
+        <div class="container article">
+          <h2 id="steps-title">Five steps</h2>
+          <ol class="doc-steps">
+            <li><h3>Pick the target while the page is in a normal state</h3><p>Open the page you would work on by hand and start the visual element picker. Click one control &mdash; a button, an input, a link. ORCA stores that element as a target with a label, not as a coordinate on screen.</p></li>
+            <li><h3>Add the action, then the logic around it</h3><p>Type a value, choose a dropdown option, extract a field, submit. Then make it robust: a retry when the click is refused, a wait for an element to appear, a condition on something being enabled. Two rules here usually matter more than ten actions.</p></li>
+            <li><h3>Run one case and read the log</h3><p>Run it once. Read the log line by line: what was found, what was typed, what had to be retried. A run you have read is a run you can trust.</p></li>
+            <li><h3>Fix the two things that broke</h3><p>A target that moved: re-pick it and give the step a wait. A value that came back empty: pick the container instead of the row. Most first workflows need exactly these two repairs.</p></li>
+            <li><h3>Save the profile, reuse or schedule</h3><p>Save it as a workflow profile. From then on it is one click in the panel, or a recurring run on the built-in scheduler if the work arrives on a timetable.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section plan-section" aria-labelledby="trouble-title">
+        <div class="container">
+          <div class="section-heading" data-reveal><h2 id="trouble-title">When the first run misbehaves</h2><p>Five things account for most of them. None of them mean you did it wrong.</p></div>
+          <div class="trouble" data-reveal>
+            <p><b>&ldquo;Element not found&rdquo;</b><span>The page changed shape, or the element loads late. Re-pick it with the picker and add a wait for that container before the click.</span></p>
+            <p><b>A half-typed value</b><span>Some frameworks reject instant input. Add a small dynamic delay before the field and let ORCA retry the step.</span></p>
+            <p><b>A run that stops at a verification gate</b><span>That is the guard rail working. ORCA pauses instead of solving a CAPTCHA or a 2FA prompt: sign in yourself, then start the run in that tab. Never script a login &mdash; credentials belong in your password manager.</span></p>
+            <p><b>A scheduled run that did not fire</b><span>The scheduler fires inside your browser profile, so the browser has to be running and the plan active on that machine. If a run matters, make it idempotent so an extra firing is harmless.</span></p>
+            <p><b>Empty rows from an extraction</b><span>You picked the leaf cell rather than the row. Pick the row container, then the fields inside it, and extract per row.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight" aria-labelledby="next-title">
+        <div class="container">
+          <div class="band-cta" data-reveal>
+            <div>
+              <h2 id="next-title">Now make it repeat without you.</h2>
+              <p>Saved profiles can run on the built-in scheduler, and rule-based runs do not spend your AI balance. Check the permissions page once, then forget about us.</p>
+            </div>
+            <div class="btn-row"><a class="btn btn-primary" href="/templates/">Templates <span aria-hidden="true">&rarr;</span></a><a class="btn btn-secondary" href="/security/">Security &amp; permissions</a></div>
+          </div>
+        </div>
+      </section>
+
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:support@orcamatic.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>&copy; <span data-year>2026</span> Orcamatic</span><span>Chrome &middot; Edge &middot; Brave</span></div></footer>
+    <script src="/assets/site.js" defer></script>
+  </body>
+</html>
