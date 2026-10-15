@@ -1,8 +1,8 @@
 /* Orcamatic GitHub Pages site — no build step or third-party runtime required. */
 /* Self-hosted fonts (SIL OFL, see assets/fonts/LICENSE.txt) */
-@font-face { font-family: "Inter Variable"; src: url("/assets/fonts/inter-latin-wght.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
-@font-face { font-family: "Newsreader Variable"; src: url("/assets/fonts/newsreader-latin-wght.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
-@font-face { font-family: "Newsreader Variable"; src: url("/assets/fonts/newsreader-latin-wght-italic.woff2") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Inter Variable"; src: url("/assets/fonts/inter-latin-wght.woff2?v=3100e775e8") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader Variable"; src: url("/assets/fonts/newsreader-latin-wght.woff2?v=62981321d9") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader Variable"; src: url("/assets/fonts/newsreader-latin-wght-italic.woff2?v=48bc8861b9") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
 
 :root {
   --ink: #10162a;
@@ -45,6 +45,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img { display: block; max-width: 100%; }
+figure { margin: 0; } /* the store-screenshot figures are the only ones, and 40px of UA margin misaligns them */
 a { color: inherit; }
 button, input, textarea { font: inherit; }
 button { cursor: pointer; }
@@ -179,23 +180,32 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
 .facts li { display: inline-flex; align-items: center; gap: 0.5rem; }
 .facts li + li { border-left: 1px solid var(--line); padding-left: 1.05rem; }
 
-/* Product imagery: real Chrome Web Store screenshots, never generated art */
+/* Product imagery: real Chrome Web Store screenshots, never generated art.
+   Every frame reserves its own 8:5 box - the ratio the store tiles are made at -
+   and the image covers it. Two reasons: a tile never gets squashed to fit a
+   slot that changed shape, and the box is already there while the image is in
+   flight or missing, so nothing on the page jumps when it lands. */
 .shot { position: relative; }
-.shot-frame { position: relative; overflow: hidden; border: 1px solid #cdd3e5; border-radius: var(--radius-lg); background: #f2f1ea; box-shadow: var(--shadow); }
-.shot-frame img { display: block; width: 100%; height: auto; }
-.shot-frame a { display: block; }
+.shot-frame { position: relative; overflow: hidden; aspect-ratio: 8 / 5; border: 1px solid #cdd3e5; border-radius: var(--radius-lg); background: #f2f1ea; box-shadow: var(--shadow); }
+.shot-frame a { display: block; height: 100%; }
+.shot-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .shot-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 1.4rem; margin-top: 1rem; color: var(--muted); font-size: 0.82rem; }
+.shot-meta p { margin: 0; max-width: 62ch; }
 .shot-meta a { color: var(--violet-deep); font-weight: 650; text-decoration: none; border-bottom: 1px solid rgba(98, 85, 231, 0.4); }
 .shot-meta a:hover { color: var(--ink); border-bottom-color: currentColor; }
+/* The failure note sits inside the reserved frame, so a dead hot-link costs a
+   sentence instead of the whole column. */
 .shot-fallback { display: none; }
-.shot[data-shot-failed] .shot-frame { display: none; }
-.shot[data-shot-failed] .shot-fallback { display: block; border: 1px dashed #c4cbdf; border-radius: var(--radius-lg); padding: clamp(1.6rem, 4vw, 2.6rem); background: #fff; color: var(--muted); font-size: 0.92rem; }
-.shot[data-shot-failed] .shot-fallback a { color: var(--violet-deep); }
-.shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin-top: 2.6rem; }
-.shots figure { margin: 0; overflow: hidden; border: 1px solid #dce1ed; border-radius: var(--radius-md); background: #f2f1ea; transition: transform 180ms ease, box-shadow 180ms ease; }
-.shots figure:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
-.shots img { width: 100%; height: auto; }
-.shots a { display: block; color: inherit; text-decoration: none; }
+.shot[data-shot-failed] .shot-frame img { visibility: hidden; }
+.shot[data-shot-failed] .shot-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: clamp(1.1rem, 3vw, 2rem); background: rgba(255, 255, 255, 0.93); color: var(--muted); font-size: 0.92rem; line-height: 1.5; text-align: center; }
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.9rem 1.4rem; margin-top: 2.6rem; }
+.shots figure { display: grid; gap: 0.75rem; align-content: start; }
+.shots a { position: relative; display: block; aspect-ratio: 8 / 5; overflow: hidden; border: 1px solid #dce1ed; border-radius: var(--radius-md); background: #f2f1ea; box-shadow: var(--shadow-sm); transition: transform 180ms ease, box-shadow 180ms ease; }
+.shots a:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.shots img { width: 100%; height: 100%; object-fit: cover; }
+.shots figcaption { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+.shots figcaption b { display: block; margin-bottom: 0.15rem; color: var(--ink); font-size: 1rem; font-weight: 650; }
+/* A tile with no image behind it is a hole in the grid, not a caption: drop it. */
 .shots figure[data-shot-failed] { display: none; }
 
 /* Schematic of the ORCA side panel (drawn in CSS, labelled as a schematic) */
@@ -247,6 +257,7 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
 .local-card h3 { position: relative; max-width: 300px; margin: 1rem 0 1.3rem; font-family: var(--serif); font-size: 2rem; font-weight: 600; letter-spacing: -0.045em; line-height: 1; }
 .local-stats { display: grid; gap: 0.8rem; }
 .local-stat { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; border-top: 1px solid rgba(219, 229, 255, 0.16); padding-top: 0.8rem; color: #c6cee5; font-size: 0.77rem; }
+.local-stat p { margin: 0; }
 .local-stat b { color: #fff; font-family: var(--mono); font-size: 0.65rem; text-transform: uppercase; }
 
 .plan-section { background: #f5f3ed; }
@@ -369,8 +380,16 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid #e1e5ee; padding: 1.25rem 0 1.5rem; color: #5d667d; font-family: var(--mono); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
 .footer-bottom span:last-child { text-align: right; }
 
-[data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity 600ms ease, transform 600ms cubic-bezier(.2,.65,.2,1); }
-[data-reveal].is-visible { opacity: 1; transform: none; }
+/* Scroll reveal, driven by scroll position instead of JavaScript: a browser that
+   understands view() animates, and one that does not (or a page whose script
+   never ran) simply shows the content. The old version set opacity: 0 in CSS and
+   waited for site.js to lift it, so one failed request hid most of the page. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-reveal] { animation: reveal-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 38%; }
+  }
+}
+@keyframes reveal-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
 @media (max-width: 980px) {
   .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(360px, 0.83fr); gap: 2.6rem; }
@@ -378,7 +397,7 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
   .site-nav { gap: 0.72rem; }
   .site-nav a { font-size: 0.79rem; }
   .header-cta { min-height: 38px; padding: 0.5rem 0.8rem; font-size: 0.78rem; }
-  .shots { grid-template-columns: repeat(2, 1fr); }
+  .shots { gap: 1.4rem 1rem; }
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .steps-grid { grid-template-columns: 1fr; }
   .step-card { min-height: 220px; }
@@ -425,17 +444,15 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
   .btn { width: 100%; }
   .facts { display: grid; gap: 0.45rem; }
   .facts li + li { border-left: 0; padding-left: 0; }
-  .shots { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
   .spec-row { display: grid; gap: 0.4rem; }
   .spec-row li + li { border-left: 0; padding-left: 0; }
   .panel-main { padding: 1.1rem; }
   .logo-strip-inner { display: block; padding: 1.4rem 0; }
   .logo-strip p { max-width: none; }
-  .logo-strip-list { justify-content: flex-start; flex-wrap: wrap; margin-top: 0.8rem; gap: 0.55rem 1rem; font-size: 0.68rem; }
+  .logo-strip-list { justify-content: flex-start; flex-wrap: wrap; margin-top: 0.8rem; gap: 0.55rem 1rem; font-size: 0.86rem; }
   .step-card { min-height: 200px; padding: 1.3rem; }
   .step-card h3 { margin-top: 1.5rem; }
-  .logo-strip-list { font-size: 0.86rem; }
   .pillar-grid, .blog-grid { grid-template-columns: 1fr; }
   .pillar { min-height: 190px; }
   .policy-bar { align-items: flex-start; flex-direction: column; padding: 0.8rem 1rem; }
@@ -491,10 +508,12 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
 .problem ul { display: grid; gap: 0.75rem; margin: 0; padding: 0; list-style: none; }
 .problem li { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1rem; border-top: 1px solid #ddd9cd; padding-top: 0.75rem; font-size: 0.92rem; color: #4b5570; }
 .problem li b { color: var(--ink); font-weight: 650; }
+.problem li div { margin: 0; }
 
 /* Animated run demo (CSS only, labelled as a schematic) */
 .demo { border: 1px solid #d8deed; border-radius: var(--radius-lg); background: #fff; box-shadow: var(--shadow); overflow: hidden; }
 .demo-top { display: flex; align-items: center; gap: 0.6rem; border-bottom: 1px solid #e6eaf4; padding: 0.85rem 1.1rem; background: #fafbff; color: #6b7590; font-size: 0.8rem; }
+.demo-top p { margin: 0; }
 .demo-top b { color: var(--ink); font-weight: 650; }
 .demo-top .demo-tag { margin-left: auto; border-radius: 999px; padding: 0.22rem 0.55rem; background: var(--violet-light); color: var(--violet-deep); font-size: 0.7rem; font-weight: 650; }
 .demo-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(210px, 0.6fr); gap: 0; }
@@ -508,6 +527,7 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
 .demo-log p.warn i { color: #ffcf70; }
 .demo-log p.muted { color: #7e88ab; }
 .demo-progress { display: flex; align-items: center; gap: 0.7rem; border-top: 1px solid #eaedf6; padding: 0.8rem 1.15rem; background: #fbfbf8; color: #6b7590; font-size: 0.78rem; }
+.demo-progress p { margin: 0; }
 .demo-bar { position: relative; flex: 1; height: 5px; border-radius: 99px; background: #e6e9f3; overflow: hidden; }
 .demo-bar span { position: absolute; inset: 0 auto 0 0; width: 100%; border-radius: 99px; background: var(--violet); }
 @keyframes demoReveal { 0%, 4% { opacity: 0.25; } 12%, 84% { opacity: 1; } 96%, 100% { opacity: 0.25; } }
@@ -560,6 +580,7 @@ table.compare code { border-radius: 4px; padding: 0.1rem 0.3rem; background: #f1
 .proof-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2.4rem; }
 .proof-card { border: 1px solid #d9dfec; border-radius: var(--radius-md); background: #fff; overflow: hidden; }
 .proof-card header { display: flex; align-items: center; gap: 0.6rem; border-bottom: 1px solid #e6eaf2; padding: 0.8rem 1rem; color: var(--ink); font-size: 0.88rem; font-weight: 650; }
+.proof-card header p { margin: 0; }
 .proof-card header span { margin-left: auto; border-radius: 999px; padding: 0.2rem 0.5rem; background: var(--paper-warm); color: #6a6450; font-size: 0.7rem; font-weight: 600; }
 .proof-card pre { margin: 0; padding: 1rem; overflow-x: auto; color: #cbd4ee; background: #131a2f; font-family: var(--mono); font-size: 0.75rem; line-height: 1.75; }
 .proof-card pre b { color: #88f0c8; font-weight: 600; }
@@ -600,8 +621,8 @@ table.compare code { border-radius: 4px; padding: 0.1rem 0.3rem; background: #f1
 }
 @media (max-width: 800px) {
   .problem-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .shots { display: grid; grid-auto-flow: column; grid-auto-columns: 74%; gap: 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; }
-  .shots figure { scroll-snap-align: center; }
+  .shots { display: grid; grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 74%; gap: 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.5rem; }
+  .shots figure { scroll-snap-align: start; }
   .band-cta { flex-direction: column; align-items: flex-start; }
   .band-cta .btn { width: 100%; }
 }
@@ -627,10 +648,7 @@ table.compare code { border-radius: 4px; padding: 0.1rem 0.3rem; background: #f1
 .trouble span { color: var(--muted); font-size: 0.97rem; line-height: 1.55; }
 @media (max-width: 800px) { .flow-grid { grid-template-columns: 1fr; } }
 
-/* ---------- Phase 1d: reveal stagger + article cross-links ---------- */
-[data-reveal][data-reveal-index="1"] { transition-delay: 90ms; }
-[data-reveal][data-reveal-index="2"] { transition-delay: 170ms; }
-[data-reveal][data-reveal-index="3"] { transition-delay: 250ms; }
+/* ---------- Article cross-links ---------- */
 .post-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 2.2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
 .post-links a { display: grid; gap: 0.2rem; padding: 0.85rem 1rem; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); font-size: 0.95rem; font-weight: 680; text-decoration: none; transition: border-color 160ms ease, background 160ms ease; }
 .post-links a:hover { border-color: var(--violet); background: var(--violet-light); }
@@ -654,8 +672,9 @@ table.compare code { border-radius: 4px; padding: 0.1rem 0.3rem; background: #f1
 .roi-field input:focus-visible { border-color: var(--violet); outline: 3px solid rgba(98, 85, 231, 0.28); outline-offset: 2px; }
 .roi-out { display: grid; gap: 0.3rem; align-content: center; padding: 1.3rem 1.5rem; border: 1px solid color-mix(in srgb, var(--mint-deep) 45%, var(--line)); border-radius: 16px; background: color-mix(in srgb, var(--mint) 45%, white); }
 .roi-out b { color: var(--ink); font-family: var(--serif); font-size: clamp(2.6rem, 6vw, 3.5rem); font-weight: 600; line-height: 0.92; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
-.roi-out > span { color: var(--ink); font-size: 1rem; font-weight: 660; }
-.roi-out small { color: var(--mint-deep); font: 600 0.85rem var(--mono); }
+.roi-out p { margin: 0; }
+.roi-out .roi-unit { color: var(--ink); font-size: 1rem; font-weight: 660; }
+.roi-out .roi-detail { color: var(--mint-deep); font: 600 0.85rem var(--mono); }
 .roi-out .cta-note { margin-bottom: 0; }
 @media (max-width: 800px) { .roi-grid { grid-template-columns: 1fr; } }
 

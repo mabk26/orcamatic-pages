@@ -12,8 +12,8 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preconnect" href="https://lh3.googleusercontent.com">
-    <link rel="preload" as="image" fetchpriority="high" href="https://lh3.googleusercontent.com/QrHlgzzhqBOk0prLHq85g5AWVouwv44C9FUiyxrlEItJKF7K0zJ7nnavC7e0H7bG3433yyvhdY7oAVnCEsjAIhIVtg=s1280-w1280-h800">
-    <link rel="stylesheet" href="/assets/site.css">
+    <link rel="preload" as="image" fetchpriority="high" href="https://lh3.googleusercontent.com/QrHlgzzhqBOk0prLHq85g5AWVouwv44C9FUiyxrlEItJKF7K0zJ7nnavC7e0H7bG3433yyvhdY7oAVnCEsjAIhIVtg=w1024">
+    <link rel="stylesheet" href="/assets/site.css?v=621f1d5bf8">
     <title>Orcamatic — Browser automation that stays in your browser</title>
       <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="website">
@@ -162,14 +162,13 @@
 
           <figure class="shot" data-shot data-reveal>
             <div class="shot-frame">
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">
-                <img src="https://lh3.googleusercontent.com/QrHlgzzhqBOk0prLHq85g5AWVouwv44C9FUiyxrlEItJKF7K0zJ7nnavC7e0H7bG3433yyvhdY7oAVnCEsjAIhIVtg=s1280-w1280-h800" width="1280" height="800" alt="ORCA, shown in a screenshot from its Chrome Web Store listing" referrerpolicy="no-referrer" fetchpriority="high" decoding="async">
+              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener" aria-label="Open the ORCA listing on the Chrome Web Store">
+                <img src="https://lh3.googleusercontent.com/QrHlgzzhqBOk0prLHq85g5AWVouwv44C9FUiyxrlEItJKF7K0zJ7nnavC7e0H7bG3433yyvhdY7oAVnCEsjAIhIVtg=w1024" width="1280" height="800" alt="ORCA panel beside a stock dashboard: a saved &lsquo;Check inventory&rsquo; workflow set to every weekday at 09:00, its next run tomorrow at 09:00, and the last two activity lines marked complete." referrerpolicy="no-referrer" fetchpriority="high" decoding="async">
               </a>
+              <p class="shot-fallback">The store preview did not load. The listing carries the same screenshots.</p>
             </div>
-            <p class="shot-fallback">The Chrome Web Store preview could not be loaded here. <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Open the ORCA listing to see its screenshots.</a></p>
             <figcaption class="shot-meta">
-              <span>From the ORCA listing on the Chrome Web Store</span>
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">View the listing ↗</a>
+              <p>Stock-check workflow on a schedule, from the ORCA listing on the Chrome Web Store.</p>
             </figcaption>
           </figure>
         </div>
@@ -186,9 +185,9 @@
         <div class="container problem-inner">
           <blockquote id="problem-title">The week goes on a page with <em>no integration</em>: a claims portal, a ticket queue, an admin console, a filing form.</blockquote>
           <ul aria-label="Why this work stays manual">
-            <li><b>No API</b><span>Connector tools stop where the vendor stopped. Nobody can automate an endpoint that does not exist.</span></li>
-            <li><b>No budget</b><span>A desktop RPA licence plus a rollout project is not a conversation anyone has for one team&rsquo;s Monday task.</span></li>
-            <li><b>No patience</b><span>So it stays manual: the same twelve clicks, on a person who is already busy, forty times a week.</span></li>
+            <li><b>No API</b><div>Connector tools stop where the vendor stopped. Nobody can automate an endpoint that does not exist.</div></li>
+            <li><b>No budget</b><div>A desktop RPA licence plus a rollout project is not a conversation anyone has for one team&rsquo;s Monday task.</div></li>
+            <li><b>No patience</b><div>So it stays manual: the same twelve clicks, on a person who is already busy, forty times a week.</div></li>
           </ul>
         </div>
       </section>
@@ -226,7 +225,7 @@
             <p>Pick a field, add the logic, run it. ORCA works through the steps, retries when the page is slow, and writes a line for each one.</p>
           </div>
           <div class="demo demo-running" data-reveal aria-label="Schematic animation of an ORCA run: four fields filled in, five log lines written, progress bar completing">
-            <p class="demo-top"><b>Refund intake &middot; step 4 of 5</b><span>Schematic drawn in CSS, not a recording</span><span class="demo-tag">loops</span></p>
+            <div class="demo-top"><b>Refund intake &middot; step 4 of 5</b><p>Schematic drawn in CSS, not a recording</p><p class="demo-tag">loops</p></div>
             <div class="demo-body">
               <div class="demo-page">
                 <p class="demo-field">Claimant name <span>A. Whitfield</span></p>
@@ -235,14 +234,14 @@
                 <p class="demo-field">Attach photo <span>transit.jpg</span></p>
               </div>
               <div class="demo-log" aria-hidden="true">
-                <p><i>&#10003;</i>0.0s picked #refund-reason</p>
-                <p><i>&#10003;</i>0.4s typed 18 characters</p>
-                <p><i>&#10003;</i>1.1s uploaded transit.jpg</p>
-                <p class="warn"><i>&#8635;</i>1.9s submit disabled, retry 1 of 3</p>
-                <p><i>&#10003;</i>3.2s case RC-48219 written to log</p>
+                <p><i>&#10003;</i> 0.0s picked #refund-reason</p>
+                <p><i>&#10003;</i> 0.4s typed 18 characters</p>
+                <p><i>&#10003;</i> 1.1s uploaded transit.jpg</p>
+                <p class="warn"><i>&#8635;</i> 1.9s submit disabled, retry 1 of 3</p>
+                <p><i>&#10003;</i> 3.2s case RC-48219 written to log</p>
               </div>
             </div>
-            <p class="demo-progress"><span>Live execution tracking</span><span class="demo-bar"><span></span></span><code>3.2s</code></p>
+            <div class="demo-progress"><p>Live execution tracking</p><span class="demo-bar"><span></span></span><code>3.2s</code></div>
           </div>
           <p class="cta-note">A real run writes its own timings, retries and extracted values into the same log, and you can read it after every run.</p>
         </div>
@@ -289,30 +288,34 @@
           </div>
           <div class="shots" data-reveal>
             <figure data-shot>
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">
-                <img src="https://lh3.googleusercontent.com/hkmfXfY6EFRogY5UlTzml7w5mEfnAFiHr00SKZfvGk-Ca_PwxP-yFR7BZa7SKQa9xQRXmkaUlx0nuorUSrl3eioBL18=s1280-w1280-h800" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="ORCA screenshot from the Chrome Web Store listing">
+              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener" aria-label="Open the ORCA listing on the Chrome Web Store">
+                <img src="https://lh3.googleusercontent.com/hkmfXfY6EFRogY5UlTzml7w5mEfnAFiHr00SKZfvGk-Ca_PwxP-yFR7BZa7SKQa9xQRXmkaUlx0nuorUSrl3eioBL18=w1152" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="A shop page open in Chrome with the ORCA panel docked at the right. The panel holds the task &lsquo;Find a 4-star wireless keyboard under $80 and open the best match&rsquo; above three finished steps: page scanned, 18 grounded controls; options compared, price and rating verified; best match opened, Studio Keys.">
               </a>
+              <figcaption><b>Running on a live page</b>Eighteen controls read from the open tab, options compared on price and rating, the best match opened.</figcaption>
             </figure>
             <figure data-shot>
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">
-                <img src="https://lh3.googleusercontent.com/XSMAc4ijP_436F4i8hUMv1J0SFXx8Q7UX2xQ7dVDqecgRHsRiLw0ASYmxDmBPm2o6OYmA6vqwCfWZhUFm832N6rdF1I=s1280-w1280-h800" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="ORCA screenshot from the Chrome Web Store listing">
+              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener" aria-label="Open the ORCA listing on the Chrome Web Store">
+                <img src="https://lh3.googleusercontent.com/XSMAc4ijP_436F4i8hUMv1J0SFXx8Q7UX2xQ7dVDqecgRHsRiLw0ASYmxDmBPm2o6OYmA6vqwCfWZhUFm832N6rdF1I=w1152" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="A job board with three Python roles listed and the first one outlined as the selected target. The ORCA panel shows search completed, role selected, and a final step waiting on a person: ready to submit, human confirmation required, with Confirm and Review first buttons.">
               </a>
+              <figcaption><b>Planned from plain English</b>Targets come from the page, never invented &mdash; and the last step waits for you to confirm.</figcaption>
             </figure>
             <figure data-shot>
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">
-                <img src="https://lh3.googleusercontent.com/tOTdxj5iL85ZCLS3MjcsxG1DnsnChvFctq0yNT6WHPjYjQqRoQ7ZgSQDrBqpOPLaEl5vEc77TpJkYFMhPlAEaZ9Y8w=s1280-w1280-h800" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="ORCA screenshot from the Chrome Web Store listing">
+              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener" aria-label="Open the ORCA listing on the Chrome Web Store">
+                <img src="https://lh3.googleusercontent.com/tOTdxj5iL85ZCLS3MjcsxG1DnsnChvFctq0yNT6WHPjYjQqRoQ7ZgSQDrBqpOPLaEl5vEc77TpJkYFMhPlAEaZ9Y8w=w1152" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="An onboarding form being filled step by step, each field tagged 1 to 3, beside the ORCA rule builder listing: if work email is visible, then type saved email, then click &lsquo;Create account&rsquo;, then stop and notify me.">
               </a>
+              <figcaption><b>Built as rules, not a recording</b>Conditions, actions and a stop-and-notify outcome you can read as plainly as the form itself.</figcaption>
             </figure>
             <figure data-shot>
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">
-                <img src="https://lh3.googleusercontent.com/F8ms2MgqdvcXoJS-zjZvYk1pl9mZ_5UOVF9FQRJR_u4nLQLf-D-NqzQr6NCstnj6KvHVwKkXxm0jISjeWX-9BuD0YA=s1280-w1280-h800" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="ORCA screenshot from the Chrome Web Store listing">
+              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener" aria-label="Open the ORCA listing on the Chrome Web Store">
+                <img src="https://lh3.googleusercontent.com/F8ms2MgqdvcXoJS-zjZvYk1pl9mZ_5UOVF9FQRJR_u4nLQLf-D-NqzQr6NCstnj6KvHVwKkXxm0jISjeWX-9BuD0YA=w1152" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="A CRM lead list with one row highlighted mid-run, next to the ORCA panel recording the pass: open lead, set status, add note, save record, and a button to save the run as a reusable workflow.">
               </a>
+              <figcaption><b>Recorded once, then reused</b>Four steps captured from a pass through the list, saved as the workflow you run next Monday.</figcaption>
             </figure>
           </div>
-          <p class="shot-meta">
-            <span>Screenshots above are from the ORCA listing on the Chrome Web Store · v2.0.2, updated 3 August 2026 · 2.86 MiB · Chrome, Edge &amp; Brave</span>
+          <div class="shot-meta">
+            <p>Every image above is a real screenshot from the ORCA listing on the Chrome Web Store &middot; v2.0.2, updated 3 August 2026 &middot; 2.86 MiB &middot; Chrome, Edge &amp; Brave.</p>
             <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Open the listing ↗</a>
-          </p>
+          </div>
         </div>
       </section>
 
@@ -324,7 +327,7 @@
           </div>
           <div class="proof-grid" data-reveal>
             <div class="proof-card">
-              <header>Run log &middot; extract-list-to-sheet<span>example data</span></header>
+              <header><p>Run log &middot; extract-list-to-sheet</p><span>example data</span></header>
 <pre><i>12:04:01</i>  workflow  <b>Vendor claims sweep</b>  queued
 <i>12:04:02</i>  navigate  <b>portal.example.test/claims</b>  ok
 <i>12:04:05</i>  condition <b>rows &gt; 0</b>  true (14 found)
@@ -336,7 +339,7 @@
 <i>12:04:08</i>  done      14 rows &middot; 7.1s &middot; 0 failures</pre>
             </div>
             <div class="proof-card">
-              <header>Extracted rows &middot; same run<span>example data</span></header>
+              <header><p>Extracted rows &middot; same run</p><span>example data</span></header>
               <table>
                 <thead><tr><th scope="col">Reference</th><th scope="col">Status</th><th scope="col">Upload</th></tr></thead>
                 <tbody>
@@ -409,8 +412,8 @@
             </div>
             <div class="roi-out" role="status" aria-live="polite">
               <b data-roi-hours>14</b>
-              <span>hours a month handed back</span>
-              <small data-roi-detail>&middot; 52 runs a month; 16 minutes of each one is off your hands</small>
+              <p class="roi-unit">hours a month handed back</p>
+              <p class="roi-detail" data-roi-detail>&middot; 52 runs a month; 16 minutes of each one is off your hands</p>
               <p class="cta-note">Set the middle field to the real frequency, not the wishful one &mdash; a run every two weeks is 0.5 a week. Rule-based and scheduled runs cost the same on every plan, because they never draw on the AI balance.</p>
             </div>
           </div>
@@ -438,9 +441,9 @@
           <div class="local-card" role="note" aria-label="Local-first browser automation" data-reveal>
             <h3>Built to keep the important context close.</h3>
             <div class="local-stats">
-              <div class="local-stat"><span>Saved workflows &amp; profiles</span><b>Browser storage</b></div>
-              <div class="local-stat"><span>Scheduled and rule-based runs</span><b>Executed locally</b></div>
-              <div class="local-stat"><span>Optional AI planning</span><b>Only when used</b></div>
+              <div class="local-stat"><p>Saved workflows &amp; profiles</p><b>Browser storage</b></div>
+              <div class="local-stat"><p>Scheduled and rule-based runs</p><b>Executed locally</b></div>
+              <div class="local-stat"><p>Optional AI planning</p><b>Only when used</b></div>
             </div>
             <p class="cta-note cta-note-inline"><a href="/security/">Permissions, data flow and what we never collect &rarr;</a></p>
           </div>
@@ -565,6 +568,6 @@
       </div>
       <div class="container footer-bottom"><span>© <span data-year>2026</span> Orcamatic</span><span>Chrome · Edge · Brave</span></div>
     </footer>
-    <script src="/assets/site.js" defer></script>
+    <script src="/assets/site.js?v=c965ce8a29" defer></script>
   </body>
 </html>

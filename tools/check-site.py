@@ -8,13 +8,21 @@
 Why this exists: the site is plain HTML copied straight to GitHub Pages, so nothing
 stands between a typo and a broken page in production. These are the checks that
 matter for this repo specifically - the CSP in each page's <meta> blocks inline
-styles and inline scripts, product imagery is hot-linked from the store CDN, and
-every page carries its own duplicated head tags that have to stay in sync.
+styles and inline scripts, product imagery is hot-linked from the store CDN,
+every page carries its own duplicated head tags that have to stay in sync, and
+/assets/site.css is cached independently of the HTML, so it has to be versioned.
+
+The image checks exist because two specific mistakes were made here and are easy to
+make again: asking the store CDN for a fixed -w1280-h800 box (it crops, so a tile
+whose real ratio differs loses its caption or its button labels) and displaying a
+1280px-wide tile in a slot a fraction of that size (the type inside the screenshot
+ends up a few pixels tall). Both read as "the images are squashed".
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import pathlib
 import re
 import sys
@@ -29,10 +37,64 @@ REQUIRED_HEAD = {
     "description": re.compile(r'<meta name="description" content=".+?"'),
     "canonical": re.compile(r'<link rel="canonical" href="https://orcamatic\.com/'),
     "csp": re.compile(r'<meta http-equiv="Content-Security-Policy"'),
-    "stylesheet": re.compile(r'<link rel="stylesheet" href="/assets/site\.css">'),
+    "stylesheet": re.compile(r'<link rel="stylesheet" href="/assets/site\.css(\?v=[0-9a-f]{10})?">'),
     "title": re.compile(r'<title>[^<]{18,70}</title>'),
     "og:image": re.compile(r'<meta property="og:image" content="https://orcamatic\.com/assets/og-image\.jpg">'),
 }
+
+
+ASSET_LENGTH = 10
+
+
+def digest(path: pathlib.Path) -> str:
+    """The stamp tools/version-assets.py writes: the first 10 hex of the file's sha256.
+
+    Duplicated rather than imported on purpose - both tools have to run from a plain
+    checkout with nothing installed, and a shared module would be a third file to keep
+    in step. If you change one, change the other.
+    """
+    return hashlib.sha256(path.read_bytes()).hexdigest()[:ASSET_LENGTH]
+
+
+def check_asset_versions(files: list[pathlib.Path]) -> list[str]:
+    """An HTML/CSS mismatch is invisible in the source and obvious on the page.
+
+    Every file is cached on its own URL, so a deploy that lands while an edge or a
+    browser still holds the previous site.css paints new markup with old rules. A
+    ?v=<hash> on the reference makes the new build a new URL, which is the only
+    defence a static host has. These three checks keep the stamp honest.
+    """
+    problems: list[str] = []
+    versions = {}
+    for name in ("assets/site.css", "assets/site.js"):
+        path = ROOT / name
+        if not path.exists():
+            problems.append("%s is missing" % name)
+            continue
+        versions[name] = digest(path)
+
+    css = (ROOT / "assets" / "site.css").read_text() if (ROOT / "assets" / "site.css").exists() else ""
+    for match in re.finditer(r'url\("(/assets/[^"]+?)(\?v=[0-9a-f]{%d})?"\)' % ASSET_LENGTH, css):
+        if not match.group(2):
+            problems.append("assets/site.css: %s has no ?v= stamp (run tools/version-assets.py)" % match.group(1))
+        elif not (ROOT / match.group(1).lstrip("/")).exists():
+            problems.append("assets/site.css: %s has no file behind it" % match.group(1))
+
+    for f in files:
+        rel = f.relative_to(ROOT).as_posix()
+        html = f.read_text()
+        for pattern, key in ((r'<link rel="stylesheet" href="/assets/site\.css', "assets/site.css"),
+                             (r'<script src="/assets/site\.js', "assets/site.js")):
+            if key not in versions:
+                continue
+            want = versions[key]
+            found = re.search(pattern + r'(\?v=([0-9a-f]+))?"', html)
+            if not found:
+                problems.append("%s: no versioned reference to %s to check" % (rel, key))
+            elif found.group(2) != want:
+                problems.append("%s: %s is stamped %s, the file is %s - run tools/version-assets.py"
+                                % (rel, key, found.group(2) or "nothing", want))
+    return problems
 
 
 def pages() -> list[pathlib.Path]:
@@ -59,6 +121,8 @@ class Checker(HTMLParser):
         self.links: list[str] = []
         self.assets: list[str] = []
         self.remote_imgs: list[str] = []
+        self.imgs: list[dict] = []
+        self.preload_imgs: list[str] = []
         self.in_ldjson = False
         self.ldjson: list[str] = []
         self.inline_scripts: list[str] = []
@@ -92,8 +156,14 @@ class Checker(HTMLParser):
         src = a.get("src")
         if src:
             self.assets.append(src)
-        if tag == "img" and src.startswith("https://lh3.googleusercontent.com"):
-            self.remote_imgs.append(src)
+        if tag == "img":
+            src = src or ""
+            self.imgs.append({"src": src, "width": a.get("width") or "", "height": a.get("height") or "",
+                             "alt": a.get("alt")})
+            if src.startswith("https://lh3.googleusercontent.com"):
+                self.remote_imgs.append(src)
+        if tag == "link" and a.get("rel") == "preload" and a.get("as") == "image" and a.get("href"):
+            self.preload_imgs.append(a["href"])
 
     def handle_startendtag(self, tag, attrs):
         self.handle_starttag(tag, attrs)
@@ -184,20 +254,47 @@ def check_page(rel: str, html: str, parsed: Checker, defined_classes: set[str]) 
         if not href.startswith("/"):
             errors.append("root-relative URLs only, found %s" % href)
             continue
-        target = ROOT / href.lstrip("/").split("#")[0]
-        if not href.split("#")[0].endswith("/"):
-            target = ROOT / href.lstrip("/").split("#")[0]
+        target = ROOT / href.lstrip("/").split("#")[0].split("?")[0]
         if not (target.exists() or (target / "index.html").exists()):
             errors.append("internal link has no file: %s" % href)
     for src in parsed.assets:
         if src.startswith(("http://", "https://", "data:")):
             continue
-        if not (ROOT / src.lstrip("/")).exists():
+        if not (ROOT / src.lstrip("/").split("?")[0]).exists():
             errors.append("local asset missing: %s" % src)
 
+    # Store images are hot-linked, so a missing request is a visible hole in the
+    # page; and a URL that asks for a fixed box makes the CDN crop the tile.
+    for img in parsed.imgs:
+        if not img["src"]:
+            errors.append("<img> with no src")
+            continue
+        if not (img["width"] and img["height"]):
+            errors.append("<img> without width and height attributes paints over the "
+                          "layout while it loads: %s" % img["src"][-46:])
+        if img["alt"] is None:
+            errors.append("<img> with no alt attribute at all: %s" % img["src"][-46:])
     for src in parsed.remote_imgs:
-        if not re.search(r"=(s\d+|w\d+)(-[a-z0-9-]+)*$", src):
-            warnings.append("store image without a size suffix (add =s1280-w1280-h800): %s" % src[-40:])
+        suffix = src.split("=")[-1] if "=" in src.split("/")[-1] else ""
+        if re.search(r"-w\d+-h\d+", suffix):
+            errors.append("store image asks the CDN for a fixed box (=…-w1280-h800), which crops "
+                          "the tile to that ratio: %s" % src[-40:])
+        elif not re.search(r"^w\d{3,4}$", suffix):
+            errors.append("store image should ask for one width (=w<N>, the width it displays at x2): "
+                          "%s" % src[-40:])
+    for href in parsed.preload_imgs:
+        if href not in {img["src"] for img in parsed.imgs}:
+            errors.append("preloaded image is not used by an <img> on this page, so it is "
+                          "downloaded twice or wasted: %s" % href[-40:])
+
+    # A single-figure picture (class="shot": the hero, the product page) has to carry
+    # its own fallback note; a dead hot-link would otherwise leave a broken icon where
+    # the visual should be. Gallery tiles (.shots figure) are dropped by CSS instead.
+    for match in re.finditer(r'<figure[^>]*class="shot"[^>]*>([\s\S]*?)</figure>', html):
+        if "shot-fallback" not in match.group(1):
+            errors.append("figure.shot has no <p class=\"shot-fallback\"> to fall back on")
+        if "shot-frame" not in match.group(1):
+            errors.append("figure.shot has no .shot-frame, so nothing reserves its box")
 
     import json
     for blob in parsed.ldjson:
@@ -231,7 +328,8 @@ def main() -> int:
         return 1
 
     files = pages()
-    all_errors: list[str] = []
+    version_problems = check_asset_versions(files)
+    all_errors: list[str] = list(version_problems)
     all_warnings: list[str] = []
     clean = 0
 
