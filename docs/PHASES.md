@@ -15,6 +15,7 @@ afterwards. Anything illustrative on the site is labelled as illustrative on the
 - Removed every decorative eyebrow/kicker label site-wide.
 - Deleted fabricated product imagery; all product imagery is the real Chrome Web Store
   screenshot set, hot-linked from Google's CDN with a JS fallback if a URL ever dies.
+  *(Superseded by Phase 1d: the site now uses captioned, drawn illustrations instead.)*
 - Rewrote headline copy so it sells the product instead of arguing about asset provenance.
 - Rebuilt the Open Graph image (`tools/build-og-image.py`).
 
@@ -74,6 +75,22 @@ rows below are fixes; the last two are guards so the same failure cannot be sile
 | 1b.6 | A failed hot-link retries once, then falls back to a note *inside* the reserved frame; the duplicate listing link in the hero is gone | `assets/site.js`, `assets/site.css` |
 | 1b.7 | The checker now enforces all of it: stamp matches the file, `width`/`height`/`alt` on every `<img>`, no crop-box store URL, a preloaded image must be used, `figure.shot` must carry its fallback. CI runs `--strict` | `tools/check-site.py`, workflow |
 
+## Phase 1d — a simpler site with drawn graphics · owner: agent · **done 2026-10-15**
+
+Requested: take the Chrome Web Store images off the site, explain the product with graphics
+instead, and make the site simple and straightforward. This replaces the imagery rule from
+Phase 0 and the screenshot work in 1b.2, 1b.4 and 1b.6.
+
+| # | Shipped | Where |
+|---|---|---|
+| 1d.1 | All seven hot-linked store images removed (five on the homepage, one each on `/products/` and `/about/`) along with the hero preload. In their place, inline SVG illustrations: page → panel (hero), pick / set rules / let it run (one per step), data stays local (privacy band), AI drafts steps and you approve (`/products/`), readable rules that stop for a person (`/about/`). Each is captioned as an illustration and has a text alternative | `index.html`, `products/`, `about/` |
+| 1d.2 | Homepage cut from 16 blocks to 8: hero, how it works, what you can automate, features, privacy, pricing, FAQ, closing CTA. Removed: trust strip, problem block, animated demo, personas, screenshot showcase, proof cards, arithmetic block, templates band. The comparison table moved to `/products/` | `index.html` |
+| 1d.3 | Pricing cards on the homepage go straight to checkout; full details stay on `/pricing/` | `#pricing` on `index.html` |
+| 1d.4 | Primary nav down to How it works · Features · Templates · Pricing on all 20 pages (`/products/` stays in the footer) | `*.html` |
+| 1d.5 | `https://lh3.googleusercontent.com` dropped from every page's CSP (`img-src 'self'`); the screenshot retry and the arithmetic script deleted from `site.js`; about 110 unused CSS rules deleted | `*.html`, `assets/site.js`, `assets/site.css` |
+| 1d.6 | Checker: remote images and remote `img-src` hosts are errors, every inline `<svg>` needs `aria-hidden` or a label, the `figure.shot` and CDN-URL rules are gone | `tools/check-site.py` |
+| 1d.7 | `/products/` facts brought in line with the listing (v2.0.5, no file size that goes stale) | `products/index.html` |
+
 ## Phase 2 — the recording · owner: **you** · status: waiting
 
 This is the single highest-value item left, and it cannot be produced from the repo: it is
@@ -91,7 +108,7 @@ Spec, so one take is enough:
 
 Drop the files in `assets/` named `demo.webm` / `demo.mp4`, tell me, and I will wire the
 `<video autoplay muted loop playsinline poster>` block in with a `prefers-reduced-motion`
-gate and swap the animated panel to the still.
+gate, next to the drawn hero illustration.
 
 ## Phase 3 — store listing · owner: **you** · status: waiting
 
@@ -107,10 +124,9 @@ python3 tools/prepare-screenshots.py --extension path/to/unpacked/build --only p
 Reply to every review, including the short ones: rating count is a ranking input and the
 listing currently has zero reviews.
 
-The site still hot-links the listing's images from Google's CDN. Self-hosting them
-(`assets/screenshots/orca-1.png` … `orca-5.png`) is the change that removes the fallback path,
-the `img-src` exception in every page head, and the risk that a tile Google re-crops turns into a
-visual bug on this site. `tools/prepare-screenshots.py` produces them at the exact store sizes.
+The site no longer uses the listing's images at all (Phase 1d), so the store and the site can
+change their pictures independently. `tools/prepare-screenshots.py` is still the way to produce
+the store screenshots and promo tiles at the exact sizes the dashboard asks for.
 
 ## Phase 4 — decisions I should not make for you · owner: **you** · status: waiting
 
@@ -141,6 +157,7 @@ visual bug on this site. `tools/prepare-screenshots.py` produces them at the exa
 
 ## Deliberately not done
 
-No fabricated metrics, no stock logo wall, no AI-drawn UI mockups, no invented importable
+No fabricated metrics, no stock logo wall, no AI-drawn UI mockups (the illustrations are
+hand-built SVG schematics, captioned as illustrations), no invented importable
 profile files (templates are written recipes, because that is what is verifiable today), no
 countdown timers, no "limited spots left", no price anchoring against a fake enterprise plan.

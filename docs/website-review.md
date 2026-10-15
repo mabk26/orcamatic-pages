@@ -152,6 +152,9 @@ x1650.) A `figure { margin: 0 }` in the base layer now covers all three pages an
    the right thing for the store; they are the wrong thing for a product page. P0.1/P0.2 in the
    audit (a 30-45s film, and the screenshot as its poster) is still the biggest open item, and
    only a running extension can produce it.
+   *Resolved 2026-10-15: item 1, and the tile problem in item 2. The store images are off the
+   site entirely, replaced by drawn illustrations, and the CSP is back to `img-src 'self'` (see
+   Phase 1d in [`PHASES.md`](PHASES.md)). The film is still open.*
 3. **The listing has 0 ratings and 11 users.** Every "proof" block on this site is a schematic or
    a log sample. That is honest, and it is all we can publish without store access.
 

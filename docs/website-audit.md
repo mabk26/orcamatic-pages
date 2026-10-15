@@ -232,6 +232,7 @@ you use, set retries, delays and conditions, then run the workflow on demand or 
   Google's CDN: no WebP/AVIF, no `srcset`, a foreign origin on the critical path, and cache headers
   you don't control. Export at 1280/800/480 widths, `loading="lazy"` below the fold (done), hero
   preloaded (done this pass). Budget: LCP < 2.5s, CLS < 0.1, total page weight < 500 KB without video.
+  *Resolved 2026-10-15: the site no longer shows any store images; it uses inline SVG drawings.*
 - **P2.2 Mobile is a product decision, not a resize.** 58% of pricing-page traffic is mobile
   ([ref](https://influenceflow.io/resources/saas-pricing-page-best-practices-complete-guide-for-2026/)):
   stack tiers (done), turn `.shots` into a `scroll-snap` row, keep the CTA in the first 500px

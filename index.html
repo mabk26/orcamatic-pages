@@ -4,21 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10162a">
-    <meta name="description" content="ORCA is an intelligent auto-clicker for Chrome with a visual element picker, a smart rule engine and a built-in scheduler - no API, no code.">
+    <meta name="description" content="ORCA is a Chrome extension that repeats your browser work. Point at buttons and fields, set simple rules, and it clicks, types and copies — on demand or on schedule.">
     <link rel="canonical" href="https://orcamatic.com/">
     <link rel="icon" href="/assets/orca-icon.png" type="image/png">
     <link rel="manifest" href="/site.webmanifest">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://lh3.googleusercontent.com; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preconnect" href="https://lh3.googleusercontent.com">
-    <link rel="preload" as="image" fetchpriority="high" href="https://lh3.googleusercontent.com/QrHlgzzhqBOk0prLHq85g5AWVouwv44C9FUiyxrlEItJKF7K0zJ7nnavC7e0H7bG3433yyvhdY7oAVnCEsjAIhIVtg=w1024">
-    <link rel="stylesheet" href="/assets/site.css?v=621f1d5bf8">
+    <link rel="stylesheet" href="/assets/site.css?v=1dac00acc9">
     <title>Orcamatic — Browser automation that stays in your browser</title>
-      <meta property="og:site_name" content="Orcamatic">
+    <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Orcamatic — Browser automation that stays in your browser">
-    <meta property="og:description" content="ORCA is an intelligent auto-clicker for Chrome with a visual element picker, a smart rule engine and a built-in scheduler - no API, no code.">
+    <meta property="og:description" content="ORCA is a Chrome extension that repeats your browser work. Point at buttons and fields, set simple rules, and it clicks, types and copies — on demand or on schedule.">
     <meta property="og:url" content="https://orcamatic.com/">
     <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
     <meta property="og:image:width" content="1200">
@@ -26,7 +24,7 @@
     <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Orcamatic — Browser automation that stays in your browser">
-    <meta name="twitter:description" content="ORCA is an intelligent auto-clicker for Chrome with a visual element picker, a smart rule engine and a built-in scheduler - no API, no code.">
+    <meta name="twitter:description" content="ORCA is a Chrome extension that repeats your browser work. Point at buttons and fields, set simple rules, and it clicks, types and copies — on demand or on schedule.">
     <meta name="twitter:image" content="https://orcamatic.com/assets/og-image.jpg">
     <link rel="apple-touch-icon" href="/assets/icon-192.png">
     <script type="application/ld+json">{
@@ -43,67 +41,43 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is ORCA just an auto-clicker?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It starts there, and then adds structure. A plain auto-clicker replays fixed coordinates and breaks when a page moves. ORCA combines a visual element picker with a rule engine, so each step stores the target element plus logic: click and retry, wait for a condition, fill a field, extract data. Multi-step workflows can chain those actions across pages, pop-ups and web apps."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are features locked behind the plans?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Echo, Wave and Deep all include the same ORCA feature set: element picking, the rule engine, form submission, extraction and the scheduler. The tier only decides the size of your monthly AI dollar balance."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does it work on a site that has no API?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. ORCA reads and acts on the rendered page inside your own browser session, so a portal with no developer documentation is still automatable. It does not bypass logins, CAPTCHAs or verification gates, and automation must stay within the site's terms of use."
-      }
+      "name": "Do I need to know how to code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. You build a workflow by pointing at things on the page and choosing what should happen: click, type, wait, retry or extract. There are no scripts or selectors to write." }
     },
     {
       "@type": "Question",
       "name": "Does ORCA need an API key?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. You do not need to create or paste in a third-party API key. Saved workflows and routine browser actions run locally. If you choose an AI-assisted step, ORCA handles that through its own service and your plan’s monthly AI balance."
-      }
+      "acceptedAnswer": { "@type": "Answer", "text": "No. There is nothing to create or paste in. Rule-based and scheduled runs work locally in your browser. If you use an optional AI step, ORCA handles it through its own service and your plan’s monthly AI balance." }
     },
     {
       "@type": "Question",
-      "name": "Can it run a workflow on a schedule?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Save the workflow first, then use ORCA’s built-in task scheduler to run it on a recurring timer. It suits work such as routine checks, recurring form submissions, and data collection you would otherwise do every morning."
-      }
+      "name": "Can it run on a schedule?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Save a workflow, then use the built-in scheduler to run it at the times you choose, such as every morning, every Monday or at month-end." }
     },
     {
       "@type": "Question",
-      "name": "Will it bypass a login, CAPTCHA, or verification step?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. ORCA is not designed to bypass security controls. If a website requires a login, a CAPTCHA, two-factor authentication, or a confirmation that needs a person, you stay in control and complete that step yourself."
-      }
+      "name": "Does it work on sites that have no API?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. ORCA works on the page itself, inside the browser session you are already signed in to, so portals and admin tools with no integration can still be automated." }
     },
     {
       "@type": "Question",
-      "name": "Which browsers can I use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ORCA is built for Chrome and Chromium-based browsers, including Chrome, Edge, and Brave. Install it from the Chrome Web Store to get started."
-      }
+      "name": "Will it get past logins or CAPTCHAs?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. ORCA does not bypass logins, CAPTCHAs, two-factor checks or confirmations that need a person. You complete those steps yourself, and automation must stay within each site’s terms of use." }
     },
     {
       "@type": "Question",
-      "name": "Is it safe to give an extension access to the sites I use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Your workflow profiles, rules and run logs stay in your browser's local storage, and page content is only sent when you deliberately start an AI-assisted step. Payment details are handled by the checkout provider, and ORCA never asks you to script a login into a workflow. The permissions page lists each permission and what it is for."
-      }
+      "name": "Where is my data stored?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Your workflows, rules and run logs stay in your browser’s local storage. Page content is only sent when you deliberately start an AI-assisted step. The security page lists every permission ORCA asks for and why." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are any features locked behind a plan?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Every plan includes every feature. The plans only differ in the size of the monthly AI balance." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which browsers are supported?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Chrome and other Chromium-based browsers, such as Microsoft Edge and Brave." }
     }
   ]
 }</script>
@@ -117,29 +91,12 @@
           <img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt="">
           <span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span>
         </a>
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="/#how-it-works">How it works</a>
-          <a href="/#features">Features</a>
-          <a href="/templates/">Templates</a>
-          <a href="/products/">Product</a>
-          <a href="/pricing/">Pricing</a>
-          <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome <span aria-hidden="true">↗</span></a>
-        </nav>
+        <nav class="site-nav" aria-label="Primary navigation"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/">Templates</a><a href="/pricing/">Pricing</a><a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome</a></nav>
         <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-navigation" aria-label="Open navigation">
           <svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true"><path d="M1 1h18M1 8h18M1 15h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
-      <nav id="mobile-navigation" class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
-        <div class="container mobile-nav-inner">
-          <a href="/#how-it-works">How it works</a>
-          <a href="/#features">Features</a>
-          <a href="/templates/">Templates</a>
-          <a href="/products/">Product</a>
-          <a href="/pricing/">Pricing</a>
-          <a href="/privacy-policy/">Privacy</a>
-          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a>
-        </div>
-      </nav>
+      <nav id="mobile-navigation" class="mobile-nav" data-mobile-nav aria-label="Mobile navigation"><div class="container mobile-nav-inner"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/">Templates</a><a href="/pricing/">Pricing</a><a href="/privacy-policy/">Privacy</a><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome</a></div></nav>
     </header>
 
     <main id="main-content">
@@ -147,383 +104,397 @@
         <div class="container hero-grid">
           <div class="hero-copy" data-reveal>
             <h1 id="hero-title">Show it once.<br>Let it <em>run.</em></h1>
-            <p class="lead">ORCA is an intelligent auto-clicker for Chrome. Point at the buttons, fields and data you use every day, set the rules around them, and ORCA repeats the work for you — on demand, or on a schedule. No code, no API keys, no new dashboard to learn.</p>
+            <p class="lead">ORCA is a Chrome extension that takes over your repetitive browser work. Point at the buttons and fields you use, set a few simple rules, and ORCA does the clicking, typing and copying &mdash; whenever you want, or on a schedule.</p>
             <div class="btn-row">
-              <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a>
-              <a class="btn btn-secondary" href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a>
+              <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome &mdash; it&rsquo;s free</a>
+              <a class="btn btn-secondary" href="#how-it-works">See how it works</a>
             </div>
             <ul class="facts" aria-label="What ORCA needs from you">
-              <li>Zero coding</li>
-              <li>Visual element picker</li>
+              <li>No code</li>
+              <li>No API keys</li>
               <li>Runs in your browser</li>
-              <li>Free to install, <a href="/refund-policy/">7-day money-back guarantee</a></li>
             </ul>
           </div>
 
-          <figure class="shot" data-shot data-reveal>
-            <div class="shot-frame">
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener" aria-label="Open the ORCA listing on the Chrome Web Store">
-                <img src="https://lh3.googleusercontent.com/QrHlgzzhqBOk0prLHq85g5AWVouwv44C9FUiyxrlEItJKF7K0zJ7nnavC7e0H7bG3433yyvhdY7oAVnCEsjAIhIVtg=w1024" width="1280" height="800" alt="ORCA panel beside a stock dashboard: a saved &lsquo;Check inventory&rsquo; workflow set to every weekday at 09:00, its next run tomorrow at 09:00, and the last two activity lines marked complete." referrerpolicy="no-referrer" fetchpriority="high" decoding="async">
-              </a>
-              <p class="shot-fallback">The store preview did not load. The listing carries the same screenshots.</p>
-            </div>
-            <figcaption class="shot-meta">
-              <p>Stock-check workflow on a schedule, from the ORCA listing on the Chrome Web Store.</p>
-            </figcaption>
+          <figure class="hero-art" data-reveal>
+            <svg class="art" viewBox="0 0 540 420" width="540" height="420" role="img" aria-label="Illustration: a web form with four picked elements numbered 1 to 4, and the ORCA side panel listing the same four as steps. Three are done, the Submit click is running, and the workflow repeats every weekday at 9:00.">
+              <defs><clipPath id="hero-window"><rect x="6" y="6" width="528" height="400" rx="18"/></clipPath></defs>
+              <g clip-path="url(#hero-window)">
+                <rect x="6" y="6" width="528" height="400" fill="#fff"/>
+                <rect x="6" y="6" width="528" height="42" fill="#f3f4f9"/>
+                <path d="M6 48.5h528" stroke="#e3e7f2"/>
+                <circle cx="28" cy="27" r="5" fill="#f4b6ab"/><circle cx="45" cy="27" r="5" fill="#f6d68c"/><circle cx="62" cy="27" r="5" fill="#a5e0cb"/>
+                <rect x="84.5" y="16.5" width="250" height="21" rx="10.5" fill="#fff" stroke="#e1e5f0"/>
+                <rect x="100" y="24" width="96" height="6" rx="3" fill="#d6dbe8"/>
+                <circle cx="510" cy="27" r="12" fill="#fff" stroke="#6255e7" stroke-width="1.5"/>
+                <image href="/assets/orca-icon.png" x="500" y="17" width="20" height="20"/>
+
+                <rect x="30" y="72" width="126" height="12" rx="6" fill="#10162a"/>
+                <rect x="30" y="94" width="180" height="7" rx="3.5" fill="#dde2ee"/>
+
+                <rect x="30" y="122" width="54" height="6" rx="3" fill="#c3c9da"/>
+                <rect x="30.75" y="134.75" width="268.5" height="32.5" rx="8" fill="#fff" stroke="#8fd8c3" stroke-width="1.5"/>
+                <rect x="44" y="147" width="92" height="8" rx="4" fill="#4a5570"/>
+                <circle cx="299" cy="135" r="11" fill="#097a6a"/><text x="299" y="139.5" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">1</text>
+
+                <rect x="30" y="186" width="68" height="6" rx="3" fill="#c3c9da"/>
+                <rect x="30.75" y="198.75" width="268.5" height="32.5" rx="8" fill="#fff" stroke="#8fd8c3" stroke-width="1.5"/>
+                <rect x="44" y="211" width="122" height="8" rx="4" fill="#4a5570"/>
+                <circle cx="299" cy="199" r="11" fill="#097a6a"/><text x="299" y="203.5" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">2</text>
+
+                <rect x="30" y="250" width="44" height="6" rx="3" fill="#c3c9da"/>
+                <rect x="30.75" y="262.75" width="268.5" height="32.5" rx="8" fill="#fff" stroke="#8fd8c3" stroke-width="1.5"/>
+                <rect x="44" y="275" width="70" height="8" rx="4" fill="#4a5570"/>
+                <path d="M272 276l5 5 5-5" fill="none" stroke="#8a93aa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="299" cy="263" r="11" fill="#097a6a"/><text x="299" y="267.5" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">3</text>
+
+                <rect x="30" y="322" width="130" height="40" rx="10" fill="#6255e7"/>
+                <text x="88" y="347.5" text-anchor="middle" font-size="15" font-weight="650" fill="#fff">Submit</text>
+                <rect x="22" y="314" width="146" height="56" rx="13" fill="none" stroke="#6255e7" stroke-width="2" stroke-dasharray="6 5"/>
+                <rect x="18.5" y="310.5" width="7" height="7" rx="1.5" fill="#fff" stroke="#6255e7" stroke-width="1.5"/>
+                <rect x="18.5" y="366.5" width="7" height="7" rx="1.5" fill="#fff" stroke="#6255e7" stroke-width="1.5"/>
+                <rect x="164.5" y="366.5" width="7" height="7" rx="1.5" fill="#fff" stroke="#6255e7" stroke-width="1.5"/>
+                <circle cx="168" cy="314" r="11" fill="#6255e7"/><text x="168" y="318.5" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">4</text>
+                <circle class="art-ripple" cx="133" cy="345" r="9" fill="none" stroke="#ffffff" stroke-width="2"/>
+                <path d="M133 345v19.5l5.2-4.6 3.5 8 3.4-1.4-3.4-7.8h7z" fill="#10162a" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/>
+
+                <rect x="332" y="48" width="202" height="358" fill="#f8f9fe"/>
+                <path d="M332.5 48v358" stroke="#e3e7f2"/>
+                <image href="/assets/orca-icon.png" x="348" y="64" width="24" height="24"/>
+                <text class="art-serif" x="380" y="82.5" font-size="18" font-weight="650" fill="#10162a">ORCA</text>
+                <rect x="450" y="66" width="68" height="20" rx="10" fill="#c9f3e6"/>
+                <circle class="art-blink" cx="462" cy="76" r="3.5" fill="#097a6a"/>
+                <text x="470" y="80" font-size="10.5" font-weight="650" fill="#075e52">Running</text>
+                <path d="M348 102.5h170" stroke="#e6e9f3"/>
+                <text x="348" y="127" font-size="14.5" font-weight="700" fill="#10162a">Order entry</text>
+                <text x="348" y="144" font-size="11.5" fill="#7a849c">4 steps, saved in your browser</text>
+
+                <rect x="348.5" y="158.5" width="169" height="33" rx="9" fill="#fff" stroke="#e3e7f2"/>
+                <circle cx="366" cy="175" r="9.5" fill="#c9f3e6"/><text x="366" y="179" text-anchor="middle" font-size="11" font-weight="700" fill="#097a6a">1</text>
+                <text x="383" y="179.5" font-size="12.5" fill="#38435e">Type name</text>
+                <path d="M496 175.5l4 4 7.5-8" fill="none" stroke="#097a6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+                <rect x="348.5" y="200.5" width="169" height="33" rx="9" fill="#fff" stroke="#e3e7f2"/>
+                <circle cx="366" cy="217" r="9.5" fill="#c9f3e6"/><text x="366" y="221" text-anchor="middle" font-size="11" font-weight="700" fill="#097a6a">2</text>
+                <text x="383" y="221.5" font-size="12.5" fill="#38435e">Type email</text>
+                <path d="M496 217.5l4 4 7.5-8" fill="none" stroke="#097a6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+                <rect x="348.5" y="242.5" width="169" height="33" rx="9" fill="#fff" stroke="#e3e7f2"/>
+                <circle cx="366" cy="259" r="9.5" fill="#c9f3e6"/><text x="366" y="263" text-anchor="middle" font-size="11" font-weight="700" fill="#097a6a">3</text>
+                <text x="383" y="263.5" font-size="12.5" fill="#38435e">Choose plan</text>
+                <path d="M496 259.5l4 4 7.5-8" fill="none" stroke="#097a6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+                <rect x="348.75" y="284.75" width="168.5" height="32.5" rx="9" fill="#f4f2ff" stroke="#6255e7" stroke-width="1.5"/>
+                <circle cx="366" cy="301" r="9.5" fill="#6255e7"/><text x="366" y="305" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">4</text>
+                <text x="383" y="305.5" font-size="12.5" font-weight="650" fill="#10162a">Click Submit</text>
+                <circle cx="502" cy="301" r="6" fill="none" stroke="#d9d5fb" stroke-width="2"/>
+                <circle class="art-spin" cx="502" cy="301" r="6" fill="none" stroke="#6255e7" stroke-width="2" stroke-linecap="round" stroke-dasharray="11 27"/>
+
+                <rect x="348" y="334" width="170" height="6" rx="3" fill="#e4e7f1"/>
+                <rect x="348" y="334" width="128" height="6" rx="3" fill="#6255e7"/>
+                <rect x="348" y="356" width="170" height="32" rx="16" fill="#eeecff"/>
+                <circle cx="366" cy="372" r="7.5" fill="none" stroke="#4034b7" stroke-width="1.7"/>
+                <path d="M366 368v4.5l3 2" fill="none" stroke="#4034b7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="380" y="376.5" font-size="12" font-weight="650" fill="#4034b7">Every weekday &#183; 9:00</text>
+              </g>
+              <rect x="6.5" y="6.5" width="527" height="399" rx="17.5" fill="none" stroke="#d3d9e8"/>
+            </svg>
+            <figcaption>Illustration. Pick the steps on the page once; ORCA repeats them for you.</figcaption>
           </figure>
-        </div>
-      </section>
-
-      <section class="logo-strip" aria-label="Examples of browser work ORCA takes over">
-        <div class="container logo-strip-inner">
-          <p>One extension for the repetitive browser work that holds up your day.</p>
-          <div class="logo-strip-list"><span>Form filling</span><span>Repeated clicks</span><span>Data collection</span><span>Scheduled checks</span></div>
-        </div>
-      </section>
-
-      <section class="problem" aria-labelledby="problem-title">
-        <div class="container problem-inner">
-          <blockquote id="problem-title">The week goes on a page with <em>no integration</em>: a claims portal, a ticket queue, an admin console, a filing form.</blockquote>
-          <ul aria-label="Why this work stays manual">
-            <li><b>No API</b><div>Connector tools stop where the vendor stopped. Nobody can automate an endpoint that does not exist.</div></li>
-            <li><b>No budget</b><div>A desktop RPA licence plus a rollout project is not a conversation anyone has for one team&rsquo;s Monday task.</div></li>
-            <li><b>No patience</b><div>So it stays manual: the same twelve clicks, on a person who is already busy, forty times a week.</div></li>
-          </ul>
         </div>
       </section>
 
       <section class="section" id="how-it-works" aria-labelledby="how-title">
         <div class="container">
-          <div class="section-heading" data-reveal>
-            <h2 id="how-title">The repeatable part of the job belongs to ORCA.</h2>
-            <p>No flowchart, no script. You work on the live page, ORCA keeps the rules, and you stay in charge of every step it takes.</p>
+          <div class="section-heading centered" data-reveal>
+            <h2 id="how-title">How it works</h2>
+            <p>Three steps, no code. You do the task once with ORCA watching; after that, it&rsquo;s one click &mdash; or none.</p>
           </div>
-          <div class="steps-grid">
-            <article class="step-card" data-reveal>
-              <span class="step-number" aria-hidden="true">1</span>
-              <h3>Pick the elements that matter.</h3>
-              <p>The visual element picker lets you point at the exact button, field, link or block of data on the page in front of you. ORCA stores the target, so it survives ordinary layout changes better than a recorded macro.</p>
+          <ol class="how-grid">
+            <li class="how-card" data-reveal>
+              <div class="how-art">
+                <svg class="art" viewBox="0 0 360 200" width="360" height="200" aria-hidden="true">
+                  <rect x="44.5" y="22.5" width="271" height="155" rx="14" fill="#fff" stroke="#d9dcf3"/>
+                  <rect x="66" y="44" width="104" height="10" rx="5" fill="#10162a"/>
+                  <rect x="66" y="64" width="176" height="6" rx="3" fill="#dfe3ee"/>
+                  <rect x="66" y="78" width="138" height="6" rx="3" fill="#dfe3ee"/>
+                  <rect x="66.5" y="96.5" width="227" height="25" rx="7" fill="#fff" stroke="#dfe3ee"/>
+                  <rect x="78" y="106" width="70" height="6" rx="3" fill="#b9c0d3"/>
+                  <rect x="66" y="138" width="104" height="26" rx="8" fill="#6255e7"/>
+                  <text x="108" y="155.5" text-anchor="middle" font-size="13" font-weight="650" fill="#fff">Submit</text>
+                  <rect x="58" y="130" width="120" height="42" rx="11" fill="none" stroke="#6255e7" stroke-width="2" stroke-dasharray="5 4"/>
+                  <rect x="55" y="127" width="6" height="6" rx="1.5" fill="#fff" stroke="#6255e7" stroke-width="1.5"/>
+                  <rect x="175" y="127" width="6" height="6" rx="1.5" fill="#fff" stroke="#6255e7" stroke-width="1.5"/>
+                  <rect x="55" y="169" width="6" height="6" rx="1.5" fill="#fff" stroke="#6255e7" stroke-width="1.5"/>
+                  <rect x="175" y="169" width="6" height="6" rx="1.5" fill="#fff" stroke="#6255e7" stroke-width="1.5"/>
+                  <rect x="192" y="138" width="86" height="26" rx="13" fill="#10162a"/>
+                  <path d="M204 151l3.5 3.5 6.5-7" fill="none" stroke="#7ee8c6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="220" y="155.5" font-size="12.5" font-weight="650" fill="#fff">Picked</text>
+                  <path d="M146 151v18l4.8-4.3 3.3 7.4 3.1-1.3-3.2-7.2h6.5z" fill="#10162a" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="how-body">
+                <span class="step-number" aria-hidden="true">1</span>
+                <h3>Point at it</h3>
+                <p>Turn on the picker and click the buttons, fields and data you want ORCA to use. No code, no selectors.</p>
+              </div>
+            </li>
+            <li class="how-card" data-reveal>
+              <div class="how-art">
+                <svg class="art" viewBox="0 0 360 200" width="360" height="200" aria-hidden="true">
+                  <path d="M72 64v15M72 121v15" stroke="#b5aef3" stroke-width="2" stroke-dasharray="3 3"/>
+                  <rect x="44.5" y="22.5" width="271" height="41" rx="12" fill="#fff" stroke="#e1ddd0"/>
+                  <circle cx="72" cy="43" r="13" fill="#c9f3e6"/>
+                  <path d="M67.5 37h9M67.5 49h9M68.5 37c0 4 7 4 7 6s-7 2-7 6M75.5 37c0 4-7 4-7 6s7 2 7 6" fill="none" stroke="#097a6a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="96" y="48" font-size="14"><tspan font-weight="700" fill="#10162a">Wait</tspan><tspan fill="#5d667d"> until it appears</tspan></text>
+                  <rect x="44.5" y="79.5" width="271" height="41" rx="12" fill="#fff" stroke="#6255e7" stroke-width="1.5"/>
+                  <circle cx="72" cy="100" r="13" fill="#6255e7"/>
+                  <path d="M68 93.5v12l3.3-3 2.3 5.2 2.2-1-2.2-5h4.6z" fill="#fff"/>
+                  <text x="96" y="105" font-size="14"><tspan font-weight="700" fill="#10162a">Click</tspan><tspan fill="#5d667d"> Submit</tspan></text>
+                  <rect x="44.5" y="136.5" width="271" height="41" rx="12" fill="#fff" stroke="#e1ddd0"/>
+                  <circle cx="72" cy="157" r="13" fill="#ffd9c9"/>
+                  <path d="M77.5 154.5a6 6 0 1 0-1 5.5M77.5 149.5v5h-5" fill="none" stroke="#b4512e" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="96" y="162" font-size="14"><tspan font-weight="700" fill="#10162a">Retry</tspan><tspan fill="#5d667d"> up to 3 times</tspan></text>
+                </svg>
+              </div>
+              <div class="how-body">
+                <span class="step-number" aria-hidden="true">2</span>
+                <h3>Set the rules</h3>
+                <p>Choose what happens at each step: click, type, wait, retry, check a condition or copy the data out.</p>
+              </div>
+            </li>
+            <li class="how-card" data-reveal>
+              <div class="how-art">
+                <svg class="art" viewBox="0 0 360 200" width="360" height="200" aria-hidden="true">
+                  <rect x="44.5" y="18.5" width="271" height="163" rx="14" fill="#fff" stroke="#b7e6d6"/>
+                  <circle cx="72" cy="46" r="12" fill="#eeecff"/>
+                  <circle cx="72" cy="46" r="7.5" fill="none" stroke="#4034b7" stroke-width="1.7"/>
+                  <path d="M72 42v4.5l3 2" fill="none" stroke="#4034b7" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="94" y="51" font-size="14" font-weight="700" fill="#10162a">Every weekday &#183; 9:00</text>
+                  <circle cx="84" cy="94" r="16" fill="#097a6a"/><path d="M77.5 94.5l4.5 4.5 8-9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="132" cy="94" r="16" fill="#097a6a"/><path d="M125.5 94.5l4.5 4.5 8-9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="180" cy="94" r="16" fill="#097a6a"/><path d="M173.5 94.5l4.5 4.5 8-9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="228" cy="94" r="16" fill="#097a6a"/><path d="M221.5 94.5l4.5 4.5 8-9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="276" cy="94" r="15.25" fill="#f4f2ff" stroke="#6255e7" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M272 87.5v13l10-6.5z" fill="#6255e7"/>
+                  <text x="84" y="126" text-anchor="middle" font-size="11" fill="#7a849c">Mon</text>
+                  <text x="132" y="126" text-anchor="middle" font-size="11" fill="#7a849c">Tue</text>
+                  <text x="180" y="126" text-anchor="middle" font-size="11" fill="#7a849c">Wed</text>
+                  <text x="228" y="126" text-anchor="middle" font-size="11" fill="#7a849c">Thu</text>
+                  <text x="276" y="126" text-anchor="middle" font-size="11" font-weight="700" fill="#4034b7">Fri</text>
+                  <rect x="62" y="142" width="236" height="26" rx="8" fill="#effaf6"/>
+                  <circle cx="78" cy="155" r="7" fill="#c9f3e6"/>
+                  <path d="M74.8 155.2l2.2 2.2 4-4.4" fill="none" stroke="#097a6a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="93" y="159.5" font-size="12" fill="#38435e">Last run: 4 steps done in 3.2s</text>
+                </svg>
+              </div>
+              <div class="how-body">
+                <span class="step-number" aria-hidden="true">3</span>
+                <h3>Let it run</h3>
+                <p>Run it with one click, or put it on a schedule. The live log shows every step as it happens.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section plan-section" aria-labelledby="uses-title">
+        <div class="container">
+          <div class="section-heading centered" data-reveal>
+            <h2 id="uses-title">What can you automate?</h2>
+            <p>Most repetitive work in a browser tab looks like one of these.</p>
+          </div>
+          <div class="use-grid">
+            <article class="use-card" data-reveal>
+              <span class="icon icon-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><rect x="6.5" y="8" width="11" height="3" rx="1"/><rect x="6.5" y="13.5" width="7" height="3" rx="1"/></svg></span>
+              <h3>Form filling</h3>
+              <p>Type the same kind of details into a web form or portal again and again? ORCA fills it in and submits it.</p>
+              <a href="/templates/fill-portal-form-from-sheet/">Form-filling template</a>
             </article>
-            <article class="step-card" data-reveal>
-              <span class="step-number" aria-hidden="true">2</span>
-              <h3>Set the rules around each step.</h3>
-              <p>Click and retry, dynamic delays, condition checks, dropdown selections, form submits, data extraction. Chain them into a multi-step workflow, and add optional AI reasoning only where a step needs judgement.</p>
+            <article class="use-card" data-reveal>
+              <span class="icon icon-mint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M3 14.75h18M9.5 9.5V20"/></svg></span>
+              <h3>Data collection</h3>
+              <p>Copy names, prices or records from a page into the fields you choose, row after row.</p>
+              <a href="/templates/extract-list-to-sheet/">List-extraction template</a>
             </article>
-            <article class="step-card" data-reveal>
-              <span class="step-number" aria-hidden="true">3</span>
-              <h3>Run it now, or put it on a timer.</h3>
-              <p>Start a saved workflow from the side panel when you need it, or let the built-in scheduler run the recurring ones. Live execution tracking shows what happened, step by step.</p>
+            <article class="use-card" data-reveal>
+              <span class="icon icon-peach" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M10 10l4.2 10.5 1.7-4.6 4.6-1.7z"/><path d="M5.2 5.2l1.8 1.8M10 3v2.5M3 10h2.5M14.5 5l-1.6 1.6M5 14.5l1.6-1.6"/></svg></span>
+              <h3>Repeated clicks</h3>
+              <p>Approve, refresh, open, confirm &mdash; the same clicks you make every day, done for you.</p>
+              <a href="/guides/first-workflow/">Build your first workflow</a>
+            </article>
+            <article class="use-card" data-reveal>
+              <span class="icon icon-yellow" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4M9 15.2l2 2 4-4.2"/></svg></span>
+              <h3>Scheduled checks</h3>
+              <p>Open a page every morning, check what changed and write it down &mdash; on a timer, without you.</p>
+              <a href="/templates/daily-scheduled-check/">Scheduled-check template</a>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section-tight" aria-labelledby="demo-title">
+      <section class="section" id="features" aria-labelledby="features-title">
         <div class="container">
-          <div class="section-heading" data-reveal>
-            <h2 id="demo-title">Watch a run, end to end.</h2>
-            <p>Pick a field, add the logic, run it. ORCA works through the steps, retries when the page is slow, and writes a line for each one.</p>
-          </div>
-          <div class="demo demo-running" data-reveal aria-label="Schematic animation of an ORCA run: four fields filled in, five log lines written, progress bar completing">
-            <div class="demo-top"><b>Refund intake &middot; step 4 of 5</b><p>Schematic drawn in CSS, not a recording</p><p class="demo-tag">loops</p></div>
-            <div class="demo-body">
-              <div class="demo-page">
-                <p class="demo-field">Claimant name <span>A. Whitfield</span></p>
-                <p class="demo-field">Order reference <span>RC-48219</span></p>
-                <p class="demo-field is-picked">Reason for refund <span>Damaged in transit</span></p>
-                <p class="demo-field">Attach photo <span>transit.jpg</span></p>
-              </div>
-              <div class="demo-log" aria-hidden="true">
-                <p><i>&#10003;</i> 0.0s picked #refund-reason</p>
-                <p><i>&#10003;</i> 0.4s typed 18 characters</p>
-                <p><i>&#10003;</i> 1.1s uploaded transit.jpg</p>
-                <p class="warn"><i>&#8635;</i> 1.9s submit disabled, retry 1 of 3</p>
-                <p><i>&#10003;</i> 3.2s case RC-48219 written to log</p>
-              </div>
-            </div>
-            <div class="demo-progress"><p>Live execution tracking</p><span class="demo-bar"><span></span></span><code>3.2s</code></div>
-          </div>
-          <p class="cta-note">A real run writes its own timings, retries and extracted values into the same log, and you can read it after every run.</p>
-        </div>
-      </section>
-
-      <section class="section plan-section" id="features" aria-labelledby="features-title">
-        <div class="container">
-          <div class="section-heading" data-reveal>
-            <h2 id="features-title">What is inside the panel.</h2>
-            <p>Seven working parts, each optional. Most people start with the picker and one rule, then add the rest when a real task asks for it.</p>
+          <div class="section-heading centered" data-reveal>
+            <h2 id="features-title">Everything in one small extension</h2>
+            <p>Start with the picker and one rule. Add the rest when a task needs it.</p>
           </div>
           <div class="feature-grid" data-reveal>
-            <article class="feature"><h3>Visual element picker</h3><p>Point and click to select the exact buttons, forms and data you want automated — no selectors to write by hand.</p></article>
-            <article class="feature"><h3>Smart rule engine</h3><p>Custom logic per step: click and retry, dynamic delays, and condition-based execution that waits for the page.</p></article>
-            <article class="feature"><h3>AI visual planner</h3><p>For a screen a fixed rule cannot read, let AI interpret the page state and draft the playbook of steps for you.</p></article>
-            <article class="feature"><h3>Form auto-submitter</h3><p>Fill tedious inputs, choose the right dropdown values and submit the same form again without touching it.</p></article>
-            <article class="feature"><h3>Multi-step workflows</h3><p>Chain actions across pages, pop-ups and web apps so one run covers the whole task, not one click.</p></article>
-            <article class="feature"><h3>Built-in task scheduler</h3><p>Run the workflows you rely on on a reliable timer, exactly when you need them — mornings, Mondays, month-ends.</p></article>
+            <article class="feature">
+              <span class="icon icon-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2.5V5M12 19v2.5M2.5 12H5M19 12h2.5"/></svg></span>
+              <h3>Visual element picker</h3>
+              <p>Point and click to choose buttons, fields and data. No selectors to write.</p>
+            </article>
+            <article class="feature">
+              <span class="icon icon-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="5.5" r="2.5"/><circle cx="6" cy="18.5" r="2.5"/><circle cx="18" cy="12" r="2.5"/><path d="M6 8v8M8.2 6.7c4 1 7 2.6 7.6 4.1"/></svg></span>
+              <h3>Smart rule engine</h3>
+              <p>Click and retry, smart waits and conditions, so a slow page doesn&rsquo;t break the run.</p>
+            </article>
+            <article class="feature">
+              <span class="icon icon-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 3L10.5 13.5"/><path d="M21 3l-6.5 18-4-7.5L3 9.5z"/></svg></span>
+              <h3>Form auto-submitter</h3>
+              <p>Fill inputs, choose dropdown options and submit forms for you.</p>
+            </article>
+            <article class="feature">
+              <span class="icon icon-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3.5" width="7" height="6" rx="1.5"/><rect x="14" y="14.5" width="7" height="6" rx="1.5"/><path d="M6.5 9.5v3a2 2 0 0 0 2 2H14"/></svg></span>
+              <h3>Multi-step workflows</h3>
+              <p>Chain steps across pages, pop-ups and web apps in a single run.</p>
+            </article>
+            <article class="feature">
+              <span class="icon icon-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span>
+              <h3>Built-in scheduler</h3>
+              <p>Run workflows on a timer: every morning, every Monday, every month-end.</p>
+            </article>
+            <article class="feature">
+              <span class="icon icon-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 3.5l1.9 4.6 4.6 1.9-4.6 1.9L11 16.5l-1.9-4.6L4.5 10l4.6-1.9z"/><path d="M18 14.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/></svg></span>
+              <h3>AI visual planner</h3>
+              <p>Optional. For tricky pages, let AI read the screen and draft the steps for you.</p>
+            </article>
           </div>
         </div>
       </section>
 
-      <section class="section plan-section" aria-labelledby="personas-title">
-        <div class="container">
-          <div class="section-heading" data-reveal>
-            <h2 id="personas-title">Built for named jobs, not a category.</h2>
-            <p>Four places where this pays for itself in the first week, because the task already sits on a schedule you have.</p>
-          </div>
-          <div class="persona-grid" data-reveal>
-            <article class="persona"><h3>Back office &amp; ops</h3><p>Rows from a spreadsheet re-entered into a portal, or a provider&rsquo;s queue pulled into your own tracker each morning.</p><a href="/templates/fill-portal-form-from-sheet/">Portal form filling &rarr;</a></article>
-            <article class="persona"><h3>Support &amp; CS</h3><p>Lift the ticket&rsquo;s details into the CRM, tag the account, log the action, without three tab switches each time.</p><a href="/templates/extract-list-to-sheet/">Queue extraction &rarr;</a></article>
-            <article class="persona"><h3>Recruiting &amp; research</h3><p>Collect a list of records &mdash; roles, listings, results &mdash; into the exact fields you chose, then clean it once.</p><a href="/templates/extract-list-to-sheet/">List extraction &rarr;</a></article>
-            <article class="persona"><h3>Ops of one</h3><p>The recurring admin nobody else owns: renewals, filings, invoices to upload, the Monday 08:00 sweep.</p><a href="/templates/daily-scheduled-check/">Scheduled checks &rarr;</a></article>
-          </div>
-          <p class="cta-note">Each of these has a written-out workflow template to copy: <a href="/templates/">open the template library</a>.</p>
-        </div>
-      </section>
-
-      <section class="section" id="showcase" aria-labelledby="showcase-title">
-        <div class="container">
-          <div class="section-heading" data-reveal>
-            <h2 id="showcase-title">It works on the sites that have no API.</h2>
-            <p>Connector-based automation stops at whatever each vendor decides to expose. ORCA works on the page in front of you instead: it clicks, types, waits and reads the same screen you do, in the account you are already signed in to. That is what makes a client portal, an insurer&rsquo;s back office or a public-sector form automatable.</p>
-          </div>
-          <div class="shots" data-reveal>
-            <figure data-shot>
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener" aria-label="Open the ORCA listing on the Chrome Web Store">
-                <img src="https://lh3.googleusercontent.com/hkmfXfY6EFRogY5UlTzml7w5mEfnAFiHr00SKZfvGk-Ca_PwxP-yFR7BZa7SKQa9xQRXmkaUlx0nuorUSrl3eioBL18=w1152" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="A shop page open in Chrome with the ORCA panel docked at the right. The panel holds the task &lsquo;Find a 4-star wireless keyboard under $80 and open the best match&rsquo; above three finished steps: page scanned, 18 grounded controls; options compared, price and rating verified; best match opened, Studio Keys.">
-              </a>
-              <figcaption><b>Running on a live page</b>Eighteen controls read from the open tab, options compared on price and rating, the best match opened.</figcaption>
-            </figure>
-            <figure data-shot>
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener" aria-label="Open the ORCA listing on the Chrome Web Store">
-                <img src="https://lh3.googleusercontent.com/XSMAc4ijP_436F4i8hUMv1J0SFXx8Q7UX2xQ7dVDqecgRHsRiLw0ASYmxDmBPm2o6OYmA6vqwCfWZhUFm832N6rdF1I=w1152" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="A job board with three Python roles listed and the first one outlined as the selected target. The ORCA panel shows search completed, role selected, and a final step waiting on a person: ready to submit, human confirmation required, with Confirm and Review first buttons.">
-              </a>
-              <figcaption><b>Planned from plain English</b>Targets come from the page, never invented &mdash; and the last step waits for you to confirm.</figcaption>
-            </figure>
-            <figure data-shot>
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener" aria-label="Open the ORCA listing on the Chrome Web Store">
-                <img src="https://lh3.googleusercontent.com/tOTdxj5iL85ZCLS3MjcsxG1DnsnChvFctq0yNT6WHPjYjQqRoQ7ZgSQDrBqpOPLaEl5vEc77TpJkYFMhPlAEaZ9Y8w=w1152" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="An onboarding form being filled step by step, each field tagged 1 to 3, beside the ORCA rule builder listing: if work email is visible, then type saved email, then click &lsquo;Create account&rsquo;, then stop and notify me.">
-              </a>
-              <figcaption><b>Built as rules, not a recording</b>Conditions, actions and a stop-and-notify outcome you can read as plainly as the form itself.</figcaption>
-            </figure>
-            <figure data-shot>
-              <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener" aria-label="Open the ORCA listing on the Chrome Web Store">
-                <img src="https://lh3.googleusercontent.com/F8ms2MgqdvcXoJS-zjZvYk1pl9mZ_5UOVF9FQRJR_u4nLQLf-D-NqzQr6NCstnj6KvHVwKkXxm0jISjeWX-9BuD0YA=w1152" width="1280" height="800" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="A CRM lead list with one row highlighted mid-run, next to the ORCA panel recording the pass: open lead, set status, add note, save record, and a button to save the run as a reusable workflow.">
-              </a>
-              <figcaption><b>Recorded once, then reused</b>Four steps captured from a pass through the list, saved as the workflow you run next Monday.</figcaption>
-            </figure>
-          </div>
-          <div class="shot-meta">
-            <p>Every image above is a real screenshot from the ORCA listing on the Chrome Web Store &middot; v2.0.2, updated 3 August 2026 &middot; 2.86 MiB &middot; Chrome, Edge &amp; Brave.</p>
-            <a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Open the listing ↗</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-tight" aria-labelledby="proof-title">
-        <div class="container">
-          <div class="section-heading" data-reveal>
-            <h2 id="proof-title">What a finished run leaves behind.</h2>
-            <p>Not a promise about time saved &mdash; the actual artefacts of one run: the log it wrote and the rows it collected. Example data, same shape you get.</p>
-          </div>
-          <div class="proof-grid" data-reveal>
-            <div class="proof-card">
-              <header><p>Run log &middot; extract-list-to-sheet</p><span>example data</span></header>
-<pre><i>12:04:01</i>  workflow  <b>Vendor claims sweep</b>  queued
-<i>12:04:02</i>  navigate  <b>portal.example.test/claims</b>  ok
-<i>12:04:05</i>  condition <b>rows &gt; 0</b>  true (14 found)
-<i>12:04:05</i>  extract   field: reference  <b>14/14</b>
-<i>12:04:06</i>  extract   field: status     <b>14/14</b>
-<i>12:04:06</i>  extract   field: uploaded   <b>11/14</b>  <i>3 empty, kept</i>
-<i>12:04:07</i>  retry     row 9 selector moved  <b>re-found</b>
-<i>12:04:08</i>  write     14 rows to <b>claims.csv</b>
-<i>12:04:08</i>  done      14 rows &middot; 7.1s &middot; 0 failures</pre>
-            </div>
-            <div class="proof-card">
-              <header><p>Extracted rows &middot; same run</p><span>example data</span></header>
-              <table>
-                <thead><tr><th scope="col">Reference</th><th scope="col">Status</th><th scope="col">Upload</th></tr></thead>
-                <tbody>
-                  <tr><td>RC-48219</td><td>Awaiting photo</td><td>&mdash;</td></tr>
-                  <tr><td>RC-48220</td><td>In review</td><td>transit.jpg</td></tr>
-                  <tr><td>RC-48231</td><td>Awaiting photo</td><td>&mdash;</td></tr>
-                  <tr><td>RC-48244</td><td>Approved</td><td>signed.pdf</td></tr>
-                  <tr><td>RC-48251</td><td>In review</td><td>box-damage.jpg</td></tr>
-                </tbody>
-              </table>
-              <p class="card-note">Exports go to a local file, or into whatever sheet or CRM the page itself offers. Nothing is posted anywhere you did not script.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" aria-labelledby="compare-title">
-        <div class="container">
-          <div class="section-heading" data-reveal>
-            <h2 id="compare-title">Where ORCA sits.</h2>
-            <p>Four ways people deal with a web app that has no integration. Only one of them is a Chrome extension you already know how to use.</p>
-          </div>
-          <div class="table-wrap" data-reveal>
-            <table class="compare">
-              <caption>Honest differences, not a feature count. Anything marked &ldquo;partly&rdquo; has a catch you should read about before you rely on it.</caption>
-              <thead>
-                <tr>
-                  <th scope="col">&nbsp;</th>
-                  <th scope="col" class="hl">ORCA</th>
-                  <th scope="col">Auto-clicker / macro recorder</th>
-                  <th scope="col">API connectors (Zapier, Make)</th>
-                  <th scope="col">Desktop RPA</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">Works on a page with no API</th><td class="hl"><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="no">No</span></td><td><span class="yes">Yes</span></td></tr>
-                <tr><th scope="row">Survives a layout change</th><td><span class="part">Partly</span> &mdash; re-locates the stored target, retries with conditions</td><td><span class="no">No</span> &mdash; replays fixed positions</td><td><span class="yes">Yes</span> &mdash; the API does not move</td><td><span class="part">Partly</span> &mdash; if you wrote recovery logic</td></tr>
-                <tr><th scope="row">Waits, retries and branches on page state</th><td class="hl"><span class="yes">Yes</span></td><td><span class="no">No</span></td><td><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td></tr>
-                <tr><th scope="row">Runs in the session you are signed in to</th><td class="hl"><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="no">No</span> &mdash; needs tokens per app</td><td><span class="part">Partly</span></td></tr>
-                <tr><th scope="row">Written without code</th><td class="hl"><span class="yes">Yes</span></td><td><span class="yes">Yes</span></td><td><span class="part">Partly</span> &mdash; visual, but account wiring</td><td><span class="no">No</span> &mdash; usually scripting</td></tr>
-                <tr><th scope="row">Recurring runs without you</th><td class="hl"><span class="yes">Built-in scheduler</span></td><td><span class="no">No</span></td><td><span class="yes">Yes</span></td><td><span class="part">Needs an orchestrator</span></td></tr>
-                <tr><th scope="row">Where your workflow data lives</th><td class="hl">Your browser storage</td><td>Usually the tool&rsquo;s cloud</td><td>Connector cloud + app tokens</td><td>Machine or server licence</td></tr>
-                <tr><th scope="row">Cost to start</th><td class="hl">Free install; paid AI balance from $12</td><td>Free to a few dollars</td><td>Per-task credits, monthly</td><td>Per-seat licence</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      <section class="section plan-section" aria-labelledby="roi-title">
-        <div class="container">
-          <div class="section-heading" data-reveal>
-            <h2 id="roi-title">Do the arithmetic on your own week.</h2>
-            <p>Any site can promise eleven hours a week. This block only multiplies what you type into it, so the number is yours &mdash; and it subtracts the checking time you still spend.</p>
-          </div>
-          <div class="roi-grid" data-roi data-reveal>
-            <div class="roi-fields">
-              <div class="roi-field">
-                <label for="roi-minutes">Minutes per run, done by hand</label>
-                <input id="roi-minutes" type="number" min="0" max="600" step="1" value="18" inputmode="numeric">
-              </div>
-              <div class="roi-field">
-                <label for="roi-runs">Runs per week</label>
-                <input id="roi-runs" type="number" min="0" max="3000" step="1" value="12" inputmode="numeric">
-              </div>
-              <div class="roi-field">
-                <label for="roi-check">Minutes you still spend reading the log</label>
-                <input id="roi-check" type="number" min="0" max="120" step="1" value="2" inputmode="numeric">
-              </div>
-            </div>
-            <div class="roi-out" role="status" aria-live="polite">
-              <b data-roi-hours>14</b>
-              <p class="roi-unit">hours a month handed back</p>
-              <p class="roi-detail" data-roi-detail>&middot; 52 runs a month; 16 minutes of each one is off your hands</p>
-              <p class="cta-note">Set the middle field to the real frequency, not the wishful one &mdash; a run every two weeks is 0.5 a week. Rule-based and scheduled runs cost the same on every plan, because they never draw on the AI balance.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-tight" aria-labelledby="tpl-band-title">
-        <div class="container">
-          <div class="band-cta" data-reveal>
-            <div>
-              <h2 id="tpl-band-title">Take a template instead of a blank panel.</h2>
-              <p>Each template writes out the targets, the rules and the checks, so your first workflow starts from something that already works.</p>
-            </div>
-            <a class="btn btn-primary" href="/templates/">Browse templates <span aria-hidden="true">&rarr;</span></a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section privacy-band" id="privacy" aria-labelledby="privacy-title">
+      <section class="section privacy-band" aria-labelledby="privacy-title">
         <div class="container privacy-grid">
           <div data-reveal>
-            <h2 id="privacy-title">Your browser is still <em>your space.</em></h2>
-            <p class="privacy-copy">ORCA runs your workflows inside the browser, where the page is already open. Saved profiles, rules and run history stay on your machine instead of becoming another account on a remote dashboard, and the optional AI engine only receives the page context needed for the step you asked it to reason about.</p>
+            <h2 id="privacy-title">Your workflows stay in <em>your browser.</em></h2>
+            <p class="privacy-copy">ORCA runs inside Chrome on your computer. Saved workflows, rules and run history are stored there, not on our servers. The optional AI planner only sees the page details for the step you ask it to help with.</p>
+            <p class="privacy-link"><a href="/security/">Every permission, and why ORCA needs it</a></p>
           </div>
-          <div class="local-card" role="note" aria-label="Local-first browser automation" data-reveal>
-            <h3>Built to keep the important context close.</h3>
-            <div class="local-stats">
-              <div class="local-stat"><p>Saved workflows &amp; profiles</p><b>Browser storage</b></div>
-              <div class="local-stat"><p>Scheduled and rule-based runs</p><b>Executed locally</b></div>
-              <div class="local-stat"><p>Optional AI planning</p><b>Only when used</b></div>
-            </div>
-            <p class="cta-note cta-note-inline"><a href="/security/">Permissions, data flow and what we never collect &rarr;</a></p>
-          </div>
+          <figure class="privacy-art" data-reveal>
+            <svg class="art" viewBox="0 0 460 330" width="460" height="330" role="img" aria-label="Diagram: saved workflows, rules and run history sit inside your browser on your computer. A dashed line leads to an optional AI step, used only when you ask.">
+              <rect x="10.5" y="10.5" width="289" height="309" rx="18" fill="#18213f" stroke="#34416c"/>
+              <path d="M11 29a18 18 0 0 1 18-18h252a18 18 0 0 1 18 18v17H11z" fill="#202b50"/>
+              <circle cx="32" cy="29" r="4.5" fill="#4a5680"/><circle cx="47" cy="29" r="4.5" fill="#4a5680"/><circle cx="62" cy="29" r="4.5" fill="#4a5680"/>
+              <text x="30" y="78" font-size="13" font-weight="650" fill="#a9b3d3">Your browser, on your computer</text>
+
+              <rect x="30.5" y="94.5" width="249" height="47" rx="12" fill="#212d55" stroke="#34416c"/>
+              <circle cx="56" cy="118" r="14" fill="#c9f3e6" fill-opacity="0.14"/>
+              <path d="M50 113h12M50 118h12M50 123h7" fill="none" stroke="#7ee8c6" stroke-width="1.7" stroke-linecap="round"/>
+              <text x="80" y="122.5" font-size="13.5" font-weight="650" fill="#f3f5fc">Saved workflows</text>
+              <rect x="249" y="114" width="12" height="9" rx="2" fill="#7ee8c6"/><path d="M251.5 114v-2.5a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="#7ee8c6" stroke-width="1.6"/>
+
+              <rect x="30.5" y="152.5" width="249" height="47" rx="12" fill="#212d55" stroke="#34416c"/>
+              <circle cx="56" cy="176" r="14" fill="#c9f3e6" fill-opacity="0.14"/>
+              <path d="M49.5 171.5h4M58.5 171.5h4M49.5 180.5h8M62.5 180.5h0" fill="none" stroke="#7ee8c6" stroke-width="1.7" stroke-linecap="round"/>
+              <circle cx="56" cy="171.5" r="2.2" fill="none" stroke="#7ee8c6" stroke-width="1.6"/><circle cx="60" cy="180.5" r="2.2" fill="none" stroke="#7ee8c6" stroke-width="1.6"/>
+              <text x="80" y="180.5" font-size="13.5" font-weight="650" fill="#f3f5fc">Rules and settings</text>
+              <rect x="249" y="172" width="12" height="9" rx="2" fill="#7ee8c6"/><path d="M251.5 172v-2.5a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="#7ee8c6" stroke-width="1.6"/>
+
+              <rect x="30.5" y="210.5" width="249" height="47" rx="12" fill="#212d55" stroke="#34416c"/>
+              <circle cx="56" cy="234" r="14" fill="#c9f3e6" fill-opacity="0.14"/>
+              <path d="M50 229.5l2 2 3-3.2M50 237.5l2 2 3-3.2M58 230.5h5M58 238.5h5" fill="none" stroke="#7ee8c6" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="80" y="238.5" font-size="13.5" font-weight="650" fill="#f3f5fc">Run history</text>
+              <rect x="249" y="230" width="12" height="9" rx="2" fill="#7ee8c6"/><path d="M251.5 230v-2.5a3.5 3.5 0 0 1 7 0v2.5" fill="none" stroke="#7ee8c6" stroke-width="1.6"/>
+
+              <rect x="30" y="276" width="250" height="26" rx="13" fill="#c9f3e6" fill-opacity="0.12"/>
+              <path d="M44 289.5l3 3 6-6.5" fill="none" stroke="#7ee8c6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="60" y="293.5" font-size="12" font-weight="650" fill="#c9f3e6">Stored locally, not on our servers</text>
+
+              <path d="M300 165h58" stroke="#a59cff" stroke-width="1.8" stroke-dasharray="5 5"/>
+              <path d="M352 159.5l7 5.5-7 5.5" fill="none" stroke="#a59cff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect x="366.5" y="126.5" width="83" height="77" rx="16" fill="#232a5e" stroke="#a59cff" stroke-dasharray="4 4"/>
+              <path d="M408 142l2.3 5.6 5.6 2.3-5.6 2.3-2.3 5.6-2.3-5.6-5.6-2.3 5.6-2.3z" fill="#c8c2ff"/>
+              <text x="408" y="181" text-anchor="middle" font-size="13" font-weight="700" fill="#f3f5fc">AI step</text>
+              <text x="408" y="196" text-anchor="middle" font-size="10.5" fill="#a9b3d3">optional</text>
+              <text x="408" y="228" text-anchor="middle" font-size="11.5" fill="#a9b3d3">Only when</text>
+              <text x="408" y="243" text-anchor="middle" font-size="11.5" fill="#a9b3d3">you ask</text>
+            </svg>
+          </figure>
         </div>
       </section>
 
       <section class="section plan-section" id="pricing" aria-labelledby="plans-title">
         <div class="container">
-          <div class="section-heading" data-reveal>
-            <h2 id="plans-title">One extension. A plan that fits your workload.</h2>
-            <p>All three plans include the same full feature set. The tier only sets your monthly AI dollar balance &mdash; rule-based and scheduled runs never draw on it.</p>
+          <div class="section-heading centered" data-reveal>
+            <h2 id="plans-title">Simple pricing</h2>
+            <p>Every plan includes every feature. Plans only differ in the monthly AI balance &mdash; and rule-based or scheduled runs never use it.</p>
           </div>
           <div class="plans-grid">
             <article class="plan-card" data-reveal>
-              <p class="plan-label">Essential</p>
               <h3>Echo</h3>
               <div class="price"><strong>$12</strong><span>/ month</span></div>
-              <p class="plan-credit"><b>$12.00</b> monthly AI balance</p>
-              <ul class="plan-features"><li>Full ORCA panel: picker, rules, forms</li><li>Unlimited saved workflows &amp; runs</li><li>Task scheduler and data extraction</li></ul>
-              <a class="btn btn-secondary" href="/pricing/">See Echo details</a>
+              <p class="plan-credit"><b>$12</b> monthly AI balance</p>
+              <ul class="plan-features"><li>All features included</li><li>Unlimited workflows and runs</li><li>For occasional AI steps</li></ul>
+              <a class="btn btn-secondary" href="https://orcamatic.lemonsqueezy.com/checkout/buy/2cec16fb-80ff-455d-8bb4-464c5f6b6046" target="_blank" rel="noopener">Choose Echo</a>
             </article>
             <article class="plan-card featured" data-reveal>
-              <p class="plan-label">Standard</p>
               <h3>Wave</h3>
               <div class="price"><strong>$24</strong><span>/ month</span></div>
-              <p class="plan-credit"><b>$24.00</b> monthly AI balance</p>
-              <ul class="plan-features"><li>Everything in Echo, same features</li><li>Twice the AI headroom for planner steps</li><li>The everyday choice for weekly runs</li></ul>
-              <a class="btn btn-primary" href="/pricing/">See Wave details</a>
+              <p class="plan-credit"><b>$24</b> monthly AI balance</p>
+              <ul class="plan-features"><li>All features included</li><li>Unlimited workflows and runs</li><li>Twice the AI balance of Echo</li></ul>
+              <a class="btn btn-primary" href="https://orcamatic.lemonsqueezy.com/checkout/buy/832b0f26-d514-4f71-8496-20b1fcea5700" target="_blank" rel="noopener">Choose Wave</a>
             </article>
             <article class="plan-card" data-reveal>
-              <p class="plan-label">Heavy use</p>
               <h3>Deep</h3>
               <div class="price"><strong>$49</strong><span>/ month</span></div>
-              <p class="plan-credit"><b>$49.00</b> monthly AI balance</p>
-              <ul class="plan-features"><li>Everything in Wave, same features</li><li>Largest monthly AI balance</li><li>For daily, multi-workflow use</li></ul>
-              <a class="btn btn-secondary" href="/pricing/">See Deep details</a>
+              <p class="plan-credit"><b>$49</b> monthly AI balance</p>
+              <ul class="plan-features"><li>All features included</li><li>Unlimited workflows and runs</li><li>For daily, heavy AI use</li></ul>
+              <a class="btn btn-secondary" href="https://orcamatic.lemonsqueezy.com/checkout/buy/f58c26b6-802c-4e78-b190-f7db718a9436" target="_blank" rel="noopener">Choose Deep</a>
             </article>
           </div>
+          <p class="cta-note centered-note">Cancel any time. New plans come with a <a href="/refund-policy/">7-day money-back guarantee</a>. <a href="/pricing/">Full pricing details</a></p>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="faq-title">
+      <section class="section" id="faq" aria-labelledby="faq-title">
         <div class="container faq-layout">
           <div class="section-heading" data-reveal>
-            <h2 id="faq-title">Clear about what ORCA does — and doesn’t do.</h2>
-            <p>If you need help choosing a workflow, write to us and we will point you in the right direction.</p>
-            <a class="btn btn-text" href="mailto:support@orcamatic.com">Email support <span aria-hidden="true">→</span></a>
+            <h2 id="faq-title">Questions</h2>
+            <p>Something else? Write to us &mdash; the people who build ORCA answer.</p>
+            <a class="btn btn-text" href="mailto:support@orcamatic.com">support@orcamatic.com</a>
           </div>
           <div class="faq-list" data-reveal>
             <details>
-              <summary>Is ORCA just an auto-clicker?</summary>
-              <p>It starts there, and then adds structure. A plain auto-clicker replays fixed coordinates and breaks when a page moves. ORCA combines a visual element picker with a rule engine, so each step stores the target element plus logic: click and retry, wait for a condition, fill a field, extract data. Multi-step workflows chain those actions across pages, pop-ups and web apps.</p>
-            </details>
-            <details>
-              <summary>Are features locked behind the plans?</summary>
-              <p>No. Echo, Wave and Deep all include the same ORCA feature set: element picking, the rule engine, form submission, extraction and the scheduler. The tier only decides the size of your monthly AI dollar balance, so pick by how often you expect to use AI-assisted steps, not by capability.</p>
-            </details>
-            <details>
-              <summary>Does it work on a site that has no API?</summary>
-              <p>Yes &mdash; that is the point. ORCA reads and acts on the rendered page inside your own browser session, so a portal with no developer documentation is still automatable. It does not bypass logins, CAPTCHAs or verification gates, and it is your responsibility to keep automation within a site&rsquo;s terms of use.</p>
+              <summary>Do I need to know how to code?</summary>
+              <p>No. You build a workflow by pointing at things on the page and choosing what should happen: click, type, wait, retry or extract. There are no scripts or selectors to write.</p>
             </details>
             <details>
               <summary>Does ORCA need an API key?</summary>
-              <p>No. You do not need to create or paste in a third-party API key. Saved workflows and routine browser actions run locally. If you choose an AI-assisted step, ORCA handles that through its own service and your plan’s monthly AI balance.</p>
+              <p>No. There is nothing to create or paste in. Rule-based and scheduled runs work locally in your browser. If you use an optional AI step, ORCA handles it through its own service and your plan&rsquo;s monthly AI balance.</p>
             </details>
             <details>
-              <summary>Can it run a workflow on a schedule?</summary>
-              <p>Yes. Save the workflow first, then use ORCA’s built-in task scheduler to run it on a recurring timer. It suits work such as routine checks, recurring form submissions, and data collection you would otherwise do every morning.</p>
+              <summary>Can it run on a schedule?</summary>
+              <p>Yes. Save a workflow, then use the built-in scheduler to run it at the times you choose, such as every morning, every Monday or at month-end.</p>
             </details>
             <details>
-              <summary>Will it bypass a login, CAPTCHA, or verification step?</summary>
-              <p>No. ORCA is not designed to bypass security controls. If a website requires a login, a CAPTCHA, two-factor authentication, or a confirmation that needs a person, you stay in control and complete that step yourself.</p>
+              <summary>Does it work on sites that have no API?</summary>
+              <p>Yes. ORCA works on the page itself, inside the browser session you are already signed in to, so portals and admin tools with no integration can still be automated.</p>
             </details>
             <details>
-              <summary>Which browsers can I use?</summary>
-              <p>ORCA is built for Chrome and Chromium-based browsers, including Chrome, Edge, and Brave. Install it from the Chrome Web Store to get started.</p>
+              <summary>Will it get past logins or CAPTCHAs?</summary>
+              <p>No. ORCA does not bypass logins, CAPTCHAs, two-factor checks or confirmations that need a person. You complete those steps yourself, and automation must stay within each site&rsquo;s terms of use.</p>
             </details>
             <details>
-              <summary>Is it safe to give an extension access to the sites I use?</summary>
-              <p>It is a fair question for a browser automation tool, so it has a page of its own: <a href="/security/">every permission ORCA requests with the reason it exists</a>. The short version is that your workflow profiles, rules and run logs stay in your browser&rsquo;s local storage, and page content is only sent when you deliberately start an AI-assisted step. Card details stay with Lemon Squeezy, and the extension never asks you to script a login.</p>
+              <summary>Where is my data stored?</summary>
+              <p>Your workflows, rules and run logs stay in your browser&rsquo;s local storage. Page content is only sent when you deliberately start an AI-assisted step. The <a href="/security/">security page</a> lists every permission ORCA asks for and why.</p>
+            </details>
+            <details>
+              <summary>Are any features locked behind a plan?</summary>
+              <p>No. Every plan includes every feature. The plans only differ in the size of the monthly AI balance.</p>
+            </details>
+            <details>
+              <summary>Which browsers are supported?</summary>
+              <p>Chrome and other Chromium-based browsers, such as Microsoft Edge and Brave.</p>
             </details>
           </div>
         </div>
@@ -532,13 +503,12 @@
       <section class="section-tight" aria-labelledby="final-title">
         <div class="container">
           <div class="cta-panel" data-reveal>
-            <h2 id="final-title">Teach the browser once. Get the time back every day.</h2>
-            <p>Start with the task you already know by heart. ORCA gives you a repeatable way to finish it without doing every click again.</p>
+            <h2 id="final-title">Teach it once. Get the time back every day.</h2>
+            <p>Install ORCA, pick one task you repeat, and let it run.</p>
             <div class="btn-row">
-              <a class="btn btn-light" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a>
-              <a class="btn btn-dark" href="/pricing/">View pricing</a>
+              <a class="btn btn-light" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome &mdash; it&rsquo;s free</a>
+              <a class="btn btn-dark" href="/pricing/">See pricing</a>
             </div>
-            <p class="cta-note">Free to install, no API key to configure. Cancel any time; <a href="/refund-policy/">7-day money-back guarantee</a> applies to new plans.</p>
           </div>
         </div>
       </section>
@@ -568,6 +538,6 @@
       </div>
       <div class="container footer-bottom"><span>© <span data-year>2026</span> Orcamatic</span><span>Chrome · Edge · Brave</span></div>
     </footer>
-    <script src="/assets/site.js?v=c965ce8a29" defer></script>
+    <script src="/assets/site.js?v=22ef9e2acc" defer></script>
   </body>
 </html>

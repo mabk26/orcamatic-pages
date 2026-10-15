@@ -46,60 +46,7 @@
     element.textContent = new Date().getFullYear();
   });
 
-  // Store screenshots are hot-linked from the Chrome Web Store CDN, so one dropped
-  // request should not leave a broken image icon on the page. Retry once (a query
-  // string gets past a cached 404 or a transient 5xx); only a second failure swaps
-  // the picture for the note that lives inside the same reserved frame, so the
-  // column never collapses and nothing below it moves.
-  document.querySelectorAll('[data-shot] img').forEach((img) => {
-    const shot = img.closest('[data-shot]');
-    if (!shot) return;
-    const failed = (isFailed) => {
-      if (isFailed) shot.setAttribute('data-shot-failed', '');
-      else shot.removeAttribute('data-shot-failed');
-    };
-    const retryOrGiveUp = () => {
-      const src = img.getAttribute('src') || '';
-      if (!img.dataset.shotRetried) {
-        img.dataset.shotRetried = '1';
-        img.src = src + (src.indexOf('?') === -1 ? '?' : '&') + 'shot=retry';
-        return;
-      }
-      failed(true);
-    };
-    img.addEventListener('error', retryOrGiveUp);
-    img.addEventListener('load', () => failed(false));
-    if (img.complete && img.naturalWidth === 0) retryOrGiveUp();
-  });
-
   // Section reveals are scroll-driven CSS (see site.css) and need no script here.
-
-  // The arithmetic block on the homepage: it only multiplies what the visitor
-  // types and subtracts the checking time, so no invented savings claim is
-  // attached to it. Without these values present, nothing here runs.
-  const roi = document.querySelector('[data-roi]');
-  if (roi) {
-    const fields = ['roi-minutes', 'roi-runs', 'roi-check'].map((id) => document.getElementById(id));
-    const hoursOut = roi.querySelector('[data-roi-hours]');
-    const detailOut = roi.querySelector('[data-roi-detail]');
-    if (fields.every(Boolean) && hoursOut && detailOut) {
-      const recalc = () => {
-        const value = (el) => {
-          const raw = parseFloat(el.value);
-          return Number.isFinite(raw) && raw > 0 ? raw : 0;
-        };
-        const perRun = Math.max(0, value(fields[0]) - value(fields[2]));
-        const runs = value(fields[1]);
-        const monthly = runs * 4.33;
-        const hours = (perRun * monthly) / 60;
-        hoursOut.textContent = hours >= 10 ? hours.toFixed(0) : hours.toFixed(1);
-        detailOut.textContent = '\u00b7 ' + Math.round(monthly) + ' runs a month; ' +
-          Math.round(perRun) + ' minutes of each one is off your hands';
-      };
-      fields.forEach((el) => el.addEventListener('input', recalc));
-      recalc();
-    }
-  }
 
   // Consent-gated analytics (GA4). Disabled while GA_MEASUREMENT_ID is empty:
   // nothing is loaded, no banner is shown and no cookies are set.
