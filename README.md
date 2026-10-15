@@ -1,57 +1,108 @@
 # Orcamatic website
 
-The public website for **[orcamatic.com](https://orcamatic.com)**, extracted from
-`git_page_wa.zip`. It is a plain HTML, CSS, and JavaScript site: no install, build
-step, backend, or API keys are needed.
+The public website for **[orcamatic.com](https://orcamatic.com)** — plain HTML, CSS
+and JavaScript. No build step, no dependencies, no backend, no API keys.
 
-## Repository layout
+## Layout
 
-- [`git_page_wa/`](git_page_wa/) — the deployable website, including the homepage,
-  product/pricing pages, journal, legal pages, assets, and custom 404 page.
-- [`.github/workflows/deploy-github-pages.yml`](.github/workflows/deploy-github-pages.yml)
-  — validates the site and publishes **only `git_page_wa/`** to GitHub Pages.
-- [`scripts/validate_site.py`](scripts/validate_site.py) — dependency-free checks
-  for internal links, anchors, assets, manifest, and sitemap.
-- `git_page_wa.zip` — the original upload, retained for reference. Edit the
-  extracted files, not the archive.
+The website **is** the repository root. Every file here is published except
+`README.md`, `LICENSE`, `.gitignore` and `.github/`, which the deployment
+workflow filters out.
 
-## Publish with GitHub Pages
-
-1. Merge the website and deployment workflow into `main`.
-2. Open [Settings → Pages](https://github.com/mabk26/orcamatic-pages/settings/pages).
-3. Under **Build and deployment → Source**, select **GitHub Actions**.
-   Do **not** select “Deploy from a branch”: the website is in `git_page_wa/`,
-   and the workflow publishes that folder as the website root.
-4. In **Custom domain**, enter **`orcamatic.com`** and save it. The Actions
-   deployment does not configure the domain merely from the `CNAME` file.
-5. Follow the [DNS instructions](git_page_wa/README.md#pointing-orcamaticcom-to-github-pages)
-   to point the domain to GitHub Pages. Keep email-related DNS records unchanged.
-6. Open [Actions](https://github.com/mabk26/orcamatic-pages/actions/workflows/deploy-github-pages.yml).
-   If the initial run failed before Pages was enabled, rerun it, or select
-   **Run workflow → main** after enabling Pages.
-7. Once GitHub's DNS and certificate checks succeed, enable **Enforce HTTPS**
-   in Settings → Pages.
-
-Future website changes merged into `main` deploy automatically. Pull requests
-only validate the site; they never publish it. A manually triggered workflow also
-only publishes when run on `main`.
-
-**Custom domain required:** the supplied pages use root-relative URLs such as
-`/assets/site.css` and canonical URLs on `https://orcamatic.com`. They are intended
-for that domain, not the `/orcamatic-pages/` project-site subpath. Configure the
-custom domain before relying on the live site.
-
-## Preview and validate locally
-
-From the repository root:
-
-```bash
-python3 scripts/validate_site.py
-python3 -m http.server 4173 --bind 0.0.0.0 --directory git_page_wa
+```
+index.html            Homepage
+404.html              Not-found page
+CNAME                 Custom domain: orcamatic.com
+.nojekyll             Tells GitHub Pages to serve files as-is
+robots.txt            Crawler rules
+sitemap.xml           Page list for search engines
+site.webmanifest      Installable app metadata
+assets/               site.css, site.js, orca-icon.png, orca-crm.jpg
+about/  pricing/  products/  blog/  legal pages (privacy, terms, refund)
 ```
 
-Open port **4173** in your development environment, or `http://localhost:4173`
-when running on your own computer. Stop the server with Ctrl+C.
+| Path | Purpose |
+| --- | --- |
+| `index.html` | Homepage |
+| `assets/site.css` | Shared responsive styling |
+| `assets/site.js` | Dependency-free mobile menu, year stamp, scroll reveal |
+| `CNAME` | Production domain — also set it in **Settings → Pages** |
+| `sitemap.xml` / `robots.txt` | Search-engine discovery |
+| `404.html` | Friendly GitHub Pages not-found page |
 
-See the [website deployment guide](git_page_wa/README.md) for DNS records and
-content-maintenance details.
+## Publishing
+
+Deployment is automatic: `.github/workflows/deploy-github-pages.yml` packages the
+site and publishes it on every push to `main`. Pull requests build the package
+without publishing. A manual run also only publishes when `main` is selected.
+
+### One-time GitHub settings
+
+1. **Settings → Pages → Build and deployment → Source**: **GitHub Actions**
+   (do *not* choose “Deploy from a branch”).
+2. **Settings → Pages → Custom domain**: enter `orcamatic.com` and save.
+   With the Actions workflow, the `CNAME` file alone does not configure the domain.
+3. Open **Actions → Deploy Orcamatic site to GitHub Pages → Run workflow** on `main`
+   if the first run happened before Pages was enabled.
+4. Once DNS and the certificate check pass, enable **Enforce HTTPS**.
+5. If GitHub offers a domain-verification TXT record, add it — it stops another
+   Pages site from claiming the domain.
+
+> The pages use root-relative URLs (`/assets/site.css`) and canonical URLs on
+> `https://orcamatic.com`. They expect the custom domain to be the site root, not
+> the `/orcamatic-pages/` project path.
+
+## DNS records for orcamatic.com
+
+The domain can stay registered with your current registrar; only the website DNS
+records change. **Leave email records (MX, DKIM, SPF) untouched** if you use email
+on this domain.
+
+Remove any old website records for the root (`@`), then add:
+
+| Type | Host / Name | Value |
+| --- | --- | --- |
+| `A` | `@` | `185.199.108.153` |
+| `A` | `@` | `185.199.109.153` |
+| `A` | `@` | `185.199.110.153` |
+| `A` | `@` | `185.199.111.153` |
+| `AAAA` | `@` | `2606:50c0:8000::153` |
+| `AAAA` | `@` | `2606:50c0:8001::153` |
+| `AAAA` | `@` | `2606:50c0:8002::153` |
+| `AAAA` | `@` | `2606:50c0:8003::153` |
+
+Recommended for `www` visitors:
+
+| Type | Host / Name | Value |
+| --- | --- | --- |
+| `CNAME` | `www` | `mabk26.github.io` |
+
+Notes:
+
+- Never put `http://` or `https://` in a DNS value.
+- If Cloudflare (or similar) manages DNS, change records there. Set the record to
+  **DNS only** rather than proxied while GitHub verifies the domain.
+- DNS and certificate issuance can take a few minutes up to 24 hours. Keep the old
+  host until `https://orcamatic.com` loads in a normal browser and the HTTPS check
+  is green.
+
+## Editing the site
+
+Change the HTML/CSS files at the root, merge to `main`, and the site goes live
+within a minute or so. There is nothing to rebuild.
+
+Preview locally from the repository root:
+
+```bash
+python3 -m http.server 4173 --bind 0.0.0.0
+# open http://localhost:4173
+```
+
+Because links are root-relative, always serve from the repository root rather than
+opening the files directly.
+
+When you add a page:
+
+1. Create `your-page/index.html` so the URL ends with a slash.
+2. Add its URL to `sitemap.xml`.
+3. Link it from the header/footer navigation where it belongs.
