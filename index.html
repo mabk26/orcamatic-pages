@@ -8,8 +8,71 @@
     <link rel="canonical" href="https://orcamatic.com/">
     <link rel="icon" href="/assets/orca-icon.png" type="image/png">
     <link rel="manifest" href="/site.webmanifest">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/site.css">
     <title>Orcamatic — Browser automation that stays in your browser</title>
+      <meta property="og:site_name" content="Orcamatic">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Orcamatic — Browser automation that stays in your browser">
+    <meta property="og:description" content="ORCA is the privacy-first browser agent from Orcamatic. Show it a task once, then run it on demand or on a schedule — no code or API keys required.">
+    <meta property="og:url" content="https://orcamatic.com/">
+    <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ORCA side panel helping complete a CRM workflow in a browser">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Orcamatic — Browser automation that stays in your browser">
+    <meta name="twitter:description" content="ORCA is the privacy-first browser agent from Orcamatic. Show it a task once, then run it on demand or on a schedule — no code or API keys required.">
+    <meta name="twitter:image" content="https://orcamatic.com/assets/og-image.jpg">
+    <link rel="apple-touch-icon" href="/assets/icon-192.png">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Orcamatic",
+  "url": "https://orcamatic.com/",
+  "logo": "https://orcamatic.com/assets/icon-512.png",
+  "email": "support@orcamatic.com"
+}</script>
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does ORCA need an API key?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. You do not need to create or paste in a third-party API key. Saved workflows and routine browser actions work locally. If you choose an AI-assisted task, ORCA handles that through its own service and plan balance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can it run a workflow on a schedule?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Save the workflow first, then use ORCA’s scheduling controls to run it at a recurring time. It is useful for work such as routine checks, updates, and follow-ups."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will it bypass a login, CAPTCHA, or verification step?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. ORCA is not designed to bypass security controls. If a website requires a login, a CAPTCHA, two-factor authentication, or a confirmation that needs a person, you stay in control and complete that step yourself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which browsers can I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ORCA is built for Chrome and Chromium-based browsers, including Chrome, Edge, and Brave. Install it from the Chrome Web Store to get started."
+      }
+    }
+  ]
+}</script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -61,7 +124,7 @@
             </ul>
           </div>
 
-          <div class="browser-scene" aria-label="Illustration of ORCA completing a browser task" data-reveal>
+          <div class="browser-scene" role="img" aria-label="Illustration of ORCA completing a browser task" data-reveal>
             <div class="browser-orbit" aria-hidden="true"></div>
             <div class="browser-window">
               <div class="browser-top" aria-hidden="true">
@@ -139,7 +202,7 @@
       <section class="section-tight" id="workflows" aria-labelledby="workflows-title">
         <div class="container workbench">
           <div class="screen-wrap" data-reveal>
-            <img class="product-screen" src="/assets/orca-crm.jpg" width="1280" height="800" alt="ORCA side panel helping complete a CRM workflow in a browser">
+            <picture><source type="image/webp" srcset="/assets/orca-crm-640.webp 640w, /assets/orca-crm.webp 1280w" sizes="(max-width: 640px) 92vw, 600px"><img class="product-screen" src="/assets/orca-crm.jpg" width="1280" height="800" loading="lazy" decoding="async" alt="ORCA side panel helping complete a CRM workflow in a browser"></picture>
             <div class="screen-caption"><strong>Works where you work</strong>Use ORCA alongside the web tools already open in your browser.</div>
           </div>
           <div class="workbench-copy" data-reveal>
@@ -164,7 +227,7 @@
             <h2 id="privacy-title">Your browser is still <em>your space.</em></h2>
             <p class="privacy-copy">ORCA is designed to keep routine automation close to you. Your saved profiles, browser session data, and everyday workflow state stay in your browser instead of becoming another account on a remote dashboard.</p>
           </div>
-          <aside class="local-card" aria-label="Local-first browser automation" data-reveal>
+          <div class="local-card" role="note" aria-label="Local-first browser automation" data-reveal>
             <div class="mini-label">Local-first workflow</div>
             <h3>Built to keep the important context close.</h3>
             <div class="local-stats">
@@ -172,7 +235,7 @@
               <div class="local-stat"><span>Routine scheduled runs</span><b>Local execution</b></div>
               <div class="local-stat"><span>Optional AI task support</span><b>Only when used</b></div>
             </div>
-          </aside>
+          </div>
         </div>
       </section>
 
