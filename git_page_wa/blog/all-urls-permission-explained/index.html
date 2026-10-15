@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#10162a">
+    <meta name="description" content="Why ORCA asks for broad Chrome website access permission, what it does and does not mean, and how to check it yourself.">
+    <link rel="canonical" href="https://orcamatic.com/blog/all-urls-permission-explained/"><link rel="icon" href="/assets/orca-icon.png" type="image/png"><link rel="stylesheet" href="/assets/site.css">
+    <title>What “access to all websites” means | Orcamatic</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header"><div class="container nav-shell"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="/#how-it-works">How it works</a><a href="/#workflows">Workflows</a><a href="/products/">Product</a><a href="/pricing/">Pricing</a><a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome <span aria-hidden="true">↗</span></a></nav><button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-navigation" aria-label="Open navigation"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true"><path d="M1 1h18M1 8h18M1 15h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div><nav id="mobile-navigation" class="mobile-nav" data-mobile-nav aria-label="Mobile navigation"><div class="container mobile-nav-inner"><a href="/#how-it-works">How it works</a><a href="/#workflows">Workflows</a><a href="/products/">Product</a><a href="/pricing/">Pricing</a><a href="/privacy-policy/">Privacy</a><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a></div></nav></header>
+
+    <main id="main-content">
+      <section class="page-hero compact"><div class="container editorial" data-reveal><p class="eyebrow">ORCA / Privacy / Security</p><h1>What “access to all websites” permission actually means</h1><p class="lead">ORCA asks for a broad Chrome permission on every install. Here is exactly why it is needed, what it does and does not do, and how to check it yourself.</p><p class="byline">August 9, 2026</p></div></section>
+      <section class="section"><article class="article">
+        <p>If you have looked at ORCA’s permissions before installing, you have probably seen this line: <em>access to all websites</em>. That is a reasonable thing to pause on, so here is exactly what it means and why it is there.</p>
+        <h2>Why the permission exists</h2>
+        <p>ORCA is built to work on whatever site you decide to automate: your inbox today, a CRM tomorrow, a client internal tool next week. Chrome extensions cannot ask for permission one website at a time and still work like that. The alternative would be re-approving or reinstalling the extension every time you pointed it at a new site. The broad host permission is what lets one install follow you anywhere you choose to use it.</p>
+        <p>That said, the permission being granted and ORCA actually doing something on a page are two different things. ORCA does not read, click, or fill anything on a page until you have shown it a task on that page. Visiting a site with ORCA installed is not the same as being automated by it.</p>
+        <h2>Where your data goes</h2>
+        <ul><li><strong>Saved workflows, click targets, and site profiles</strong> live in your browser’s own local storage. They are not uploaded to a server as part of normal use.</li><li><strong>If a task uses the optional AI planner,</strong> only the page context that specific step needs is sent to the AI provider, and sensitive fields are masked before anything leaves your browser.</li><li><strong>Simple, no-AI automations</strong> — a saved click sequence or a scheduled form fill — never touch the AI path, so nothing about that run leaves your machine.</li></ul>
+        <h2>What you can check yourself</h2>
+        <p>You do not have to take our word for this. Chrome shows you exactly what a given extension can access on <code>chrome://extensions</code>. Click Details on ORCA and you will see the same permission list described here, with nothing hidden. You can revoke site access or remove the extension entirely at any time.</p>
+        <h2>What it still will not do</h2>
+        <p>ORCA reads and acts on what is actually on the page. It will not get you past a bank’s two-factor prompt, solve a CAPTCHA, or bypass a login wall. Those are designed to require a human, and they still will. If a workflow hits one of those, it stops and hands control back to you rather than guessing.</p>
+        <div class="article-callout"><strong>Permission is not activity.</strong> The broad host permission lets ORCA work on the sites you choose. The extension only acts after you tell it what to do on a page.</div>
+        <p>For a fuller explanation of local storage and optional cloud processing, read the <a href="/privacy-policy/">Privacy &amp; Sandboxing Policy</a>.</p>
+      </article></section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:support@orcamatic.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/privacy-policy/">Privacy &amp; security</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>© <span data-year>2026</span> Orcamatic</span><span>Chrome · Edge · Brave</span></div></footer>
+    <script src="/assets/site.js" defer></script>
+  </body>
+</html>
