@@ -28,9 +28,12 @@ jobs:
 
       # Fail the run before anything is published if a page is broken: unbalanced
       # markup, a class with no rule, an internal link with no file behind it, a
-      # missing head tag, inline styles (the CSP blocks them), bad structured data.
+      # missing head tag, inline styles (the CSP blocks them), bad structured data,
+      # a store image requested as a crop box, or a page whose stylesheet stamp
+      # belongs to the previous build. --strict, because the advisories here are all
+      # things a reader can see or a cache can get wrong.
       - name: Check the site
-        run: python3 tools/check-site.py
+        run: python3 tools/version-assets.py --check && python3 tools/check-site.py --strict
 
       # The website lives at the repository root, so copy only the public files
       # into _site/ and leave .github/, README.md, LICENSE and .gitignore out.

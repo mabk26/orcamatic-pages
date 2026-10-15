@@ -46,37 +46,33 @@
     element.textContent = new Date().getFullYear();
   });
 
-  // Store screenshots are hot-linked from the Chrome Web Store CDN. If one ever
-  // fails to load, hide that tile (or swap the hero frame for a link) instead of
-  // leaving a broken image on the page.
+  // Store screenshots are hot-linked from the Chrome Web Store CDN, so one dropped
+  // request should not leave a broken image icon on the page. Retry once (a query
+  // string gets past a cached 404 or a transient 5xx); only a second failure swaps
+  // the picture for the note that lives inside the same reserved frame, so the
+  // column never collapses and nothing below it moves.
   document.querySelectorAll('[data-shot] img').forEach((img) => {
-    const markFailed = () => {
-      const shot = img.closest('[data-shot]');
-      if (shot) shot.setAttribute('data-shot-failed', '');
+    const shot = img.closest('[data-shot]');
+    if (!shot) return;
+    const failed = (isFailed) => {
+      if (isFailed) shot.setAttribute('data-shot-failed', '');
+      else shot.removeAttribute('data-shot-failed');
     };
-    if (img.complete && img.naturalWidth === 0) markFailed();
-    img.addEventListener('error', markFailed);
+    const retryOrGiveUp = () => {
+      const src = img.getAttribute('src') || '';
+      if (!img.dataset.shotRetried) {
+        img.dataset.shotRetried = '1';
+        img.src = src + (src.indexOf('?') === -1 ? '?' : '&') + 'shot=retry';
+        return;
+      }
+      failed(true);
+    };
+    img.addEventListener('error', retryOrGiveUp);
+    img.addEventListener('load', () => failed(false));
+    if (img.complete && img.naturalWidth === 0) retryOrGiveUp();
   });
 
-  const revealItems = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window && revealItems.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // Items entering together fade in with a small stagger, so a section reads
-    // top-to-bottom instead of popping as one block. The delay lives in CSS
-    // (data-reveal-index) because the site's CSP disallows inline styles.
-    const observer = new IntersectionObserver((entries) => {
-      let step = 0;
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        if (step < 4) entry.target.setAttribute('data-reveal-index', String(step));
-        entry.target.classList.add('is-visible');
-        step += 1;
-        observer.unobserve(entry.target);
-      });
-    }, { threshold: 0.12 });
-    revealItems.forEach((item) => observer.observe(item));
-  } else {
-    revealItems.forEach((item) => item.classList.add('is-visible'));
-  }
+  // Section reveals are scroll-driven CSS (see site.css) and need no script here.
 
   // The arithmetic block on the homepage: it only multiplies what the visitor
   // types and subtracts the checking time, so no invented savings claim is

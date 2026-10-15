@@ -20,7 +20,8 @@ sitemap.xml           Page list for search engines
 site.webmanifest      Installable app metadata
 assets/               site.css, site.js, icons, fonts, og-image.jpg
 tools/                build-og-image.py, prepare-screenshots.py (store assets)
-docs/                 website-audit.md (research + backlog), PHASES.md (execution plan)
+docs/                 website-audit.md (research + backlog), PHASES.md (execution plan),
+                        website-review.md (post-mortem of a broken-looking deploy)
 about/  pricing/  products/  blog/  legal pages (privacy, terms, refund)
 templates/        Template library index + three written-out workflow templates
 guides/first-workflow/   Five-step quickstart
@@ -30,8 +31,8 @@ security/        Permissions, data flow and store disclosures
 | Path | Purpose |
 | --- | --- |
 | `index.html` | Homepage |
-| `assets/site.css` | Shared responsive styling |
-| `assets/site.js` | Dependency-free mobile menu, year stamp, scroll reveal, screenshot fallback |
+| `assets/site.css` | Shared responsive styling, including the scroll-driven section reveal |
+| `assets/site.js` | Dependency-free mobile menu, year stamp, screenshot retry and fallback |
 | `templates/` | Workflow templates: steps written out for jobs the extension does today |
 | `security/` | Every permission with its reason, plus where each kind of data lives |
 | `guides/first-workflow/` | Quickstart: five steps and the five failure modes worth knowing |
@@ -47,13 +48,21 @@ ORCA listing on the Chrome Web Store. Do not replace them with generated or mock
 rendered "screenshot" with invented UI text is instantly recognisable and it misrepresents the
 extension.
 
-Two conventions keep that honest:
+Four conventions keep that honest, and the checker enforces the last three:
 
 - The pages hot-link the store images from `https://lh3.googleusercontent.com`, and every page's
   `Content-Security-Policy` allows exactly that host under `img-src`. If you add imagery, add it
   to the CSP of every page (the meta tag is repeated per document).
-- Each image sits inside `[data-shot]`. `assets/site.js` hides a tile whose image fails to load,
-  and the hero swaps to a link to the listing, so a CDN problem never leaves a broken image.
+- Ask the CDN for **one width** (`=w1024`), never a box (`=s1280-w1280-h800`). A box makes Google
+  crop the source to that ratio, which cuts captions and button labels off a tile that is any
+  other shape. Pick the width from where the image is displayed: the hero slot is ~505px and the
+  gallery ~570px, so `=w1024` and `=w1152` at 2x. A 1280px raster squeezed into a 279px column is
+  unreadable *and* slower than the same tile requested at 640px.
+- Every frame reserves its own `aspect-ratio: 8 / 5` (the store tile ratio) and the image covers
+  it, so a tile never has to stretch to fit its slot and the layout cannot jump while loading.
+- Each image sits inside `[data-shot]`. `assets/site.js` retries a failed load once, then falls
+  back to a note inside the same reserved frame; a gallery tile that cannot be shown is dropped
+  by CSS. A CDN problem therefore costs a sentence, not the column.
 
 For production it is better to serve the images yourself. Save the five screenshots from the
 listing into `assets/screenshots/` (`orca-1.png` … `orca-5.png`), then replace the remote URLs in
@@ -161,16 +170,27 @@ uppercase "eyebrow" line above a heading and no bullet dot in front of a label. 
 There is no build, so correctness is checked instead:
 
 ```bash
-python3 tools/check-site.py            # errors only (this is what CI runs)
-python3 tools/check-site.py --strict  # advisories fail too
+python3 tools/version-assets.py         # stamp ?v=<hash> into every page after editing css/js
+python3 tools/check-site.py            # errors only
+python3 tools/check-site.py --strict  # advisories fail too (this is what CI runs)
 ```
 
 It verifies markup balance, exactly one `<h1>` per page, the head tags every page must carry,
 that every class used in HTML has a rule in `assets/site.css`, that every internal link and local
 asset points at a file that exists, that the sitemap lists each page once, and that structured
 data parses as JSON. It also flags inline `style` attributes and `on*=` handlers, which this site's
-Content-Security-Policy blocks at runtime. The deploy workflow runs it before packaging, so a
+Content-Security-Policy blocks at runtime, the store-image rules above, and a stylesheet stamp
+that does not match the file. The deploy workflow runs it with `--strict` before packaging, so a
 broken page cannot reach production.
+
+### Why the `?v=` stamp is not optional
+
+Pages caches every file on its own URL. A deploy that lands while a browser or an edge still
+holds the previous `/assets/site.css` paints the new HTML with old rules, and the page looks
+destroyed - unstyled demo blocks, a gallery stacked full width, `<b>` labels glued to their
+sentences - while every file in the repo is correct. It happened: see
+[`docs/website-review.md`](docs/website-review.md). `tools/version-assets.py` makes the new build
+a new URL, and CI fails if a page carries any other stamp, so the skew cannot recur.
 
 ## Improvement backlog and phases
 

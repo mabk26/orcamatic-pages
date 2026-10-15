@@ -34,7 +34,7 @@ afterwards. Anything illustrative on the site is labelled as illustrative on the
 | 1.10 | Templates in the primary nav and the footer on all 19 pages; six new URLs in `sitemap.xml` | `*.html`, `sitemap.xml` |
 | 1.11 | Blog → template/guide/security cross-links; `HowTo`, `ItemList` and `FAQPage` structured data on the new pages | `blog/*`, `templates/*` |
 | 1.12 | Mobile: nav bar tightened before the 800px drawer switch; screenshot rail with scroll-snap; sticky comparison column | `assets/site.css` |
-| 1.13 | Scroll reveals stagger by 90ms so sections read top-to-bottom | `assets/site.js` |
+| 1.13 | Scroll reveals stagger by 90ms so sections read top-to-bottom (superseded by 1b.3) | `assets/site.js` |
 | 1.14 | Screenshot/promo-tile capture tool for store assets | `tools/prepare-screenshots.py` |
 | 1.15 | Honest arithmetic block: minutes per run × runs per week − log checking, computed from what the visitor types | `#roi-title` on `index.html` |
 | 1.16 | Full feature-comparison table and a "what happens when the balance runs out" panel on `/pricing/` | `pricing/index.html` |
@@ -50,12 +50,29 @@ Manifest V3 uses for those jobs, and both match what the extension's behaviour o
 implies — but only your manifest and background script can confirm the wording. If either is used
 differently, change those two table rows and nothing else on the page moves.
 
-Verification at the end of the phase: all 20 pages pass `python3 tools/check-site.py --strict`
+Verification at the end of the phase: `python3 tools/version-assets.py --check` and
+`python3 tools/check-site.py --strict` both pass on all 20 pages
 (markup balance, one `<h1>` each, required head tags, every class has a rule, every internal
 link and local asset resolves, sitemap complete and unique, JSON-LD parses), `css-tree` parses
 `assets/site.css`, `node --check` passes on `assets/site.js`, zero inline `style=` attributes
 (the CSP forbids them), and every page returns 200 from a local server. The same checker now
 gates the deploy.
+
+## Phase 1b — render integrity · owner: agent · **done 2026-10-15**
+
+Prompted by a full-page snapshot of the deployed homepage that looked destroyed. It was not a
+markup problem - see [`website-review.md`](website-review.md) for the measurements. Five of the
+rows below are fixes; the last two are guards so the same failure cannot be silent again.
+
+| # | Shipped | Where |
+|---|---|---|
+| 1b.1 | `?v=<sha256>` on `/assets/site.css`, `/assets/site.js` and the font `url()`s, so a page can never be painted with a stylesheet from another build | `tools/version-assets.py`, every `*.html` |
+| 1b.2 | Store images requested as one width (`=w1024`, `=w1152`) instead of a crop box (`-w1280-h800`); every frame reserves an 8:5 box and the image covers it, so nothing is squashed and nothing jumps | `index.html`, `products/`, `about/`, `assets/site.css` |
+| 1b.3 | Reveals are CSS scroll-driven (`animation-timeline: view()`) instead of `opacity: 0` waiting on JavaScript, so a script that never runs cannot hide the page | `assets/site.css`, `assets/site.js` |
+| 1b.4 | Showcase went from four unreadable 279px thumbnails to two legible tiles with a caption each; the <580px rail no longer sizes its first tile from a leftover explicit column | `#showcase` on `index.html`, `assets/site.css` |
+| 1b.5 | Label/value pairs carry their separation in block children, so a missing stylesheet degrades to a list of sentences instead of "No APIConnector tools stop…" | `#problem`, `.demo`, `.proof-card`, `.roi-out`, `.local-stat`, `.shot-meta` |
+| 1b.6 | A failed hot-link retries once, then falls back to a note *inside* the reserved frame; the duplicate listing link in the hero is gone | `assets/site.js`, `assets/site.css` |
+| 1b.7 | The checker now enforces all of it: stamp matches the file, `width`/`height`/`alt` on every `<img>`, no crop-box store URL, a preloaded image must be used, `figure.shot` must carry its fallback. CI runs `--strict` | `tools/check-site.py`, workflow |
 
 ## Phase 2 — the recording · owner: **you** · status: waiting
 
@@ -89,6 +106,11 @@ python3 tools/prepare-screenshots.py --extension path/to/unpacked/build --only p
 
 Reply to every review, including the short ones: rating count is a ranking input and the
 listing currently has zero reviews.
+
+The site still hot-links the listing's images from Google's CDN. Self-hosting them
+(`assets/screenshots/orca-1.png` … `orca-5.png`) is the change that removes the fallback path,
+the `img-src` exception in every page head, and the risk that a tile Google re-crops turns into a
+visual bug on this site. `tools/prepare-screenshots.py` produces them at the exact store sizes.
 
 ## Phase 4 — decisions I should not make for you · owner: **you** · status: waiting
 
