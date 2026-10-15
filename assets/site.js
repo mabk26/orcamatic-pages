@@ -3,16 +3,43 @@
   const mobileNav = document.querySelector('[data-mobile-nav]');
 
   if (toggle && mobileNav) {
+    const isOpen = () => mobileNav.classList.contains('is-open');
     const setOpen = (open) => {
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
       mobileNav.classList.toggle('is-open', open);
     };
 
-    toggle.addEventListener('click', () => setOpen(!mobileNav.classList.contains('is-open')));
+    toggle.addEventListener('click', () => setOpen(!isOpen()));
     mobileNav.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => setOpen(false));
     });
+
+    // Escape closes the menu and returns focus to the button that opened it.
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && isOpen()) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Tapping anywhere outside the header closes the menu.
+    document.addEventListener('click', (event) => {
+      if (isOpen() && !event.target.closest('.site-header')) {
+        setOpen(false);
+      }
+    });
+
+    // Rotating or resizing to desktop width hides the mobile menu, so reset its state.
+    const desktop = window.matchMedia('(min-width: 801px)');
+    const resetOnDesktop = () => {
+      if (desktop.matches && isOpen()) setOpen(false);
+    };
+    if (desktop.addEventListener) {
+      desktop.addEventListener('change', resetOnDesktop);
+    } else {
+      desktop.addListener(resetOnDesktop);
+    }
   }
 
   document.querySelectorAll('[data-year]').forEach((element) => {
