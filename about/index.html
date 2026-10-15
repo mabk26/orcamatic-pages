@@ -7,6 +7,9 @@
     <meta name="description" content="Learn about Orcamatic and the privacy-first browser automation behind ORCA.">
     <link rel="canonical" href="https://orcamatic.com/about/">
     <link rel="icon" href="/assets/orca-icon.png" type="image/png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/site.css">
     <title>About Orcamatic — Privacy-first browser tools</title>
       <meta property="og:site_name" content="Orcamatic">
@@ -68,7 +71,7 @@
       <section class="section plan-section" aria-labelledby="principles-title">
         <div class="container">
           <div class="section-heading" data-reveal><p class="eyebrow">What guides us</p><h2 id="principles-title">Simple principles for browser automation.</h2></div>
-          <div class="pillar-grid" style="margin-top:3rem">
+          <div class="pillar-grid mt-lg">
             <article class="pillar" data-reveal><span class="number">01</span><h3>Privacy-first</h3><p>Saved workflow profiles and normal browser-session data stay on your machine, close to the browser where you use them.</p></article>
             <article class="pillar" data-reveal><span class="number">02</span><h3>Show it once</h3><p>Start from work you already know. Point to the relevant buttons and fields instead of translating every action into a new tool.</p></article>
             <article class="pillar" data-reveal><span class="number">03</span><h3>Run with context</h3><p>Use a workflow when it is useful, or schedule repeatable work for later. See the task status as it progresses.</p></article>
