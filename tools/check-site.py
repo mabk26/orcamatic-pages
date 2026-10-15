@@ -61,6 +61,8 @@ class Checker(HTMLParser):
         self.remote_imgs: list[str] = []
         self.in_ldjson = False
         self.ldjson: list[str] = []
+        self.inline_scripts: list[str] = []
+        self.inline_styles = 0
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -68,9 +70,14 @@ class Checker(HTMLParser):
             self.stack.append(tag)
         if tag == "h1":
             self.h1 += 1
-        if tag == "script" and a.get("type") == "application/ld+json":
-            self.in_ldjson = True
-            self.ldjson.append("")
+        if tag == "script":
+            if a.get("type") == "application/ld+json":
+                self.in_ldjson = True
+                self.ldjson.append("")
+            elif not a.get("src"):
+                self.inline_scripts.append("line %d" % self.getpos()[0])
+        if tag == "style":
+            self.inline_styles += 1
         style = a.get("style")
         if style is not None:
             self.inline_style += 1
@@ -133,9 +140,11 @@ def check_page(rel: str, html: str, parsed: Checker, defined_classes: set[str]) 
     if parsed.handlers:
         errors.append("%d inline event handler(s) (on*=): blocked by script-src 'self'" % parsed.handlers)
 
-    if re.search(r"<script(?![^>]*src=)[^>]*>(?!\s*$)", html) and "application/ld+json" not in html[:html.find("<body>")] \
-            and re.search(r'<script(?![^>]*src=)[^>]*>\s*[^<]', html):
-        warnings.append("possible inline <script> (script-src 'self' blocks it unless type is application/ld+json)")
+    if parsed.inline_scripts:
+        errors.append("inline <script> at %s: script-src 'self' blocks it (only application/ld+json is allowed)"
+                      % ", ".join(parsed.inline_scripts[:3]))
+    if parsed.inline_styles:
+        errors.append("%d inline <style> block(s): style-src 'self' blocks them" % parsed.inline_styles)
 
     # A 404 is never indexed, so it legitimately skips canonical/description/OG.
     skip = {"canonical", "description", "og:image"} if rel == "404.html" else set()

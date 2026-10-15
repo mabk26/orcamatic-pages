@@ -660,3 +660,9 @@ table.compare code { border-radius: 4px; padding: 0.1rem 0.3rem; background: #f1
 @media (max-width: 800px) { .roi-grid { grid-template-columns: 1fr; } }
 
 .row-balance td, .row-balance th { background: color-mix(in srgb, var(--mint) 55%, white); color: var(--ink); font-weight: 700; }
+
+.four-oh-four-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.35rem 1.35rem; margin: 1.6rem 0 0; padding: 0; list-style: none; }
+.four-oh-four-links li { border-left: 1px solid var(--line); padding-left: 1.35rem; }
+.four-oh-four-links li:first-child { border-left: 0; padding-left: 0; }
+.four-oh-four-links a { color: var(--violet-deep); font-size: 0.95rem; font-weight: 650; text-decoration: none; }
+.four-oh-four-links a:hover { text-decoration: underline; }
