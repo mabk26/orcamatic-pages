@@ -1,0 +1,63 @@
+name: Deploy Orcamatic site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'git_page_wa/**'
+      - 'scripts/validate_site.py'
+      - '.github/workflows/deploy-github-pages.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'git_page_wa/**'
+      - 'scripts/validate_site.py'
+      - '.github/workflows/deploy-github-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.event_name == 'pull_request' && github.ref || 'production' }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Validate and prepare static site
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate pages and local links
+        run: python3 scripts/validate_site.py
+
+      - name: Configure GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      - name: Upload only the public website
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: git_page_wa
+
+  deploy:
+    name: Deploy to GitHub Pages
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4

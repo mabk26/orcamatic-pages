@@ -1,0 +1,16 @@
+{
+  "name": "Orcamatic",
+  "short_name": "Orcamatic",
+  "description": "Privacy-first browser automation with ORCA.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbfbf7",
+  "theme_color": "#10162a",
+  "icons": [
+    {
+      "src": "/assets/orca-icon.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ]
+}
