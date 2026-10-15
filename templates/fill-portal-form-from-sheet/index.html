@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/site.css?v=1dac00acc9">
+    <link rel="stylesheet" href="/assets/site.css?v=fdd7662821">
     <title>Fill a form from rows you already keep | Orcamatic</title>
     <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="article">
@@ -18,7 +18,7 @@
     <meta property="og:description" content="Drive a web form from the sheet you already maintain, one submission at a time, with condition checks before every submit. No API needed.">
     <meta property="og:url" content="https://orcamatic.com/templates/fill-portal-form-from-sheet/">
     <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
-    <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
+    <meta property="og:image:alt" content="Orcamatic: Show it once. Let it run.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Fill a form from rows you already keep | Orcamatic">
     <meta name="twitter:description" content="Drive a web form from the sheet you already maintain, one submission at a time, with condition checks before every submit. No API needed.">
@@ -103,17 +103,17 @@
       <section class="section" aria-labelledby="steps-title">
         <div class="container article">
           <h2 id="steps-title">The steps, written out</h2>
-          <p>Build them in the ORCA panel. This is a recipe rather than a file to load &mdash; one sitting, then it is saved as your own profile.</p>
+          <p>Build them in the ORCA panel. This is a recipe rather than a file to load: one sitting, then it is saved as your own profile.</p>
           <ol class="doc-steps">
               <li><h3>Put the values where ORCA can read them</h3><p>A sheet, a CSV export, or the list view of a tool you already keep. The columns become the fields ORCA will type.</p></li>
               <li><h3>Pick each control once, on the real form</h3><p>The input, the dropdown, the submit button. Pick a dropdown option as a value, so the selection matches what the site expects instead of a pixel position.</p></li>
-              <li><h3>Map column to field</h3><p>Reference to order number, name to claimant, note to reason. Anything you do not map stays untouched &mdash; ORCA never guesses at a field you never showed it.</p></li>
+              <li><h3>Map column to field</h3><p>Reference to order number, name to claimant, note to reason. Anything you do not map stays untouched. ORCA never guesses at a field you never showed it.</p></li>
               <li><h3>Gate the submit</h3><p>Submit only when the required fields are non-empty and the confirmation control is present, and retry the &ldquo;button still disabled&rdquo; case, which is normally a slow page rather than a broken one.</p></li>
               <li><h3>Run a single row first</h3><p>Read the log, check the record inside the portal, then run the rest. One row costs ten seconds and prevents a twenty-row cleanup job.</p></li>
               <li><h3>Leave the pacing on</h3><p>The built-in micro-intervals between actions keep the target site seeing human-ish timing instead of a burst of requests.</p></li>
           </ol>
           <div class="callout"><b>What it collects.</b> The values you mapped, typed into the page you are on. A rule-based fill runs locally: no AI step, no upload, no balance used.</div>
-          <div class="callout"><b>Limits worth respecting.</b> Keep a human on the final submit for anything irreversible &mdash; payments, filings, deletions, legal acknowledgements &mdash; and do not automate a submission the site does not allow.</div>
+          <div class="callout"><b>Limits worth respecting.</b> Keep a human on the final submit for anything irreversible (payments, filings, deletions, legal acknowledgements) and do not automate a submission the site does not allow.</div>
           <p class="cta-note">The arithmetic, not a promise: multiply the minutes one batch costs you by hand against the 1 batch a day you actually do. That product is what this replaces, for one sitting of about 9 min.</p>
         </div>
       </section>
@@ -133,15 +133,15 @@
           <div class="band-cta" data-reveal>
             <div>
               <h2 id="tpl-cta">Your task is not one of these?</h2>
-              <p>Send the steps you repeat and we will tell you honestly whether ORCA can hold them &mdash; and if it can, we will add it as a template.</p>
+              <p>Send the steps you repeat and we will tell you honestly whether ORCA can hold them, and if it can, we will add it as a template.</p>
             </div>
-            <a class="btn btn-primary" href="mailto:support@orcamatic.com?subject=Template%20request">Request a template <span aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn-primary" href="mailto:orcamatic@gmail.com?subject=Template%20request">Request a template <span aria-hidden="true">&rarr;</span></a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:support@orcamatic.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>&copy; <span data-year>2026</span> Orcamatic</span><span>Chrome &middot; Edge &middot; Brave</span></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:orcamatic@gmail.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>&copy; <span data-year>2026</span> Orcamatic</span><span>Chrome &middot; Edge &middot; Brave</span></div></footer>
     <script src="/assets/site.js?v=22ef9e2acc" defer></script>
   </body>
 </html>

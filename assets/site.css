@@ -1,4 +1,4 @@
-/* Orcamatic GitHub Pages site — no build step or third-party runtime required. */
+/* Orcamatic GitHub Pages site. No build step or third-party runtime required. */
 /* Self-hosted fonts (SIL OFL, see assets/fonts/LICENSE.txt) */
 @font-face { font-family: "Inter Variable"; src: url("/assets/fonts/inter-latin-wght.woff2?v=3100e775e8") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
 @font-face { font-family: "Newsreader Variable"; src: url("/assets/fonts/newsreader-latin-wght.woff2?v=62981321d9") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
@@ -537,10 +537,10 @@ table.compare code { border-radius: 4px; padding: 0.1rem 0.3rem; background: #f1
 .tpl-card .tpl-meta { display: flex; flex-wrap: wrap; gap: 0.4rem 0.9rem; margin-top: auto; padding-top: 1.2rem; color: #5d6883; font-size: 0.78rem; }
 .tpl-card .tpl-meta span { display: inline-flex; align-items: center; gap: 0.35rem; }
 .doc-steps { counter-reset: step; display: grid; gap: 1.1rem; margin: 2rem 0 0; padding: 0; list-style: none; }
-.doc-steps li { display: grid; grid-template-columns: 2.4rem 1fr; gap: 1rem; border-top: 1px solid #e3e7f1; padding-top: 1.1rem; }
-.doc-steps li::before { counter-increment: step; content: counter(step, decimal-leading-zero); color: var(--violet-deep); font-family: var(--serif); font-size: 1.4rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
-.doc-steps h3 { margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 650; letter-spacing: -0.01em; }
-.doc-steps p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.doc-steps li { display: grid; grid-template-columns: 2.4rem 1fr; gap: 0 1rem; border-top: 1px solid #e3e7f1; padding-top: 1.1rem; }
+.doc-steps li::before { counter-increment: step; grid-column: 1; grid-row: 1 / span 2; content: counter(step, decimal-leading-zero); color: var(--violet-deep); font-family: var(--serif); font-size: 1.4rem; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+.doc-steps h3 { grid-column: 2; margin: 0 0 0.35rem; font-size: 1.05rem; font-weight: 650; letter-spacing: -0.01em; }
+.doc-steps p { grid-column: 2; margin: 0; color: var(--muted); font-size: 0.92rem; }
 .callout { border: 1px solid #d9dfee; border-left: 3px solid var(--mint-deep); border-radius: var(--radius-sm); padding: 1rem 1.15rem; background: #f7faf8; color: #46516b; font-size: 0.92rem; }
 .callout b { color: var(--ink); }
 .band-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.2rem; border: 1px solid #d8ddea; border-radius: var(--radius-md); padding: clamp(1.4rem, 3vw, 2rem); background: #fff; box-shadow: var(--shadow-sm); }

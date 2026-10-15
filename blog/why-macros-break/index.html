@@ -6,7 +6,7 @@
     <link rel="canonical" href="https://orcamatic.com/blog/why-macros-break/"><link rel="icon" href="/assets/orca-icon.png" type="image/png"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/site.css?v=1dac00acc9">
+    <link rel="stylesheet" href="/assets/site.css?v=fdd7662821">
     <title>Why recorded macros break (and what survives) | Orcamatic</title>
       <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="article">
@@ -16,7 +16,7 @@
     <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
+    <meta property="og:image:alt" content="Orcamatic: Show it once. Let it run.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Why recorded macros break, and what to build instead | Orcamatic">
     <meta name="twitter:description" content="Recorded macros die on the first redesign because they store gestures, not intent. What survives: targets that re-locate, waits, retries and a readable log.">
@@ -72,19 +72,19 @@
         <h2>What ORCA does about each</h2>
         <p>ORCA is a browser extension with a visual element picker and a rule engine, so the answers are structural rather than &ldquo;record it again and be more careful&rdquo;.</p>
         <p><strong>Targets.</strong> You pick an element while the page is in a normal state, and ORCA stores a locator <em>and</em> the element's label. When the layout shifts, it uses the stored label and structure to re-locate the control instead of clicking where the mouse used to land. That is the practical difference between the rule engine and a macro recorder: a recorder replays gestures, ORCA re-finds intent.</p>
-        <p><strong>Timing.</strong> Steps take a wait or a condition, not a sleep. The rule engine supports dynamic delays and condition-based execution &mdash; &ldquo;click Next while it exists and is enabled&rdquo; &mdash; and a failed action can be retried before the run gives up on that row.</p>
+        <p><strong>Timing.</strong> Steps take a wait or a condition, not a sleep. The rule engine supports dynamic delays and condition-based execution (&ldquo;click Next while it exists and is enabled&rdquo;), and a failed action can be retried before the run gives up on that row.</p>
         <p><strong>Verification.</strong> Every run writes a log: each step, its status, retries, timings, and which extractions came back empty. That log is the post-condition. On a page with a CAPTCHA, a 2FA prompt or a confirmation gate, the run pauses and tells you instead of trying to get past it.</p>
         <h2>Where an API connector is still the better tool</h2>
-        <p>Being browser-based is not a superiority claim. If the system you are automating has a real API, use it &mdash; it is faster, atomic, idempotent and it does not care whether your laptop is awake. The reason tools like ORCA exist is that a large share of real work happens on pages with no API at all: a supplier portal, a government filing form, a 2011 intranet, a job board, a clinic scheduling screen.</p>
+        <p>Being browser-based is not a superiority claim. If the system you are automating has a real API, use it: it is faster, atomic, idempotent and it does not care whether your laptop is awake. The reason tools like ORCA exist is that a large share of real work happens on pages with no API at all: a supplier portal, a government filing form, a 2011 intranet, a job board, a clinic scheduling screen.</p>
         <div class="table-wrap"><table class="compare"><caption>Three ways to automate the same task, by what they need and what they tolerate.</caption>
           <thead><tr><th scope="col">Question</th><th scope="col">Macro recorder</th><th scope="col">API connector</th><th scope="col">ORCA</th></tr></thead>
           <tbody>
             <tr><th scope="row">Needs an API to exist</th><td class="no">No</td><td class="yes">Yes</td><td class="no">No</td></tr>
-            <tr><th scope="row">Survives a layout change</th><td class="no">Rarely</td><td class="yes">Yes &mdash; markup is irrelevant</td><td class="part">Partly &mdash; re-locates the stored target</td></tr>
-            <tr><th scope="row">Uses your logged-in session</th><td class="part">Sometimes</td><td class="no">No &mdash; separate credentials</td><td class="yes">Yes</td></tr>
+            <tr><th scope="row">Survives a layout change</th><td class="no">Rarely</td><td class="yes">Yes: markup is irrelevant</td><td class="part">Partly: re-locates the stored target</td></tr>
+            <tr><th scope="row">Uses your logged-in session</th><td class="part">Sometimes</td><td class="no">No: separate credentials</td><td class="yes">Yes</td></tr>
             <tr><th scope="row">Writes where the work is</th><td class="yes">Yes</td><td class="part">Only where the API allows</td><td class="yes">Yes</td></tr>
             <tr><th scope="row">You can read what it did</th><td class="no">A video, maybe</td><td class="yes">Request logs</td><td class="yes">Per-step run log</td></tr>
-            <tr><th scope="row">Safe for high-frequency polling</th><td class="no">No</td><td class="yes">Yes, with rate limits</td><td class="no">No &mdash; a human page should be hit like a human</td></tr>
+            <tr><th scope="row">Safe for high-frequency polling</th><td class="no">No</td><td class="yes">Yes, with rate limits</td><td class="no">No: a human page should be hit like a human</td></tr>
           </tbody>
         </table></div>
         <div class="article-callout"><strong>The rule worth keeping:</strong> API when there is one, browser automation when there is not, and never a recording when the page is going to change.</div>
@@ -96,12 +96,12 @@
           <li>Run once with the log open and read it top to bottom. This takes two minutes and catches most of what would otherwise bite you in a month.</li>
           <li>Make scheduled runs idempotent: re-running should be harmless, because a scheduled run occasionally fires when it should not.</li>
         </ol>
-        <p>And keep the scope honest. Automation is for the work you are allowed to do, at a pace that does not hurt the site you are using &mdash; the extension paces actions and pauses at verification gates for exactly that reason.</p>
+        <p>And keep the scope honest. Automation is for the work you are allowed to do, at a pace that does not hurt the site you are using. The extension paces actions and pauses at verification gates for exactly that reason.</p>
         <p>If you want a concrete starting point, the <a href="/templates/">template library</a> writes these steps out for three real jobs, and <a href="/guides/first-workflow/">the quickstart</a> walks the first one from an empty panel. For what the extension can see and where your data goes, <a href="/security/">the permissions page</a> is the plain version.</p>
       <nav class="post-links" aria-label="Keep reading"><a href="/templates/">Workflow templates<span>Copy a step list that already works</span></a><a href="/guides/first-workflow/">Your first workflow<span>Five steps, about fifteen minutes</span></a><a href="/security/">Security &amp; permissions<span>What each permission is for</span></a></nav></article></section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:support@orcamatic.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>© <span data-year>2026</span> Orcamatic</span><span>Chrome · Edge · Brave</span></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:orcamatic@gmail.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>© <span data-year>2026</span> Orcamatic</span><span>Chrome · Edge · Brave</span></div></footer>
     <script src="/assets/site.js?v=22ef9e2acc" defer></script>
   </body>
 </html>

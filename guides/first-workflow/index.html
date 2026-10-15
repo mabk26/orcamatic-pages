@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/site.css?v=1dac00acc9">
+    <link rel="stylesheet" href="/assets/site.css?v=fdd7662821">
     <title>Your first ORCA workflow | Orcamatic</title>
     <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="website">
@@ -18,7 +18,7 @@
     <meta property="og:description" content="A five-step guide to building your first workflow in ORCA: element picking, retries and conditions, reading the run log, and scheduling it.">
     <meta property="og:url" content="https://orcamatic.com/guides/first-workflow/">
     <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
-    <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
+    <meta property="og:image:alt" content="Orcamatic: Show it once. Let it run.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Your first ORCA workflow | Orcamatic">
     <meta name="twitter:description" content="A five-step guide to building your first workflow in ORCA: element picking, retries and conditions, reading the run log, and scheduling it.">
@@ -39,7 +39,7 @@
         {
           "@type": "HowToStep",
           "name": "Pick the target while the page is in a normal state",
-          "text": "Open the page you would work on by hand and start the visual element picker. Click one control &mdash; a button, an input, a link. ORCA stores that element as a target with a label, not as a coordinate on screen."
+          "text": "Open the page you would work on by hand and start the visual element picker. Click one control: a button, an input, a link. ORCA stores that element as a target with a label, not as a coordinate on screen."
         },
         {
           "@type": "HowToStep",
@@ -80,7 +80,7 @@
         <div class="container" data-reveal>
           <p class="tpl-kind">ORCA guide &middot; about 15 minutes, one page you already use</p>
           <h1 id="guide-title">Your first workflow, start to finish.</h1>
-          <p>The first workflow teaches you more than the manual does. Do it on a task you would otherwise do by hand today, follow the five steps, and read the log at the end &mdash; that log is what makes the second workflow fast.</p>
+          <p>The first workflow teaches you more than the manual does. Do it on a task you would otherwise do by hand today, follow the five steps, and read the log at the end. That log is what makes the second workflow fast.</p>
           <ul class="facts" aria-label="What you need">
             <li>ORCA installed</li>
             <li>A page you can edit or read</li>
@@ -94,7 +94,7 @@
         <div class="container article">
           <h2 id="steps-title">Five steps</h2>
           <ol class="doc-steps">
-            <li><h3>Pick the target while the page is in a normal state</h3><p>Open the page you would work on by hand and start the visual element picker. Click one control &mdash; a button, an input, a link. ORCA stores that element as a target with a label, not as a coordinate on screen.</p></li>
+            <li><h3>Pick the target while the page is in a normal state</h3><p>Open the page you would work on by hand and start the visual element picker. Click one control: a button, an input, a link. ORCA stores that element as a target with a label, not as a coordinate on screen.</p></li>
             <li><h3>Add the action, then the logic around it</h3><p>Type a value, choose a dropdown option, extract a field, submit. Then make it robust: a retry when the click is refused, a wait for an element to appear, a condition on something being enabled. Two rules here usually matter more than ten actions.</p></li>
             <li><h3>Run one case and read the log</h3><p>Run it once. Read the log line by line: what was found, what was typed, what had to be retried. A run you have read is a run you can trust.</p></li>
             <li><h3>Fix the two things that broke</h3><p>A target that moved: re-pick it and give the step a wait. A value that came back empty: pick the container instead of the row. Most first workflows need exactly these two repairs.</p></li>
@@ -109,7 +109,7 @@
           <div class="trouble" data-reveal>
             <p><b>&ldquo;Element not found&rdquo;</b><span>The page changed shape, or the element loads late. Re-pick it with the picker and add a wait for that container before the click.</span></p>
             <p><b>A half-typed value</b><span>Some frameworks reject instant input. Add a small dynamic delay before the field and let ORCA retry the step.</span></p>
-            <p><b>A run that stops at a verification gate</b><span>That is the guard rail working. ORCA pauses instead of solving a CAPTCHA or a 2FA prompt: sign in yourself, then start the run in that tab. Never script a login &mdash; credentials belong in your password manager.</span></p>
+            <p><b>A run that stops at a verification gate</b><span>That is the guard rail working. ORCA pauses instead of solving a CAPTCHA or a 2FA prompt: sign in yourself, then start the run in that tab. Never script a login. Credentials belong in your password manager.</span></p>
             <p><b>A scheduled run that did not fire</b><span>The scheduler fires inside your browser profile, so the browser has to be running and the plan active on that machine. If a run matters, make it idempotent so an extra firing is harmless.</span></p>
             <p><b>Empty rows from an extraction</b><span>You picked the leaf cell rather than the row. Pick the row container, then the fields inside it, and extract per row.</span></p>
           </div>
@@ -128,7 +128,7 @@
         </div>
       </section>
 
-    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:support@orcamatic.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>&copy; <span data-year>2026</span> Orcamatic</span><span>Chrome &middot; Edge &middot; Brave</span></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:orcamatic@gmail.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>&copy; <span data-year>2026</span> Orcamatic</span><span>Chrome &middot; Edge &middot; Brave</span></div></footer>
     <script src="/assets/site.js?v=22ef9e2acc" defer></script>
   </body>
 </html>
