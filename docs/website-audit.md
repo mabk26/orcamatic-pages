@@ -7,7 +7,9 @@ products that convert actually do. Nothing below asks you to invent a claim.
 
 **Status after Phase 1 (2026-10-15):** everything below marked ✅ shipped is live in this repo;
 the execution order and the owner split are in [`PHASES.md`](PHASES.md). P0.1, P0.2 and P0.5 stay
-open because they need a screen recording and access to the store dashboard.
+open because they need a screen recording and access to the store dashboard. Two side effects
+worth noting: the site is now 20 pages (up from 13), and `python3 tools/check-site.py --strict`
+is the command that keeps it honest — it runs in CI before anything is published.
 
 ---
 

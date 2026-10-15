@@ -38,6 +38,9 @@ afterwards. Anything illustrative on the site is labelled as illustrative on the
 | 1.14 | Screenshot/promo-tile capture tool for store assets | `tools/prepare-screenshots.py` |
 | 1.15 | Honest arithmetic block: minutes per run × runs per week − log checking, computed from what the visitor types | `#roi-title` on `index.html` |
 | 1.16 | Full feature-comparison table and a "what happens when the balance runs out" panel on `/pricing/` | `pricing/index.html` |
+| 1.17 | Long-read for the comparison query the category leaves open: why recordings break, what to write instead, and where an API connector is still better | `/blog/why-macros-break/` |
+| 1.18 | Eighth FAQ on safety and permissions, mirrored in the FAQPage JSON-LD, pointing at `/security/` | `#faq-title` on `index.html` |
+| 1.19 | `tools/check-site.py`: markup balance, head-tag presence, one-h1 rule, class-to-rule coverage, internal links, sitemap completeness, JSON-LD parsing, inline-style detection. Runs in CI before packaging | `tools/check-site.py`, `.github/workflows/deploy-github-pages.yml` |
 
 ### Two sentences that need 60 seconds of your eyes
 
@@ -47,11 +50,12 @@ Manifest V3 uses for those jobs, and both match what the extension's behaviour o
 implies — but only your manifest and background script can confirm the wording. If either is used
 differently, change those two table rows and nothing else on the page moves.
 
-Verification run at the end of the phase: HTML tag balance on every page, `css-tree` parse
-of `assets/site.css`, `node --check` on `assets/site.js`, class cross-check (no class used
-in markup without a rule), zero inline `style=` attributes (the CSP forbids them), every
-internal `href` resolving to a file, sitemap XML valid with unique URLs, all 19 pages
-returning 200 from a local server.
+Verification at the end of the phase: all 20 pages pass `python3 tools/check-site.py --strict`
+(markup balance, one `<h1>` each, required head tags, every class has a rule, every internal
+link and local asset resolves, sitemap complete and unique, JSON-LD parses), `css-tree` parses
+`assets/site.css`, `node --check` passes on `assets/site.js`, zero inline `style=` attributes
+(the CSP forbids them), and every page returns 200 from a local server. The same checker now
+gates the deploy.
 
 ## Phase 2 — the recording · owner: **you** · status: waiting
 

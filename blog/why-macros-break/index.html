@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#10162a">
+    <meta name="description" content="Recorded macros die on the first redesign because they store gestures, not intent. What survives: targets that re-locate, waits, retries and a readable log.">
+    <link rel="canonical" href="https://orcamatic.com/blog/why-macros-break/"><link rel="icon" href="/assets/orca-icon.png" type="image/png"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://lh3.googleusercontent.com; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <title>Why recorded macros break (and what survives) | Orcamatic</title>
+      <meta property="og:site_name" content="Orcamatic">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Why recorded macros break, and what to build instead | Orcamatic">
+    <meta property="og:description" content="Recorded macros die on the first redesign because they store gestures, not intent. What survives: targets that re-locate, waits, retries and a readable log.">
+    <meta property="og:url" content="https://orcamatic.com/blog/why-macros-break/">
+    <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Why recorded macros break, and what to build instead | Orcamatic">
+    <meta name="twitter:description" content="Recorded macros die on the first redesign because they store gestures, not intent. What survives: targets that re-locate, waits, retries and a readable log.">
+    <meta name="twitter:image" content="https://orcamatic.com/assets/og-image.jpg">
+    <link rel="apple-touch-icon" href="/assets/icon-192.png">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why recorded macros break, and what to build instead",
+  "description": "A macro recorder stores the keys you pressed and the pixels you clicked. That is why it dies on the first redesign. What survives is a workflow that names its targets, waits, and retries.",
+  "datePublished": "2026-10-15",
+  "dateModified": "2026-10-15",
+  "mainEntityOfPage": "https://orcamatic.com/blog/why-macros-break/",
+  "image": "https://orcamatic.com/assets/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Orcamatic",
+    "url": "https://orcamatic.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Orcamatic",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://orcamatic.com/assets/icon-512.png"
+    }
+  }
+}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header"><div class="container nav-shell"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/">Templates</a><a href="/products/">Product</a><a href="/pricing/">Pricing</a><a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome <span aria-hidden="true">↗</span></a></nav><button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-navigation" aria-label="Open navigation"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" aria-hidden="true"><path d="M1 1h18M1 8h18M1 15h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div><nav id="mobile-navigation" class="mobile-nav" data-mobile-nav aria-label="Mobile navigation"><div class="container mobile-nav-inner"><a href="/#how-it-works">How it works</a><a href="/#features">Features</a><a href="/templates/">Templates</a><a href="/products/">Product</a><a href="/pricing/">Pricing</a><a href="/privacy-policy/">Privacy</a><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a></div></nav></header>
+    <main id="main-content">
+      <section class="page-hero compact"><div class="container editorial" data-reveal><h1>Why recorded macros break, and what to build instead</h1><p class="lead">A recorder saves the keys you pressed and the coordinates you clicked. A workflow saves what you meant. The difference is invisible for about a week, and then the page gets redesigned.</p><p class="byline">October 15, 2026</p></div></section>
+      <section class="section"><article class="article">
+        <p>Every automation that touches a website eventually faces the same moment: the page is not what it was when the automation was written. Some of them fail loudly. The bad ones fail quietly and write a wrong value into your spreadsheet.</p>
+        <p>That is the whole reason the &ldquo;recorder&rdquo; model is a trap for browser work. Recording is easy to author and impossible to maintain, because a recording captures <em>how you moved the mouse</em>, not <em>what you were doing</em>.</p>
+        <h2>What a recording actually stores</h2>
+        <p>Open any classic macro file and you will usually find three things: a locator that is either an absolute DOM path or an x/y coordinate, a fixed sleep between actions, and no post-condition. Each of those is a way of saying &ldquo;I am betting this page never changes&rdquo;.</p>
+        <ul>
+          <li><strong>Coordinates break on layout.</strong> A new banner above the table moves the button eleven pixels and the click lands in a dropdown.</li>
+          <li><strong>Absolute paths break on markup.</strong> Add a wrapper <code>&lt;div&gt;</code> and <code>body &gt; div:nth-child(4) &gt; span</code> is now pointing at the cookie notice.</li>
+          <li><strong>Fixed sleeps break on load.</strong> Two seconds is a waste on a good day and a failure on a slow one, because the page is not a clock.</li>
+          <li><strong>No post-condition means nothing notices.</strong> The macro pressed Submit; nobody checked that the record was actually created.</li>
+        </ul>
+        <h2>Three questions that decide whether an automation survives</h2>
+        <p>You can ask them of any tool before you buy it or trust it, and the answers tell you everything:</p>
+        <ol>
+          <li><strong>How is the target identified?</strong> A stable selector, a label, an accessibility name, or a pixel position?</li>
+          <li><strong>What happens when the element is not there yet?</strong> Does it wait for a condition, or does it sleep and hope?</li>
+          <li><strong>What stops a wrong value from being saved?</strong> Is there a check you can read, or only the result you notice next week?</li>
+        </ol>
+        <h2>What ORCA does about each</h2>
+        <p>ORCA is a browser extension with a visual element picker and a rule engine, so the answers are structural rather than &ldquo;record it again and be more careful&rdquo;.</p>
+        <p><strong>Targets.</strong> You pick an element while the page is in a normal state, and ORCA stores a locator <em>and</em> the element's label. When the layout shifts, it uses the stored label and structure to re-locate the control instead of clicking where the mouse used to land. That is the practical difference between the rule engine and a macro recorder: a recorder replays gestures, ORCA re-finds intent.</p>
+        <p><strong>Timing.</strong> Steps take a wait or a condition, not a sleep. The rule engine supports dynamic delays and condition-based execution &mdash; &ldquo;click Next while it exists and is enabled&rdquo; &mdash; and a failed action can be retried before the run gives up on that row.</p>
+        <p><strong>Verification.</strong> Every run writes a log: each step, its status, retries, timings, and which extractions came back empty. That log is the post-condition. On a page with a CAPTCHA, a 2FA prompt or a confirmation gate, the run pauses and tells you instead of trying to get past it.</p>
+        <h2>Where an API connector is still the better tool</h2>
+        <p>Being browser-based is not a superiority claim. If the system you are automating has a real API, use it &mdash; it is faster, atomic, idempotent and it does not care whether your laptop is awake. The reason tools like ORCA exist is that a large share of real work happens on pages with no API at all: a supplier portal, a government filing form, a 2011 intranet, a job board, a clinic scheduling screen.</p>
+        <div class="table-wrap"><table class="compare"><caption>Three ways to automate the same task, by what they need and what they tolerate.</caption>
+          <thead><tr><th scope="col">Question</th><th scope="col">Macro recorder</th><th scope="col">API connector</th><th scope="col">ORCA</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Needs an API to exist</th><td class="no">No</td><td class="yes">Yes</td><td class="no">No</td></tr>
+            <tr><th scope="row">Survives a layout change</th><td class="no">Rarely</td><td class="yes">Yes &mdash; markup is irrelevant</td><td class="part">Partly &mdash; re-locates the stored target</td></tr>
+            <tr><th scope="row">Uses your logged-in session</th><td class="part">Sometimes</td><td class="no">No &mdash; separate credentials</td><td class="yes">Yes</td></tr>
+            <tr><th scope="row">Writes where the work is</th><td class="yes">Yes</td><td class="part">Only where the API allows</td><td class="yes">Yes</td></tr>
+            <tr><th scope="row">You can read what it did</th><td class="no">A video, maybe</td><td class="yes">Request logs</td><td class="yes">Per-step run log</td></tr>
+            <tr><th scope="row">Safe for high-frequency polling</th><td class="no">No</td><td class="yes">Yes, with rate limits</td><td class="no">No &mdash; a human page should be hit like a human</td></tr>
+          </tbody>
+        </table></div>
+        <div class="article-callout"><strong>The rule worth keeping:</strong> API when there is one, browser automation when there is not, and never a recording when the page is going to change.</div>
+        <h2>How to write it so it holds</h2>
+        <ol>
+          <li>Pick targets on a page in its ordinary state, not mid-error or mid-loading.</li>
+          <li>Add a wait and one retry to any step that touches a lazily loaded region.</li>
+          <li>Put a condition on anything that loops over rows, so an empty page stops the run instead of inventing one.</li>
+          <li>Run once with the log open and read it top to bottom. This takes two minutes and catches most of what would otherwise bite you in a month.</li>
+          <li>Make scheduled runs idempotent: re-running should be harmless, because a scheduled run occasionally fires when it should not.</li>
+        </ol>
+        <p>And keep the scope honest. Automation is for the work you are allowed to do, at a pace that does not hurt the site you are using &mdash; the extension paces actions and pauses at verification gates for exactly that reason.</p>
+        <p>If you want a concrete starting point, the <a href="/templates/">template library</a> writes these steps out for three real jobs, and <a href="/guides/first-workflow/">the quickstart</a> walks the first one from an empty panel. For what the extension can see and where your data goes, <a href="/security/">the permissions page</a> is the plain version.</p>
+      <nav class="post-links" aria-label="Keep reading"><a href="/templates/">Workflow templates<span>Copy a step list that already works</span></a><a href="/guides/first-workflow/">Your first workflow<span>Five steps, about fifteen minutes</span></a><a href="/security/">Security &amp; permissions<span>What each permission is for</span></a></nav></article></section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:support@orcamatic.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>© <span data-year>2026</span> Orcamatic</span><span>Chrome · Edge · Brave</span></div></footer>
+    <script src="/assets/site.js" defer></script>
+  </body>
+</html>

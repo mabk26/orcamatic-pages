@@ -156,6 +156,22 @@ uppercase "eyebrow" line above a heading and no bullet dot in front of a label. 
 (hairline-separated) for short lists of claims and the serif numerals in `.step-number` /
 `.pillar .number` for ordered cards.
 
+## Checking the site
+
+There is no build, so correctness is checked instead:
+
+```bash
+python3 tools/check-site.py            # errors only (this is what CI runs)
+python3 tools/check-site.py --strict  # advisories fail too
+```
+
+It verifies markup balance, exactly one `<h1>` per page, the head tags every page must carry,
+that every class used in HTML has a rule in `assets/site.css`, that every internal link and local
+asset points at a file that exists, that the sitemap lists each page once, and that structured
+data parses as JSON. It also flags inline `style` attributes and `on*=` handlers, which this site's
+Content-Security-Policy blocks at runtime. The deploy workflow runs it before packaging, so a
+broken page cannot reach production.
+
 ## Improvement backlog and phases
 
 `docs/website-audit.md` is the research behind the site: the scorecard, the copy proposals and

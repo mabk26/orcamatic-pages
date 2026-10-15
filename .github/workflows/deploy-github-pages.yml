@@ -26,6 +26,12 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      # Fail the run before anything is published if a page is broken: unbalanced
+      # markup, a class with no rule, an internal link with no file behind it, a
+      # missing head tag, inline styles (the CSP blocks them), bad structured data.
+      - name: Check the site
+        run: python3 tools/check-site.py
+
       # The website lives at the repository root, so copy only the public files
       # into _site/ and leave .github/, README.md, LICENSE and .gitignore out.
       - name: Collect public files

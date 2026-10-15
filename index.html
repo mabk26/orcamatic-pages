@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#10162a">
-    <meta name="description" content="ORCA is an intelligent auto-clicker for Chrome with a visual element picker, a smart rule engine and a built-in scheduler. Show it the browser work you repeat, then run it on demand or on a timer.">
+    <meta name="description" content="ORCA is an intelligent auto-clicker for Chrome with a visual element picker, a smart rule engine and a built-in scheduler - no API, no code.">
     <link rel="canonical" href="https://orcamatic.com/">
     <link rel="icon" href="/assets/orca-icon.png" type="image/png">
     <link rel="manifest" href="/site.webmanifest">
@@ -18,7 +18,7 @@
       <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Orcamatic — Browser automation that stays in your browser">
-    <meta property="og:description" content="ORCA turns the clicking, typing and copying you repeat into saved, scheduled workflows. No code, no API keys.">
+    <meta property="og:description" content="ORCA is an intelligent auto-clicker for Chrome with a visual element picker, a smart rule engine and a built-in scheduler - no API, no code.">
     <meta property="og:url" content="https://orcamatic.com/">
     <meta property="og:image" content="https://orcamatic.com/assets/og-image.jpg">
     <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@
     <meta property="og:image:alt" content="Orcamatic — Show it once. Let it run.">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Orcamatic — Browser automation that stays in your browser">
-    <meta name="twitter:description" content="ORCA turns the clicking, typing and copying you repeat into saved, scheduled workflows. No code, no API keys.">
+    <meta name="twitter:description" content="ORCA is an intelligent auto-clicker for Chrome with a visual element picker, a smart rule engine and a built-in scheduler - no API, no code.">
     <meta name="twitter:image" content="https://orcamatic.com/assets/og-image.jpg">
     <link rel="apple-touch-icon" href="/assets/icon-192.png">
     <script type="application/ld+json">{
@@ -95,6 +95,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "ORCA is built for Chrome and Chromium-based browsers, including Chrome, Edge, and Brave. Install it from the Chrome Web Store to get started."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it safe to give an extension access to the sites I use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your workflow profiles, rules and run logs stay in your browser's local storage, and page content is only sent when you deliberately start an AI-assisted step. Payment details are handled by the checkout provider, and ORCA never asks you to script a login into a workflow. The permissions page lists each permission and what it is for."
       }
     }
   ]
@@ -509,6 +517,10 @@
             <details>
               <summary>Which browsers can I use?</summary>
               <p>ORCA is built for Chrome and Chromium-based browsers, including Chrome, Edge, and Brave. Install it from the Chrome Web Store to get started.</p>
+            </details>
+            <details>
+              <summary>Is it safe to give an extension access to the sites I use?</summary>
+              <p>It is a fair question for a browser automation tool, so it has a page of its own: <a href="/security/">every permission ORCA requests with the reason it exists</a>. The short version is that your workflow profiles, rules and run logs stay in your browser&rsquo;s local storage, and page content is only sent when you deliberately start an AI-assisted step. Card details stay with Lemon Squeezy, and the extension never asks you to script a login.</p>
             </details>
           </div>
         </div>
