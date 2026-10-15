@@ -431,8 +431,9 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
   .nav-shell { min-height: 66px; }
   .site-nav { display: none; }
   .nav-toggle { display: inline-flex; }
-  .mobile-nav { overflow: hidden; max-height: 0; border-top: 0 solid #e0e4ef; background: #fff; transition: max-height 260ms ease, border-color 260ms ease; }
-  .mobile-nav.is-open { max-height: 340px; border-top-width: 1px; }
+  /* display must be re-enabled here: the base rule hides .mobile-nav on every screen size. */
+  .mobile-nav { display: block; overflow: hidden; max-height: 0; visibility: hidden; border-top: 0 solid #e0e4ef; background: #fff; transition: max-height 260ms ease, border-color 260ms ease, visibility 260ms ease; }
+  .mobile-nav.is-open { max-height: 80vh; visibility: visible; border-top-width: 1px; }
   .mobile-nav-inner { display: grid; gap: 0.2rem; padding: 0.8rem 0 1rem; }
   .mobile-nav a { border-radius: 8px; padding: 0.65rem 0.75rem; color: #3f4962; font-size: 0.92rem; font-weight: 700; text-decoration: none; }
   .mobile-nav a:hover, .mobile-nav a[aria-current="page"] { background: var(--violet-light); color: var(--violet-deep); }
