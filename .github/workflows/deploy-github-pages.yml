@@ -6,13 +6,13 @@ on:
     paths:
       - 'git_page_wa/**'
       - 'scripts/validate_site.py'
-      - '.github/workflows/deploy-github-pages.yml'
+      - '.github/workflows/**'
   pull_request:
     branches: [main]
     paths:
       - 'git_page_wa/**'
       - 'scripts/validate_site.py'
-      - '.github/workflows/deploy-github-pages.yml'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 permissions:
