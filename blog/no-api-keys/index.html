@@ -6,7 +6,7 @@
     <link rel="canonical" href="https://orcamatic.com/blog/no-api-keys/"><link rel="icon" href="/assets/orca-icon.png" type="image/png"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/site.css?v=fdd7662821">
+    <link rel="stylesheet" href="/assets/site.css?v=3fbc952cef">
     <title>Why ORCA doesn’t ask for your API keys | Orcamatic</title>
       <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="article">
@@ -56,7 +56,8 @@
         <p>A lot of browser automation tools ask you to bring your own AI API key before they will do anything useful. ORCA does not ask for one, and it is not a marketing line. It is how the extension is actually built.</p>
         <h2>Two separate paths, only one needs AI</h2>
         <p>Most of what ORCA does (replaying a saved workflow, running it on a schedule, or filling a form from a rule you defined) is deterministic. It replays your recorded clicks and inputs against the page you are looking at, with recorded targets re-located if the page has changed. None of that touches an AI model, so none of it needs a key, and it does not draw down any AI balance.</p>
-        <p>The second path is the optional AI planner, for tasks that are too open-ended for a fixed rule, like applying to relevant roles or summarizing a page and logging it. That path can call a hosted AI model, but it goes through ORCA Cloud rather than a key you paste in. The subscription includes a monthly AI dollar balance, metered at the same per-token rate the provider charges Orcamatic. No markup, and no separate account to manage with a different company.</p>
+        <p>The second path is the optional AI planner, for tasks that are too open-ended for a fixed rule, like applying to relevant roles or summarizing a page and logging it. That path can call a hosted AI model, but it goes through ORCA Cloud rather than a key you paste in. The AI subscription includes Pro and a monthly AI dollar balance. AI use is metered against your balance at a published per-token rate; no API key or separate provider account is needed.</p>
+        <!-- margin wording: confirm with owner -->
         <h2>Why this matters in practice</h2>
         <ul><li><strong>Nothing to lose.</strong> An API key pasted into a browser extension is a real liability if that extension or your browser profile is ever compromised. ORCA never asks you to hold one.</li><li><strong>Nothing to configure.</strong> You do not need to know what a token is, sign up for a separate AI provider account, or watch a second bill show up somewhere else.</li><li><strong>Clear cost boundary.</strong> If a task does not use the AI planner, it does not touch your AI balance. Read <a href="/blog/how-pricing-works/">what a plan’s AI balance actually buys</a> for a practical example.</li></ul>
         <div class="article-callout"><strong>The short version:</strong> routine browser automation stays routine. Optional AI help is there when a task truly needs reasoning, not as a requirement for every workflow.</div>
