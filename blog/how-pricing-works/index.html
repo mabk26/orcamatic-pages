@@ -6,7 +6,7 @@
     <link rel="canonical" href="https://orcamatic.com/blog/how-pricing-works/"><link rel="icon" href="/assets/orca-icon.png" type="image/png"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/site.css?v=fdd7662821">
+    <link rel="stylesheet" href="/assets/site.css?v=3fbc952cef">
     <title>How ORCA pricing actually works | Orcamatic</title>
       <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="article">
@@ -53,9 +53,12 @@
     <main id="main-content">
       <section class="page-hero compact"><div class="container editorial" data-reveal><h1>How ORCA pricing actually works</h1><p class="lead">Echo, Wave, and Deep are not task credits. They are a monthly AI dollar balance. Here is what that means and roughly what it buys.</p><p class="byline">August 9, 2026</p></div></section>
       <section class="section"><article class="article">
-        <p>ORCA’s paid plans are Echo ($12), Wave ($24), and Deep ($49), named after the sonar theme. What you actually buy each month is the same thing at three sizes: full access to ORCA’s automation features, plus a monthly AI dollar balance.</p>
+        <p>ORCA’s AI plans are Echo ($12/month), Wave ($24/month), and Deep ($49/month), named after the sonar theme. Each includes Pro and a monthly AI dollar balance, with AI tiers differing only in balance. Pro is also available separately for $10/year.</p>
+        <h2>Pro vs. AI plans</h2>
+        <p>Pro ($10/year) is the extension: rule actions, scheduler, profiles, sync, exports. It has no AI balance and never spends anything. The AI plans — Echo, Wave, Deep — add a monthly AI balance for the Engine and include Pro while they are active. If you only want the extension, buy Pro. If you want the Engine, pick an AI plan; you do not need to buy Pro separately.</p>
         <h2>It’s a balance, not a credit system</h2>
-        <p>A lot of automation tools sell credits, where the relationship between a credit and an actual task is opaque. ORCA’s balance is just dollars. Your plan includes a $12, $24, or $49 balance, and an AI-assisted task is charged exactly what the AI provider charged Orcamatic to run it. No markup. No conversion rate to figure out.</p>
+        <p>A lot of automation tools sell credits, where the relationship between a credit and an actual task is opaque. ORCA’s balance is just dollars. Your AI plan includes a $12, $24, or $49 monthly balance. AI use is metered against your balance at a published per-token rate; no API key or separate provider account is needed.</p>
+        <!-- margin wording: confirm with owner -->
         <h2>What actually spends the balance</h2>
         <p>Only tasks that use the optional AI planner touch the balance. If you are running a saved, rule-based workflow (for example, a scheduled click sequence or a saved form fill that does not need the AI to interpret the page), it does not draw on the balance at all. It never calls the AI in the first place.</p>
         <p>When a task does use the AI planner, cost scales with how much reasoning the task needs:</p>
@@ -63,7 +66,7 @@
         <blockquote>Echo’s $12 balance typically covers anywhere from dozens to a few hundred AI-assisted runs a month, depending on workflow complexity.</blockquote>
         <p>We would rather give you an honest range than a precise-sounding number we cannot guarantee for every workflow.</p>
         <h2>Choosing a tier</h2>
-        <ul><li><strong>Echo ($12):</strong> A good starting point if you are automating a handful of tasks a week.</li><li><strong>Wave ($24):</strong> Twice the balance, plus DOM self-healing across redesigns and advanced scheduling controls.</li><li><strong>Deep ($49):</strong> For daily, heavier automation, with extended autonomous runs.</li></ul>
+        <ul><li><strong>Echo ($12):</strong> A good starting point if you are automating a handful of tasks a week.</li><li><strong>Wave ($24):</strong> Twice the AI balance of Echo, with the same Pro features.</li><li><strong>Deep ($49):</strong> The largest monthly AI balance for daily, heavier AI use, with the same Pro features.</li></ul>
         <p>See the full comparison and subscribe from the <a href="/pricing/">ORCA pricing page</a>.</p>
       <nav class="post-links" aria-label="Keep reading"><a href="/templates/">Workflow templates<span>Copy a step list that already works</span></a><a href="/guides/first-workflow/">Your first workflow<span>Five steps, about fifteen minutes</span></a><a href="/security/">Security &amp; permissions<span>What each permission is for</span></a></nav></article></section>
     </main>

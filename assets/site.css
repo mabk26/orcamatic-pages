@@ -292,6 +292,21 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
 .plan-features li::before { width: 0.62em; height: 0.32em; flex: none; margin: 0.36em 0.1em 0 0.05em; border-bottom: 2px solid var(--mint-deep); border-left: 2px solid var(--mint-deep); content: ""; transform: rotate(-45deg); }
 .plan-card .btn { width: 100%; margin-top: auto; }
 
+/* Pro — the extension on its own, shown above the AI plans grid */
+.pro-section { padding-bottom: 0; }
+.pro-row {
+  display: grid; grid-template-columns: 1fr minmax(220px, 300px); gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: center; border: 1px solid var(--violet); border-radius: var(--radius-md);
+  padding: 1.6rem; background: var(--violet-light); box-shadow: var(--shadow-sm);
+}
+.pro-copy { min-width: 0; }
+.pro-row h2 { margin: 0.58rem 0 0.75rem; font-family: var(--serif); font-size: 2.05rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+.pro-row p { margin: 0; color: #4c5570; }
+.pro-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.35rem 1.1rem; margin-top: 0.9rem; }
+.pro-buy { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; border-left: 1px solid #cbd1e5; padding-left: clamp(1rem, 2.2vw, 1.75rem); }
+.pro-buy .btn { width: 100%; }
+.pro-buy small { color: var(--muted); font-family: var(--mono); font-size: 0.65rem; }
+
 .faq-layout { display: grid; grid-template-columns: minmax(260px, 0.78fr) minmax(0, 1.22fr); gap: clamp(2.4rem, 9vw, 9rem); align-items: start; }
 .faq-layout .section-heading { position: sticky; top: 6.5rem; }
 .faq-layout .btn-text { margin-top: 1.1rem; }
@@ -422,6 +437,9 @@ details summary:focus-visible { outline: 3px solid rgba(98, 85, 231, 0.4); outli
 }
 
 @media (max-width: 800px) {
+  .pro-row { grid-template-columns: 1fr; }
+  .pro-buy { border-left: none; padding-left: 0; border-top: 1px solid #cbd1e5; padding-top: 1rem; }
+  .pro-features { grid-template-columns: 1fr; }
   .container { width: min(calc(100% - 32px), var(--container)); }
   .nav-shell { min-height: 66px; }
   .site-nav { display: none; }
