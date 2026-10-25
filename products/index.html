@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/site.css?v=3fbc952cef">
+    <link rel="stylesheet" href="/assets/site.css?v=cb758e1fa1">
     <title>ORCA browser agent | Orcamatic</title>
       <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="website">
@@ -120,6 +120,42 @@
             <article class="pillar" data-reveal><span class="number" aria-hidden="true">3</span><h3>Task scheduler</h3><p>Put recurring workflows on a reliable timer, so the routine part of the week is already handled.</p></article>
             <article class="pillar" data-reveal><span class="number" aria-hidden="true">4</span><h3>Run tracking</h3><p>Live logs and status indicators show each step as it happens, and where a run stopped and why.</p></article>
           </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="lineup-title">
+        <div class="container">
+          <div class="section-heading" data-reveal>
+            <h2 id="lineup-title">Two places the same idea runs.</h2>
+            <p>Orcamatic builds inspectable automation: you state the goal, you see the steps, and you decide how much runs without you. ORCA does that inside the browser. ORCAOS does it on the Linux desktop, in a real terminal.</p>
+          </div>
+          <div class="product-cards">
+            <article class="product-card" data-reveal>
+              <span class="icon icon-violet" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/><path d="M6 6.5h.01M9 6.5h.01"/></svg></span>
+              <h3>ORCA</h3>
+              <p class="product-platform">Browser extension · Chrome, Edge, Brave</p>
+              <p>Repeatable work inside the browser: pick the targets on the live page, write WHEN / THEN / IF rules around them, then run the workflow on demand or on a timer.</p>
+              <ul class="check-list">
+                <li>Visual element picker and a rule engine built on retries and conditions</li>
+                <li>Form filling, list extraction and scheduled checks</li>
+                <li>Saved workflows run locally in the browser you already use</li>
+              </ul>
+              <div class="btn-row"><a class="btn btn-primary" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add to Chrome</a><a class="btn btn-secondary" href="/templates/">Browse templates</a></div>
+            </article>
+            <article class="product-card" data-reveal>
+              <span class="icon icon-mint" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="M6.5 16.5l3.2-3.4-3.2-3.4M12.6 17h5"/></svg></span>
+              <h3>ORCAOS</h3>
+              <p class="product-platform">Linux desktop agent · /bin/bash terminal</p>
+              <p>The same rules and human-in-control gates on the Linux desktop: a goal goes in, real shell commands come out, and the output is checked before the next step runs.</p>
+              <ul class="check-list">
+                <li>Commands run in a genuine /bin/bash PTY, with stdout, stderr and exit codes read</li>
+                <li>Auto, Safe and Manual approval gates around sudo and destructive steps</li>
+                <li>Gemini, OpenAI, Claude, Groq, OpenRouter, local Ollama or the offline engine</li>
+              </ul>
+              <div class="btn-row"><a class="btn btn-primary" href="/products/orcaos/">ORCAOS product page</a><a class="btn btn-secondary" href="https://github.com/mabk26/ORCAOS" target="_blank" rel="noopener">View on GitHub</a></div>
+            </article>
+          </div>
+          <p class="centered-note">ORCA handles repeatable work inside the browser. ORCAOS carries the same inspectable WHEN / THEN / IF automation, and the same human-in-control safety gates, to the Linux desktop and the terminal. <a href="/products/orcaos/">Read about ORCAOS</a></p>
         </div>
       </section>
 
@@ -233,7 +269,7 @@
       <section class="section-tight" aria-labelledby="product-cta-title"><div class="container"><div class="cta-panel" data-reveal><h2 id="product-cta-title">The next time you repeat it, let ORCA take the clicks.</h2><p>Install the extension, try it on one real task, and turn that browser routine into something reusable.</p><div class="btn-row"><a class="btn btn-light" href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Add ORCA to Chrome <span aria-hidden="true">↗</span></a><a class="btn btn-dark" href="/pricing/">Compare plans</a><a class="btn btn-secondary" href="/guides/first-workflow/">Follow the quickstart</a></div><p class="cta-note">Rule-based and scheduled runs execute locally and do not draw on your AI balance. New plans carry a 7-day money-back guarantee.</p></div></div></section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Chrome Web Store</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:orcamatic@gmail.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>© <span data-year>2026</span> Orcamatic</span><span>Chrome · Edge · Brave</span></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><a class="brand" href="/" aria-label="Orcamatic home"><img class="brand-mark" src="/assets/orca-icon.png" width="39" height="39" alt=""><span class="brand-name"><strong>Orcamatic</strong><small>Browser automation</small></span></a><p>Privacy-first browser tools that help you spend less time repeating work online.</p></div><div class="footer-column"><h2>Explore</h2><ul><li><a href="/products/">ORCA product</a></li><li><a href="/products/orcaos/">ORCAOS for Linux</a></li><li><a href="/templates/">Templates</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="https://chromewebstore.google.com/detail/orca/bohdghgjgkellecnjkmahfiocaefgbki" target="_blank" rel="noopener">Chrome Web Store</a></li><li><a href="/about/">About Orcamatic</a></li><li><a href="/blog/">Journal</a></li></ul></div><div class="footer-column"><h2>Support</h2><ul><li><a href="mailto:orcamatic@gmail.com">Email support</a></li><li><a href="https://wa.me/923339297593" target="_blank" rel="noopener">Chat on WhatsApp</a></li><li><a href="/security/">Security &amp; permissions</a></li></ul></div><div class="footer-column"><h2>Legal</h2><ul><li><a href="/terms-of-service/">Terms of service</a></li><li><a href="/privacy-policy/">Privacy policy</a></li><li><a href="/refund-policy/">Refund policy</a></li></ul></div></div><div class="container footer-bottom"><span>© <span data-year>2026</span> Orcamatic</span><span>Chrome · Edge · Brave</span></div></footer>
     <script src="/assets/site.js?v=22ef9e2acc" defer></script>
   </body>
 </html>
