@@ -615,3 +615,54 @@ table.compare code { border-radius: 4px; padding: 0.1rem 0.3rem; background: #f1
 .four-oh-four-links li:first-child { border-left: 0; padding-left: 0; }
 .four-oh-four-links a { color: var(--violet-deep); font-size: 0.95rem; font-weight: 650; text-decoration: none; }
 .four-oh-four-links a:hover { text-decoration: underline; }
+
+/* ---------- ORCAOS: the Linux terminal product, and the two-product lineup ---------- */
+
+/* The ORCAOS hero schematic is a desktop window drawn at 1080x660, so it needs the
+   full container width rather than a grid column. Framed like the app it shows. */
+.art-frame { overflow: hidden; border: 1px solid #d8deed; border-radius: var(--radius-lg); padding: clamp(0.55rem, 1.5vw, 1.1rem); background: #fff; box-shadow: var(--shadow); }
+.art-frame .art { filter: drop-shadow(0 16px 30px rgba(22, 27, 58, 0.1)); }
+.art-frame figcaption { margin-top: 0.95rem; color: var(--muted); font-size: 0.8rem; line-height: 1.5; text-align: center; }
+
+/* Two products, side by side: ORCA in the browser and ORCAOS on the desktop. */
+.product-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2.6rem; }
+.product-card { min-width: 0; display: flex; flex-direction: column; border: 1px solid #dce1ed; border-radius: var(--radius-md); padding: clamp(1.4rem, 3vw, 1.9rem); background: #fff; }
+.product-card:nth-child(even) { background: var(--paper-warm); }
+.product-card h3 { margin: 1rem 0 0.15rem; font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 2.05rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+.product-card .product-platform { margin: 0 0 0.85rem; color: var(--violet); font-family: var(--mono); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+.product-card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.product-card .check-list { gap: 0.6rem; margin: 1.25rem 0 0; }
+.product-card .check-list li { font-size: 0.88rem; }
+.product-card .btn-row { margin-top: auto; padding-top: 1.6rem; }
+
+/* The three autonomy modes: same plan, different approval gate. */
+.mode-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2.6rem; }
+.mode-card { display: flex; flex-direction: column; border: 1px solid #dce1ed; border-radius: var(--radius-md); padding: 1.6rem 1.5rem 1.7rem; background: #fff; }
+.mode-card:nth-child(2) { border-color: #cfc9f7; background: var(--violet-light); }
+.mode-card:nth-child(3) { background: var(--paper-warm); }
+.mode-card h3 { margin: 0; font-family: var(--serif); font-size: 1.9rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+.mode-card .mode-key { margin: 0.5rem 0 0.95rem; color: var(--violet); font-family: var(--mono); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.mode-card p { margin: 0; color: #45506b; font-size: 0.92rem; }
+.mode-card ul { display: grid; gap: 0.5rem; margin: 1.05rem 0 0; padding-left: 1.05rem; color: var(--muted); font-size: 0.86rem; line-height: 1.5; }
+.mode-card li::marker { color: var(--violet); }
+
+/* Install commands. Shown as a terminal, not as prose, because they are copied. */
+.terminal { min-width: 0; overflow: hidden; border: 1px solid #26314f; border-radius: var(--radius-md); background: #10162a; box-shadow: var(--shadow); }
+.terminal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-bottom: 1px solid #26314f; padding: 0.8rem 1.1rem; color: #a7b4d6; font-family: var(--mono); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+.terminal-body { display: grid; gap: 0.9rem; padding: 1.15rem 1.1rem 1.25rem; }
+.terminal-body pre { margin: 0; overflow-x: auto; color: #dbe2f6; font-family: var(--mono); font-size: 0.8rem; line-height: 1.7; overflow-wrap: anywhere; white-space: pre-wrap; }
+.terminal-prompt { color: #7ee2c4; }
+.terminal-note { margin: 0; color: #9fb0d6; font-size: 0.82rem; line-height: 1.6; }
+.btn svg { width: 0.95em; height: 0.95em; flex: none; }
+
+/* A shell path or a class name quoted in running copy: monospace, still inline. */
+.page-hero code { border-radius: 4px; padding: 0.1rem 0.32rem; background: rgba(98, 85, 231, 0.09); color: var(--violet-deep); font-family: var(--mono); font-size: 0.88em; }
+.centered-note a { color: var(--violet-deep); font-weight: 650; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+
+@media (max-width: 980px) {
+  .mode-grid { grid-template-columns: 1fr; max-width: 560px; }
+}
+@media (max-width: 800px) {
+  .product-cards { grid-template-columns: 1fr; }
+  .art-frame { padding: 0.45rem; border-radius: var(--radius-md); }
+}
