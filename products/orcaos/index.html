@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#10162a">
+    <meta name="theme-color" content="#0b0907">
     <meta name="description" content="ORCAOS is an autonomous AI agent for Linux: plan commands with WHEN / THEN / IF, run them in a real /bin/bash terminal, and approve sudo steps in Safe mode.">
     <link rel="canonical" href="https://orcamatic.com/products/orcaos/">
     <link rel="icon" href="/assets/orca-icon.png" type="image/png">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <link rel="preload" href="/assets/fonts/newsreader-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="/assets/site.css?v=8cff4d8a7b">
+    <link rel="preload" href="/assets/fonts/jetbrains-mono-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css?v=d66220d484">
     <title>ORCAOS: Autonomous AI Linux Terminal | Orcamatic</title>
     <meta property="og:site_name" content="Orcamatic">
     <meta property="og:type" content="website">
@@ -78,91 +78,91 @@
               <desc id="orcaos-window-desc">The ORCAOS native GTK3 window. The top bar carries the ORCAOS name, a distro and resource pill reading Zorin OS 18, CPU 6 percent and 3.2 of 16 GB RAM, a mode switcher set to Safe, and a Ready status dot. The AI Operator pane on the left shows a WHEN goal, a first THEN command that needs sudo, an IF approval gate with Approve, Skip and Stop buttons, and an exit code of 0 in 42 milliseconds. The /bin/bash PTY pane on the right shows the commands running, their output, and a diagnosis of that output.</desc>
               <defs><clipPath id="orcaos-window"><rect x="10" y="10" width="1060" height="640" rx="18"/></clipPath></defs>
               <g clip-path="url(#orcaos-window)">
-                <rect x="10" y="10" width="1060" height="640" fill="#ffffff"/>
-                <rect x="10" y="10" width="1060" height="64" fill="#f3f4f9"/>
-                <path d="M10 73.5h1060" stroke="#e1e5f0"/>
-                <rect x="32" y="28" width="28" height="28" rx="9" fill="#6255e7"/>
-                <path d="M46 36.6l2.2 5.9 5.9 2.2-5.9 2.2-2.2 5.9-2.2-5.9-5.9-2.2 5.9-2.2z" fill="#ffffff"/>
-                <text x="70" y="47" font-size="14" font-weight="700" fill="#10162a">ORCAOS<tspan font-size="11" font-weight="500" fill="#6b7489"> by Orcamatic</tspan></text>
-                <rect x="366" y="29" width="266" height="28" rx="14" fill="#ffffff" stroke="#dbe0ee"/>
-                <circle cx="382" cy="43" r="4" fill="#0a8f78"/>
-                <text x="394" y="47" font-size="11" fill="#4a5570">Zorin OS 18 · CPU 6% · RAM 3.2/16 GB</text>
-                <rect x="650" y="27" width="200" height="32" rx="9" fill="#eceef7"/>
-                <text x="684" y="47" font-size="11" fill="#45506b" text-anchor="middle">Auto</text>
-                <rect x="718" y="32" width="64" height="22" rx="6" fill="#6255e7"/>
-                <text x="750" y="47" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Safe</text>
-                <text x="816" y="47" font-size="11" fill="#45506b" text-anchor="middle">Manual</text>
-                <circle class="art-blink" cx="878" cy="43" r="5" fill="#0a8f78"/>
-                <text x="890" y="47" font-size="11" font-weight="600" fill="#0a7a68">Ready</text>
+                <rect x="10" y="10" width="1060" height="640" fill="#17110d"/>
+                <rect x="10" y="10" width="1060" height="64" fill="#130e0a"/>
+                <path d="M10 73.5h1060" stroke="#35200e"/>
+                <rect x="32" y="28" width="28" height="28" rx="9" fill="#ff8a1f"/>
+                <path d="M46 36.6l2.2 5.9 5.9 2.2-5.9 2.2-2.2 5.9-2.2-5.9-5.9-2.2 5.9-2.2z" fill="#17110d"/>
+                <text x="70" y="47" font-size="14" font-weight="700" fill="#eddcc9">ORCAOS<tspan font-size="11" font-weight="500" fill="#a7927b"> by Orcamatic</tspan></text>
+                <rect x="366" y="29" width="266" height="28" rx="14" fill="#17110d" stroke="#3c2410"/>
+                <circle cx="382" cy="43" r="4" fill="#ffb224"/>
+                <text x="394" y="47" font-size="11" fill="#d3ab7c">Zorin OS 18 · CPU 6% · RAM 3.2/16 GB</text>
+                <rect x="650" y="27" width="200" height="32" rx="9" fill="#110d09"/>
+                <text x="684" y="47" font-size="11" fill="#d5af82" text-anchor="middle">Auto</text>
+                <rect x="718" y="32" width="64" height="22" rx="6" fill="#ff8a1f"/>
+                <text x="750" y="47" font-size="11" font-weight="600" fill="#17110d" text-anchor="middle">Safe</text>
+                <text x="816" y="47" font-size="11" fill="#d5af82" text-anchor="middle">Manual</text>
+                <circle class="art-blink" cx="878" cy="43" r="5" fill="#ffb224"/>
+                <text x="890" y="47" font-size="11" font-weight="600" fill="#ffcc66">Ready</text>
 
-                <rect x="10" y="74" width="440" height="522" fill="#fbfbff"/>
-                <path d="M449.5 74v522" stroke="#e3e7f2"/>
-                <text x="36" y="108" font-size="13" font-weight="700" fill="#10162a">AI Operator</text>
-                <rect x="328" y="92" width="94" height="22" rx="11" fill="#eeecff"/>
-                <text x="375" y="107" font-size="9.5" font-weight="700" fill="#4034b7" text-anchor="middle" font-family="SFMono-Regular, Consolas, Menlo, monospace">safe_auto</text>
-                <path d="M10 124.5h440" stroke="#e9ecf5"/>
+                <rect x="10" y="74" width="440" height="522" fill="#16110c"/>
+                <path d="M449.5 74v522" stroke="#321e0d"/>
+                <text x="36" y="108" font-size="13" font-weight="700" fill="#eddcc9">AI Operator</text>
+                <rect x="328" y="92" width="94" height="22" rx="11" fill="#2b1708"/>
+                <text x="375" y="107" font-size="9.5" font-weight="700" fill="#ffb46b" text-anchor="middle" font-family="SFMono-Regular, Consolas, Menlo, monospace">safe_auto</text>
+                <path d="M10 124.5h440" stroke="#100c09"/>
 
-                <text x="36" y="152" font-size="10" font-weight="700" fill="#7a849c" letter-spacing="0.08em">WHEN</text>
-                <rect x="28" y="162" width="394" height="62" rx="10" fill="#ffffff" stroke="#dfe3ee"/>
-                <text x="44" y="186" font-size="12.5" fill="#10162a">Install jq and confirm it is</text>
-                <text x="44" y="205" font-size="12.5" fill="#10162a">available to cron jobs.</text>
+                <text x="36" y="152" font-size="10" font-weight="700" fill="#9c856a" letter-spacing="0.08em">WHEN</text>
+                <rect x="28" y="162" width="394" height="62" rx="10" fill="#17110d" stroke="#39220f"/>
+                <text x="44" y="186" font-size="12.5" fill="#eddcc9">Install jq and confirm it is</text>
+                <text x="44" y="205" font-size="12.5" fill="#eddcc9">available to cron jobs.</text>
 
-                <text x="36" y="250" font-size="10" font-weight="700" fill="#7a849c" letter-spacing="0.08em">1. THEN</text>
-                <rect x="28" y="260" width="394" height="52" rx="10" fill="#141b30"/>
-                <text x="44" y="292" font-size="11.5" fill="#7ee2c4" font-family="SFMono-Regular, Consolas, Menlo, monospace">$</text>
-                <text x="60" y="292" font-size="11.5" fill="#e8ecf9" font-family="SFMono-Regular, Consolas, Menlo, monospace">sudo apt-get install -y jq</text>
+                <text x="36" y="250" font-size="10" font-weight="700" fill="#9c856a" letter-spacing="0.08em">1. THEN</text>
+                <rect x="28" y="260" width="394" height="52" rx="10" fill="#3a2c1f"/>
+                <text x="44" y="292" font-size="11.5" fill="#ffb41f" font-family="SFMono-Regular, Consolas, Menlo, monospace">$</text>
+                <text x="60" y="292" font-size="11.5" fill="#ecd8c6" font-family="SFMono-Regular, Consolas, Menlo, monospace">sudo apt-get install -y jq</text>
 
-                <text x="36" y="340" font-size="10" font-weight="700" fill="#7a849c" letter-spacing="0.08em">IF</text>
-                <rect x="28" y="350" width="394" height="126" rx="10" fill="#fdf7ea" stroke="#f0e0b8"/>
-                <text x="44" y="374" font-size="10" font-weight="700" fill="#8a6a12" letter-spacing="0.06em">SAFE MODE APPROVAL GATE</text>
-                <text x="44" y="396" font-size="11.5" fill="#45506b">This command needs sudo. Approve,</text>
-                <text x="44" y="414" font-size="11.5" fill="#45506b">skip or stop the step.</text>
-                <rect x="44" y="426" width="94" height="32" rx="8" fill="#6255e7"/>
-                <text x="91" y="446" font-size="11.5" font-weight="700" fill="#ffffff" text-anchor="middle">Approve</text>
-                <rect x="146" y="426" width="74" height="32" rx="8" fill="#ffffff" stroke="#cfd6e8"/>
-                <text x="183" y="446" font-size="11.5" font-weight="600" fill="#10162a" text-anchor="middle">Skip</text>
-                <rect x="228" y="426" width="74" height="32" rx="8" fill="#ffffff" stroke="#e5c9c4"/>
-                <text x="265" y="446" font-size="11.5" font-weight="600" fill="#a4441f" text-anchor="middle">Stop</text>
-                <text x="406" y="446" font-size="9.5" fill="#8a6a12" text-anchor="end">plan paused</text>
+                <text x="36" y="340" font-size="10" font-weight="700" fill="#9c856a" letter-spacing="0.08em">IF</text>
+                <rect x="28" y="350" width="394" height="126" rx="10" fill="#2a190a" stroke="#bd910f"/>
+                <text x="44" y="374" font-size="10" font-weight="700" fill="#ffd966" letter-spacing="0.06em">SAFE MODE APPROVAL GATE</text>
+                <text x="44" y="396" font-size="11.5" fill="#d5af82">This command needs sudo. Approve,</text>
+                <text x="44" y="414" font-size="11.5" fill="#d5af82">skip or stop the step.</text>
+                <rect x="44" y="426" width="94" height="32" rx="8" fill="#ff8a1f"/>
+                <text x="91" y="446" font-size="11.5" font-weight="700" fill="#17110d" text-anchor="middle">Approve</text>
+                <rect x="146" y="426" width="74" height="32" rx="8" fill="#17110d" stroke="#4c2d14"/>
+                <text x="183" y="446" font-size="11.5" font-weight="600" fill="#eddcc9" text-anchor="middle">Skip</text>
+                <rect x="228" y="426" width="74" height="32" rx="8" fill="#17110d" stroke="#bd3e0f"/>
+                <text x="265" y="446" font-size="11.5" font-weight="600" fill="#ff8f66" text-anchor="middle">Stop</text>
+                <text x="406" y="446" font-size="9.5" fill="#ffd966" text-anchor="end">plan paused</text>
 
-                <rect x="36" y="494" width="152" height="30" rx="8" fill="#e8f6f0"/>
-                <circle cx="52" cy="509" r="4" fill="#0a8f78"/>
-                <text x="64" y="513" font-size="11" fill="#075e52" font-family="SFMono-Regular, Consolas, Menlo, monospace">Exit 0 (42 ms)</text>
-                <text x="36" y="550" font-size="10.5" fill="#6b7489">stdout 214 B · stderr 0 B · step verified</text>
-                <text x="36" y="572" font-size="10.5" fill="#6b7489">Self-heal ready: dpkg lock, PEP 668</text>
+                <rect x="36" y="494" width="152" height="30" rx="8" fill="#2e1c0b"/>
+                <circle cx="52" cy="509" r="4" fill="#ffb224"/>
+                <text x="64" y="513" font-size="11" fill="#ffc266" font-family="SFMono-Regular, Consolas, Menlo, monospace">Exit 0 (42 ms)</text>
+                <text x="36" y="550" font-size="10.5" fill="#a7927b">stdout 214 B · stderr 0 B · step verified</text>
+                <text x="36" y="572" font-size="10.5" fill="#a7927b">Self-heal ready: dpkg lock, PEP 668</text>
 
-                <rect x="450" y="74" width="620" height="522" fill="#0f1626"/>
-                <text x="482" y="108" font-size="12.5" font-weight="700" fill="#e8ecf9" font-family="SFMono-Regular, Consolas, Menlo, monospace">/bin/bash</text>
-                <rect x="582" y="92" width="104" height="22" rx="11" fill="#1b2643"/>
-                <text x="634" y="107" font-size="9.5" fill="#9fb0d6" text-anchor="middle" font-family="SFMono-Regular, Consolas, Menlo, monospace">pty pid 4821</text>
-                <path d="M450 124.5h620" stroke="#1e2a44"/>
-                <text x="482" y="158" font-size="11.5" fill="#7ee2c4" font-family="SFMono-Regular, Consolas, Menlo, monospace">$</text>
-                <text x="498" y="158" font-size="11.5" fill="#e8ecf9" font-family="SFMono-Regular, Consolas, Menlo, monospace">orcaos "install jq and verify it works"</text>
-                <text x="482" y="180" font-size="11.5" fill="#8f9fc4" font-family="SFMono-Regular, Consolas, Menlo, monospace">[orcaos] goal read: 3 steps planned</text>
-                <text x="482" y="202" font-size="11.5" fill="#f6d27a" font-family="SFMono-Regular, Consolas, Menlo, monospace">[orcaos] step 1 paused: safe mode gate</text>
-                <text x="482" y="232" font-size="11.5" fill="#7ee2c4" font-family="SFMono-Regular, Consolas, Menlo, monospace">$</text>
-                <text x="498" y="232" font-size="11.5" fill="#e8ecf9" font-family="SFMono-Regular, Consolas, Menlo, monospace">sudo apt-get install -y jq</text>
-                <text x="482" y="254" font-size="11.5" fill="#9fb0d6" font-family="SFMono-Regular, Consolas, Menlo, monospace">Reading package lists... Done</text>
-                <text x="482" y="276" font-size="11.5" fill="#9fb0d6" font-family="SFMono-Regular, Consolas, Menlo, monospace">Building dependency tree... Done</text>
-                <text x="482" y="298" font-size="11.5" fill="#9fb0d6" font-family="SFMono-Regular, Consolas, Menlo, monospace">Setting up jq (1.7.1-3) ...</text>
-                <text x="482" y="320" font-size="11.5" fill="#7ee2c4" font-family="SFMono-Regular, Consolas, Menlo, monospace">$</text>
-                <text x="498" y="320" font-size="11.5" fill="#e8ecf9" font-family="SFMono-Regular, Consolas, Menlo, monospace">jq --version</text>
-                <text x="482" y="342" font-size="11.5" fill="#7ee2c4" font-family="SFMono-Regular, Consolas, Menlo, monospace">jq-1.7.1</text>
-                <rect x="482" y="362" width="556" height="112" rx="10" fill="#16203a" stroke="#2b6f5f"/>
-                <circle cx="504" cy="386" r="9" fill="#0a8f78"/>
-                <path d="M500 386l3 3 6-6.5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="522" y="390" font-size="11" font-weight="700" fill="#7ee2c4">Output diagnosis</text>
-                <text x="500" y="414" font-size="11.5" fill="#c3cde6">stdout matches the plan, stderr is empty.</text>
-                <text x="500" y="434" font-size="11.5" fill="#c3cde6">Exit code 0 in 42 ms, so the step is verified.</text>
-                <text x="500" y="454" font-size="11.5" fill="#8f9fc4">No retry needed. Steps 2 and 3 continue.</text>
-                <text x="482" y="504" font-size="11.5" fill="#7ee2c4" font-family="SFMono-Regular, Consolas, Menlo, monospace">$</text>
-                <rect class="art-blink" x="498" y="492" width="9" height="14" fill="#7ee2c4"/>
+                <rect x="450" y="74" width="620" height="522" fill="#33271b"/>
+                <text x="482" y="108" font-size="12.5" font-weight="700" fill="#ecd8c6" font-family="SFMono-Regular, Consolas, Menlo, monospace">/bin/bash</text>
+                <rect x="582" y="92" width="104" height="22" rx="11" fill="#463626"/>
+                <text x="634" y="107" font-size="9.5" fill="#ce9b6c" text-anchor="middle" font-family="SFMono-Regular, Consolas, Menlo, monospace">pty pid 4821</text>
+                <path d="M450 124.5h620" stroke="#483727"/>
+                <text x="482" y="158" font-size="11.5" fill="#ffb41f" font-family="SFMono-Regular, Consolas, Menlo, monospace">$</text>
+                <text x="498" y="158" font-size="11.5" fill="#ecd8c6" font-family="SFMono-Regular, Consolas, Menlo, monospace">orcaos "install jq and verify it works"</text>
+                <text x="482" y="180" font-size="11.5" fill="#c88e59" font-family="SFMono-Regular, Consolas, Menlo, monospace">[orcaos] goal read: 3 steps planned</text>
+                <text x="482" y="202" font-size="11.5" fill="#bd910f" font-family="SFMono-Regular, Consolas, Menlo, monospace">[orcaos] step 1 paused: safe mode gate</text>
+                <text x="482" y="232" font-size="11.5" fill="#ffb41f" font-family="SFMono-Regular, Consolas, Menlo, monospace">$</text>
+                <text x="498" y="232" font-size="11.5" fill="#ecd8c6" font-family="SFMono-Regular, Consolas, Menlo, monospace">sudo apt-get install -y jq</text>
+                <text x="482" y="254" font-size="11.5" fill="#ce9b6c" font-family="SFMono-Regular, Consolas, Menlo, monospace">Reading package lists... Done</text>
+                <text x="482" y="276" font-size="11.5" fill="#ce9b6c" font-family="SFMono-Regular, Consolas, Menlo, monospace">Building dependency tree... Done</text>
+                <text x="482" y="298" font-size="11.5" fill="#ce9b6c" font-family="SFMono-Regular, Consolas, Menlo, monospace">Setting up jq (1.7.1-3) ...</text>
+                <text x="482" y="320" font-size="11.5" fill="#ffb41f" font-family="SFMono-Regular, Consolas, Menlo, monospace">$</text>
+                <text x="498" y="320" font-size="11.5" fill="#ecd8c6" font-family="SFMono-Regular, Consolas, Menlo, monospace">jq --version</text>
+                <text x="482" y="342" font-size="11.5" fill="#ffb41f" font-family="SFMono-Regular, Consolas, Menlo, monospace">jq-1.7.1</text>
+                <rect x="482" y="362" width="556" height="112" rx="10" fill="#3f3022" stroke="#ffcc66"/>
+                <circle cx="504" cy="386" r="9" fill="#ffb224"/>
+                <path d="M500 386l3 3 6-6.5" fill="none" stroke="#f0e1d3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="522" y="390" font-size="11" font-weight="700" fill="#ffb41f">Output diagnosis</text>
+                <text x="500" y="414" font-size="11.5" fill="#dfbe9f">stdout matches the plan, stderr is empty.</text>
+                <text x="500" y="434" font-size="11.5" fill="#dfbe9f">Exit code 0 in 42 ms, so the step is verified.</text>
+                <text x="500" y="454" font-size="11.5" fill="#c88e59">No retry needed. Steps 2 and 3 continue.</text>
+                <text x="482" y="504" font-size="11.5" fill="#ffb41f" font-family="SFMono-Regular, Consolas, Menlo, monospace">$</text>
+                <rect class="art-blink" x="498" y="492" width="9" height="14" fill="#ffb41f"/>
 
-                <rect x="10" y="596" width="1060" height="54" fill="#f6f7fc"/>
-                <path d="M10 596.5h1060" stroke="#e3e7f2"/>
-                <text x="36" y="628" font-size="10.5" fill="#4a5570" font-family="SFMono-Regular, Consolas, Menlo, monospace">Safe mode · 1 approval · 0 retries</text>
-                <text x="1044" y="628" font-size="10.5" fill="#6b7489" text-anchor="end" font-family="SFMono-Regular, Consolas, Menlo, monospace">GTK3 · /bin/bash PTY · exit 0</text>
-                <rect x="10" y="10" width="1060" height="640" rx="18" fill="none" stroke="#d8ddec"/>
+                <rect x="10" y="596" width="1060" height="54" fill="#281607"/>
+                <path d="M10 596.5h1060" stroke="#321e0d"/>
+                <text x="36" y="628" font-size="10.5" fill="#d3ab7c" font-family="SFMono-Regular, Consolas, Menlo, monospace">Safe mode · 1 approval · 0 retries</text>
+                <text x="1044" y="628" font-size="10.5" fill="#a7927b" text-anchor="end" font-family="SFMono-Regular, Consolas, Menlo, monospace">GTK3 · /bin/bash PTY · exit 0</text>
+                <rect x="10" y="10" width="1060" height="640" rx="18" fill="none" stroke="#412611"/>
               </g>
             </svg>
             <figcaption>Illustration of the ORCAOS window. A goal becomes a plan, the plan runs in a real shell, and anything that needs sudo waits behind the gate that you chose.</figcaption>
