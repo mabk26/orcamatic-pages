@@ -41,6 +41,15 @@ security/        Permissions, data flow and store disclosures
 | `sitemap.xml` / `robots.txt` | Search-engine discovery |
 | `404.html` | Friendly GitHub Pages not-found page |
 
+## Look and feel
+
+The site uses one theme, "Terminal": amber and orange on near-black, monospace headings
+(JetBrains Mono, self-hosted), Inter for running text, square corners and a hairline grid.
+Every colour is a custom property at the top of `assets/site.css` (`--accent`, `--accent-soft`,
+`--amber`, `--bg`, `--surface`, `--text`, `--muted`, `--line`); use those rather than new hex
+values, and keep the palette between orange and black. Inline illustrations follow the same
+palette through their `fill`/`stroke` attributes.
+
 ## Imagery rules
 
 The site explains ORCA with **drawn illustrations**, not Chrome Web Store screenshots. The
@@ -53,7 +62,7 @@ Conventions (the ones marked *checked* fail CI if broken):
 
 - Illustrations are inline `<svg class="art">` written into the page: the labels use the site
   fonts, they scale crisply and they cost no request. Colours are presentation attributes
-  (`fill="#6255e7"`) because the CSP forbids `style=""`; fonts and motion come from
+  (`fill="#ff8a1f"`) because the CSP forbids `style=""`; fonts and motion come from
   `assets/site.css` (`.art`, `.art-serif`, `.art-ripple`, `.art-spin`, `.art-blink`).
 - Keep them schematic: grey bars stand in for page text, and a drawing only shows things ORCA
   does today (as described on the store listing). Caption each one as an illustration, so
@@ -161,7 +170,7 @@ When you add a page:
 
 Section labels stay structural: an `<h1>`/`<h2>` carries the meaning on its own, so no small
 uppercase "eyebrow" line above a heading and no bullet dot in front of a label. Use `.facts`
-(hairline-separated) for short lists of claims and the serif numerals in `.step-number` /
+(hairline-separated) for short lists of claims and the monospace numerals in `.step-number` /
 `.pillar .number` for ordered cards.
 
 ## Checking the site

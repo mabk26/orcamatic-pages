@@ -4,8 +4,8 @@
   "description": "Privacy-first browser automation with ORCA.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#fbfbf7",
-  "theme_color": "#10162a",
+  "background_color": "#0b0907",
+  "theme_color": "#0b0907",
   "icons": [
     {
       "src": "/assets/icon-192.png",
