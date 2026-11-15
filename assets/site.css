@@ -170,9 +170,6 @@ details summary:focus-visible { outline: 3px solid rgba(255, 138, 31, 0.4); outl
 .hero-copy { padding: 1rem 0; }
 .hero h1 { max-width: 680px; font-size: clamp(2.5rem, 5vw, 4.3rem); }
 .hero h1 em { color: var(--accent); font-style: normal; }
-/* The block cursor after the headline. Decorative; the reduced-motion rule stops it. */
-.hero h1 em::after { display: inline-block; width: 0.5em; height: 0.82em; margin-left: 0.12em; background: var(--accent); content: ""; vertical-align: -0.04em; animation: cursor-blink 1.1s steps(1) infinite; }
-@keyframes cursor-blink { 50% { opacity: 0; } }
 .hero .lead { max-width: 600px; margin: 1.5rem 0 2rem; color: #d6af83; font-size: clamp(1.04rem, 1.35vw, 1.2rem); line-height: 1.65; }
 .facts { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin: 1.75rem 0 0; padding: 0; list-style: none; color: #d3aa7c; font-size: 0.9375rem; font-weight: 500; line-height: 1.3; }
 .facts li { display: inline-flex; align-items: center; gap: 0.5rem; }

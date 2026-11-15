@@ -59,8 +59,8 @@ House rules, from a polish pass done with the unslop skill in `skill/`:
 - Font sizes come from one scale (12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 40, 48px) and
   paddings, margins and gaps sit on a 4px grid.
 - A one-sentence headline has no full stop; a two-sentence one keeps both.
-- Motion: the headline cursor blinks, the illustrations animate (ripple, spinner, blink) and
-  sections fade in on scroll. All of it stops under `prefers-reduced-motion`. Hover is a colour
+- Motion: the illustrations animate (ripple, spinner, blink) and sections fade in on scroll.
+  No cursor after the headline, blinking or otherwise. All of it stops under `prefers-reduced-motion`. Hover is a colour
   change; a press scales down slightly.
 - **No em dashes, anywhere.** Not in copy, meta tags, comments or these notes. Use a comma, a
   colon, brackets or a new sentence. `tools/check-site.py` fails the build if one appears.
