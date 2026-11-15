@@ -8,7 +8,7 @@ import pathlib
 import tempfile
 from fontTools import ttLib
 from fontTools.varLib import instancer
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image, ImageDraw, ImageFont
 
 REPO = pathlib.Path(__file__).resolve().parents[1]
 OUT = pathlib.Path(tempfile.mkdtemp(prefix='ogbuild-'))  # static font instances, not published
@@ -23,7 +23,7 @@ def instantiate(src, dst, wght):
 inter = instantiate('inter-latin-wght.woff2', 'inter.ttf', 400)
 inter_med = instantiate('inter-latin-wght.woff2', 'inter-500.ttf', 500)
 inter_bold = instantiate('inter-latin-wght.woff2', 'inter-700.ttf', 700)
-mono_bold = instantiate('jetbrains-mono-latin-wght.woff2', 'mono-700.ttf', 700)
+mono_bold = instantiate('jetbrains-mono-latin-wght.woff2', 'mono-500.ttf', 500)
 
 W, H = 1200, 630
 # The site's terminal palette (assets/site.css :root).
@@ -39,17 +39,6 @@ LINE_STRONG = (107, 63, 23)
 
 img = Image.new('RGB', (W, H), BG)
 
-# hairline grid, then an orange glow top-right
-grid = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-dg = ImageDraw.Draw(grid)
-for x in range(0, W, 44):
-    dg.line([x, 0, x, H], fill=(255, 138, 31, 14))
-for y in range(0, H, 44):
-    dg.line([0, y, W, y], fill=(255, 138, 31, 14))
-img = Image.alpha_composite(img.convert('RGBA'), grid)
-glow = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-ImageDraw.Draw(glow).ellipse([W - 620, -300, W + 320, 520], fill=(255, 138, 31, 46))
-img = Image.alpha_composite(img, glow.filter(ImageFilter.GaussianBlur(120))).convert('RGB')
 d = ImageDraw.Draw(img, 'RGBA')
 
 M = 84
@@ -68,7 +57,7 @@ d.ellipse([M - 2, 56, M + 54, 112], fill=(255, 255, 255))  # white disc, as in t
 icon = Image.open(REPO / 'assets' / 'orca-icon.png').convert('RGBA').resize((52, 52), Image.LANCZOS)
 img.paste(icon, (M, 58), icon)
 d.text((M + 68, 60), 'Orcamatic', font=f_brand, fill=TEXT)
-d.text((M + 68, 110), 'BROWSER AUTOMATION', font=f_tag, fill=MUTED)
+d.text((M + 68, 110), 'Browser automation', font=f_tag, fill=MUTED)
 
 # headline
 y = 206
@@ -76,8 +65,6 @@ d.text((M, y), 'Show it once.', font=f_h1, fill=TEXT)
 d.text((M, y + 88), 'Let it ', font=f_h1, fill=TEXT)
 hw = d.textlength('Let it ', font=f_h1)
 d.text((M + hw, y + 88), 'run.', font=f_h1, fill=ACCENT)
-cx = M + hw + d.textlength('run.', font=f_h1) + 10   # the block cursor
-d.rectangle([cx, y + 106, cx + 34, y + 164], fill=ACCENT)
 
 # body copy
 def wrap(text, f, maxw):
@@ -100,7 +87,7 @@ for line in wrap(body, f_body, 560):
 
 # CTA pill
 py = 512
-label = 'ADD ORCA TO CHROME'
+label = 'Add ORCA to Chrome'
 tw = d.textlength(label, font=f_pill)
 pill_w = 30 + tw + 16 + 22 + 28
 d.rectangle([M, py, M + pill_w, py + 54], fill=ACCENT)
