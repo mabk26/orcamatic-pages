@@ -6,7 +6,7 @@ and JavaScript. No build step, no dependencies, no backend, no API keys.
 ## Layout
 
 The website **is** the repository root. Every file here is published except
-`README.md`, `LICENSE`, `.gitignore`, `docs/`, `tools/` and `.github/`, which the
+`README.md`, `LICENSE`, `.gitignore`, `docs/`, `tools/`, `skill/` and `.github/`, which the
 deployment workflow filters out — so notes and asset builders can live in the repo
 without being served.
 
@@ -20,6 +20,7 @@ sitemap.xml           Page list for search engines
 site.webmanifest      Installable app metadata
 assets/               site.css, site.js, icons, fonts, og-image.jpg
 tools/                build-og-image.py, prepare-screenshots.py (store assets)
+skill/                Agent skills (unslop, by Damir Sokolovsky, CC BY 4.0); not published
 docs/                 website-audit.md (research + backlog), PHASES.md (execution plan),
                         website-review.md (post-mortem of a broken-looking deploy)
 about/  pricing/  products/  blog/  legal pages (privacy, terms, refund)
@@ -44,11 +45,21 @@ security/        Permissions, data flow and store disclosures
 ## Look and feel
 
 The site uses one theme, "Terminal": amber and orange on near-black, monospace headings
-(JetBrains Mono, self-hosted), Inter for running text, square corners and a hairline grid.
-Every colour is a custom property at the top of `assets/site.css` (`--accent`, `--accent-soft`,
-`--amber`, `--bg`, `--surface`, `--text`, `--muted`, `--line`); use those rather than new hex
-values, and keep the palette between orange and black. Inline illustrations follow the same
-palette through their `fill`/`stroke` attributes.
+(JetBrains Mono, self-hosted), Inter for running text, and square corners. Every colour is a
+custom property at the top of `assets/site.css` (`--accent`, `--accent-soft`, `--amber`, `--bg`,
+`--surface`, `--text`, `--muted`, `--line`); use those rather than new hex values, and keep the
+palette between orange and black. Inline illustrations follow the same palette through their
+`fill`/`stroke` attributes.
+
+House rules, from a polish pass done with the unslop skill in `skill/`:
+
+- The chrome stays quiet: no glows, colour washes, coloured shadows or background patterns.
+  The orange belongs to the primary action and the illustrations.
+- Sentence case everywhere, no uppercase tracked labels. Weights 400 to 600 only.
+- Font sizes come from one scale (12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 40, 48px) and
+  paddings, margins and gaps sit on a 4px grid.
+- A one-sentence headline has no full stop; a two-sentence one keeps both.
+- Nothing loops, lifts or moves on scroll. Hover is a colour change; a press scales down slightly.
 
 ## Imagery rules
 
