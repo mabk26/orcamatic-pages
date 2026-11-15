@@ -397,6 +397,19 @@ def main() -> int:
     else:
         all_errors.append("sitemap.xml is missing")
 
+    # House rule: no em dashes anywhere, in copy, meta tags, comments or notes. The
+    # character is written as an escape here so this file passes its own check.
+    # skill/ is a third-party copy kept unmodified, so it is not scanned.
+    em_dash = re.compile("\u2014|&(?:mdash|#8212|#x2014);", re.I)
+    text_suffixes = {".html", ".css", ".js", ".json", ".webmanifest", ".xml", ".txt", ".md", ".py", ".yml", ".yaml"}
+    for f in sorted(ROOT.rglob("*")):
+        rel = f.relative_to(ROOT).as_posix()
+        if not f.is_file() or f.suffix not in text_suffixes or rel.startswith((".git/", "skill/", "_site/")):
+            continue
+        for number, line in enumerate(f.read_text(errors="replace").splitlines(), 1):
+            if em_dash.search(line):
+                all_errors.append("%s:%d: em dash found - use a comma, colon, brackets or a new sentence" % (rel, number))
+
     robots = (ROOT / "robots.txt").read_text() if (ROOT / "robots.txt").exists() else ""
     if robots and "sitemap.xml" not in robots:
         all_warnings.append("robots.txt: add a Sitemap: https://orcamatic.com/sitemap.xml line")

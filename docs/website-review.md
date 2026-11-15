@@ -1,6 +1,6 @@
 # Homepage post-mortem: what the 15:48 snapshot actually showed
 
-Reported: "you messed up the whole website — squeezed images and lots of problems", with a
+Reported: "you messed up the whole website, squeezed images and lots of problems", with a
 full-page snapshot of `orcamatic.com` taken 2026-10-15 15:48 (`1852x19148` px).
 
 Read this first if you are trying to work out what is broken. Two separate things are mixed

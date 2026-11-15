@@ -1,4 +1,4 @@
-# Orcamatic site — phased completion plan
+# Orcamatic site, phased completion plan
 
 The audit in [`website-audit.md`](website-audit.md) listed the problems. This file is the
 execution order, with an owner on every line: **agent** means it happens in this repo and
@@ -10,7 +10,7 @@ afterwards. Anything illustrative on the site is labelled as illustrative on the
 
 ---
 
-## Phase 0 — trust and imagery hygiene · owner: agent · **done**
+## Phase 0, trust and imagery hygiene · owner: agent · **done**
 
 - Removed every decorative eyebrow/kicker label site-wide.
 - Deleted fabricated product imagery; all product imagery is the real Chrome Web Store
@@ -19,7 +19,7 @@ afterwards. Anything illustrative on the site is labelled as illustrative on the
 - Rewrote headline copy so it sells the product instead of arguing about asset provenance.
 - Rebuilt the Open Graph image (`tools/build-og-image.py`).
 
-## Phase 1 — conversion architecture and proof · owner: agent · **done, merged as #5 and deployed 2026-10-15**
+## Phase 1, conversion architecture and proof · owner: agent · **done, merged as #5 and deployed 2026-10-15**
 
 | # | Shipped | Where |
 |---|---|---|
@@ -48,7 +48,7 @@ afterwards. Anything illustrative on the site is labelled as illustrative on the
 `/security/` describes `offscreen` as the mechanism that keeps long runs alive while the service
 worker is idle, and `webNavigation` as step timing and redirect detection. Both are the standard
 Manifest V3 uses for those jobs, and both match what the extension's behaviour on the store page
-implies — but only your manifest and background script can confirm the wording. If either is used
+implies, but only your manifest and background script can confirm the wording. If either is used
 differently, change those two table rows and nothing else on the page moves.
 
 Verification at the end of the phase: `python3 tools/version-assets.py --check` and
@@ -59,7 +59,7 @@ link and local asset resolves, sitemap complete and unique, JSON-LD parses), `cs
 (the CSP forbids them), and every page returns 200 from a local server. The same checker now
 gates the deploy.
 
-## Phase 1b — render integrity · owner: agent · **done 2026-10-15**
+## Phase 1b, render integrity · owner: agent · **done 2026-10-15**
 
 Prompted by a full-page snapshot of the deployed homepage that looked destroyed. It was not a
 markup problem - see [`website-review.md`](website-review.md) for the measurements. Five of the
@@ -75,7 +75,7 @@ rows below are fixes; the last two are guards so the same failure cannot be sile
 | 1b.6 | A failed hot-link retries once, then falls back to a note *inside* the reserved frame; the duplicate listing link in the hero is gone | `assets/site.js`, `assets/site.css` |
 | 1b.7 | The checker now enforces all of it: stamp matches the file, `width`/`height`/`alt` on every `<img>`, no crop-box store URL, a preloaded image must be used, `figure.shot` must carry its fallback. CI runs `--strict` | `tools/check-site.py`, workflow |
 
-## Phase 1d — a simpler site with drawn graphics · owner: agent · **done 2026-10-15**
+## Phase 1d, a simpler site with drawn graphics · owner: agent · **done 2026-10-15**
 
 Requested: take the Chrome Web Store images off the site, explain the product with graphics
 instead, and make the site simple and straightforward. This replaces the imagery rule from
@@ -91,14 +91,14 @@ Phase 0 and the screenshot work in 1b.2, 1b.4 and 1b.6.
 | 1d.6 | Checker: remote images and remote `img-src` hosts are errors, every inline `<svg>` needs `aria-hidden` or a label, the `figure.shot` and CDN-URL rules are gone | `tools/check-site.py` |
 | 1d.7 | `/products/` facts brought in line with the listing (v2.0.5, no file size that goes stale) | `products/index.html` |
 
-## Phase 2 — the recording · owner: **you** · status: waiting
+## Phase 2, the recording · owner: **you** · status: waiting
 
 This is the single highest-value item left, and it cannot be produced from the repo: it is
 a screen recording of the extension running on a real page.
 
 Spec, so one take is enough:
 
-- Length 45–75 seconds. Silent or captions only — no voiceover needed for the homepage.
+- Length 45–75 seconds. Silent or captions only, no voiceover needed for the homepage.
 - 1280×800, 60fps, one workflow start to finish: pick target → add retry → run → log →
   extracted values. Zoom the panel to ~150%; do not zoom the whole desktop.
 - Real, non-sensitive page. Mask or use a demo tenant for anything customer-facing.
@@ -110,7 +110,7 @@ Drop the files in `assets/` named `demo.webm` / `demo.mp4`, tell me, and I will 
 `<video autoplay muted loop playsinline poster>` block in with a `prefers-reduced-motion`
 gate, next to the drawn hero illustration.
 
-## Phase 3 — store listing · owner: **you** · status: waiting
+## Phase 3, store listing · owner: **you** · status: waiting
 
 The strings are ready in [`website-audit.md`](website-audit.md) (§Chrome Web Store ASO):
 a 75-character name, a 132-character summary, screenshot order and captions. Paste them in
@@ -128,7 +128,7 @@ The site no longer uses the listing's images at all (Phase 1d), so the store and
 change their pictures independently. `tools/prepare-screenshots.py` is still the way to produce
 the store screenshots and promo tiles at the exact sizes the dashboard asks for.
 
-## Phase 4 — decisions I should not make for you · owner: **you** · status: waiting
+## Phase 4, decisions I should not make for you · owner: **you** · status: waiting
 
 1. **Annual billing.** Research says an annual toggle at roughly two months free lifts
    paid conversion. It needs a Lemon Squeezy price and a refund rule. Say the word and I
@@ -144,10 +144,10 @@ the store screenshots and promo tiles at the exact sizes the dashboard asks for.
 5. **Named proof.** Eleven users today, so no logo wall and no customer quotes. As soon as
    one user will say something specific, send it and I will place it next to the pricing CTA.
 
-## Phase 5 — measure, then sharpen · owner: agent, after Phases 2 and 3 land
+## Phase 5, measure, then sharpen · owner: agent, after Phases 2 and 3 land
 
 - `GA_MEASUREMENT_ID` in `assets/site.js` is still empty, so nothing is measured and no
-  consent banner appears. Setting it turns analytics on for the whole site — your call, and
+  consent banner appears. Setting it turns analytics on for the whole site, your call, and
   it needs the CSP plus the privacy policy analytics section to be updated in the same commit.
 - Once real numbers exist: check LCP and CLS at 375px, then A/B the four H1 candidates in
   the audit against the current line.
